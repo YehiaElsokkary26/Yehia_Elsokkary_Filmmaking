@@ -1,4 +1,5 @@
 import ScrollReveal from './ScrollReveal';
+import { scatteredPolaroids } from '@/data/portfolioData';
 
 const AboutSection = () => {
   return (
@@ -28,13 +29,28 @@ const AboutSection = () => {
             </a>
           </ScrollReveal>
           <ScrollReveal variant="right" className="order-1 lg:order-2">
-            <div className="film-frame-border">
-              <div className="aspect-[4/5] overflow-hidden relative">
-                <video
-                  src="/videos/reel-2.mp4"
-                  className="w-full h-full object-cover"
-                  muted loop playsInline autoPlay
-                />
+            <div className="relative">
+              <div className="film-frame-border">
+                <div className="aspect-[4/5] overflow-hidden relative">
+                  <video
+                    src="/videos/reel-2.mp4"
+                    className="w-full h-full object-cover"
+                    muted loop playsInline autoPlay
+                  />
+                </div>
+              </div>
+              {/* Scattered polaroids around the about video */}
+              <div className="hidden lg:block absolute -top-8 -right-16 w-28 polaroid" style={{ transform: 'rotate(8deg)' }}>
+                <div className="aspect-[4/5] overflow-hidden bg-muted">
+                  <img src={scatteredPolaroids[1].src} alt={scatteredPolaroids[1].alt} className="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <p className="polaroid-caption !text-[9px]">{scatteredPolaroids[1].caption}</p>
+              </div>
+              <div className="hidden lg:block absolute -bottom-6 -left-14 w-24 polaroid" style={{ transform: 'rotate(-6deg)' }}>
+                <div className="aspect-[4/5] overflow-hidden bg-muted">
+                  <img src={scatteredPolaroids[3].src} alt={scatteredPolaroids[3].alt} className="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <p className="polaroid-caption !text-[9px]">{scatteredPolaroids[3].caption}</p>
               </div>
             </div>
           </ScrollReveal>
