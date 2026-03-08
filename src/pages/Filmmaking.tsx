@@ -1,0 +1,356 @@
+import { useState, useEffect, useCallback, useRef } from 'react';
+import { Play, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+
+interface FilmProject {
+  id: string;
+  title: string;
+  shortDescription: string;
+  fullDescription: string;
+  year: string;
+  role: string;
+  tags: string[];
+  videoSrc: string;
+  fontClass: string;
+  accentVar: string;
+  stills: string[];
+}
+
+const filmProjects: FilmProject[] = [
+  {
+    id: 'euphoria',
+    title: 'Euphoria',
+    shortDescription: 'A short film exploring youthful urban euphoria and intimate city moments.',
+    fullDescription: 'Euphoria is a cinematic journey through the electric pulse of city nights, capturing fleeting moments of joy, connection, and the raw energy of youth. Shot on location across urban landscapes, the film weaves together intimate vignettes that celebrate the beauty found in spontaneous encounters and nocturnal wanderings.',
+    year: '2024',
+    role: 'Director / Cinematographer',
+    tags: ['short-film', 'cinematic', 'urban', 'youth'],
+    videoSrc: '/videos/euphoria.mp4',
+    fontClass: 'font-euphoria-heading',
+    accentVar: '--film-euphoria-accent',
+    stills: [],
+  },
+  {
+    id: 'geziret-el-dahab',
+    title: 'Geziret El-Dahab',
+    shortDescription: 'A visual, immersive piece capturing the landscapes and local stories of Geziret El-Dahab.',
+    fullDescription: 'Geziret El-Dahab (The Golden Island) is an intimate documentary exploring the hidden gem of this Nile island community. Through patient observation and genuine connection with locals, the film reveals daily rhythms, timeless traditions, and the quiet resilience of island life. The piece serves as both a portrait of place and a meditation on belonging.',
+    year: '2024',
+    role: 'Director / Cinematographer',
+    tags: ['documentary', 'landscape', 'culture', 'egypt'],
+    videoSrc: '/videos/geziret.mp4',
+    fontClass: 'font-geziret-heading',
+    accentVar: '--film-geziret-accent',
+    stills: [],
+  },
+];
+
+const Filmmaking = () => {
+  const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const focusedVideoRef = useRef<HTMLVideoElement | null>(null);
+
+  const prefersReducedMotion = typeof window !== 'undefined' 
+    ? window.matchMedia('(prefers-reduced-motion: reduce)').matches 
+    : false;
+
+  const openProject = useCallback((index: number) => {
+    setFocusedIndex(index);
+    setIsPlaying(false);
+  }, []);
+
+  const closeProject = useCallback(() => {
+    setFocusedIndex(null);
+    setIsPlaying(false);
+    if (focusedVideoRef.current) {
+      focusedVideoRef.current.pause();
+      focusedVideoRef.current.currentTime = 0;
+    }
+  }, []);
+
+  const switchProject = useCallback((direction: 'prev' | 'next') => {
+    setFocusedIndex((prev) => {
+      if (prev === null) return null;
+      if (direction === 'prev' && prev > 0) return prev - 1;
+      if (direction === 'next' && prev < filmProjects.length - 1) return prev + 1;
+      return prev;
+    });
+    setIsPlaying(false);
+  }, []);
+
+  const handlePlay = useCallback(() => {
+    if (focusedVideoRef.current) {
+      focusedVideoRef.current.play();
+      setIsPlaying(true);
+    }
+  }, []);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (focusedIndex !== null) {
+        if (e.key === 'Escape') closeProject();
+        if (e.key === 'ArrowLeft') switchProject('prev');
+        if (e.key === 'ArrowRight') switchProject('next');
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [focusedIndex, closeProject, switchProject]);
+
+  // Video hover preview
+  const handleMouseEnter = (index: number) => {
+    const video = videoRefs.current[index];
+    if (video && focusedIndex === null) {
+      video.play().catch(() => {});
+    }
+  };
+
+  const handleMouseLeave = (index: number) => {
+    const video = videoRefs.current[index];
+    if (video && focusedIndex === null) {
+      video.pause();
+      video.currentTime = 0;
+    }
+  };
+
+  return (
+    <main className="min-h-screen pt-16" ref={containerRef}>
+      {/* Header */}
+      <section className="px-6 py-8 md:px-12 mood-brown">
+        <div className="max-w-6xl mx-auto">
+          <p className="font-body text-xs font-semibold tracking-[0.3em] uppercase text-accent mb-3">Portfolio</p>
+          <h1 className="font-films-heading text-5xl md:text-7xl">Filmmaking</h1>
+          <p className="font-handwriting text-lg opacity-60 mt-3">Stories told through motion ✦</p>
+        </div>
+      </section>
+
+      {/* Project Panels */}
+      <div 
+        className="flex flex-col"
+        style={{ gap: 'var(--film-panel-gap)' }}
+        role="list"
+        aria-label="Filmmaking projects"
+      >
+        {filmProjects.map((project, index) => {
+          const isFocused = focusedIndex === index;
+          const isOtherFocused = focusedIndex !== null && focusedIndex !== index;
+
+          return (
+            <article
+              key={project.id}
+              role="listitem"
+              aria-expanded={isFocused}
+              className={`
+                relative overflow-hidden cursor-pointer
+                transition-all
+                ${prefersReducedMotion ? '' : 'duration-[var(--film-expand-duration)]'}
+                ${isFocused ? 'z-20' : 'z-10'}
+                ${isOtherFocused ? 'opacity-40 pointer-events-auto' : 'opacity-100'}
+              `}
+              style={{
+                height: isFocused ? 'auto' : 'var(--film-panel-height)',
+                minHeight: isFocused ? '70vh' : 'var(--film-panel-height)',
+              }}
+              onClick={() => !isFocused && openProject(index)}
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={() => handleMouseLeave(index)}
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && !isFocused && openProject(index)}
+            >
+              {/* Background Video */}
+              <video
+                ref={(el) => { videoRefs.current[index] = el; }}
+                src={project.videoSrc}
+                className={`
+                  absolute inset-0 w-full h-full object-cover
+                  transition-transform
+                  ${prefersReducedMotion ? '' : 'duration-[var(--film-hover-duration)]'}
+                  ${!isFocused ? 'group-hover:scale-[1.04]' : ''}
+                `}
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-hidden="true"
+              />
+
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+              {/* Hover Effects (only when not focused) */}
+              {!isFocused && (
+                <div
+                  className={`
+                    absolute inset-0 pointer-events-none
+                    border-2 border-white/0 
+                    transition-all
+                    ${prefersReducedMotion ? '' : 'duration-[var(--film-hover-duration)]'}
+                    hover:border-white/80 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)]
+                  `}
+                  style={{
+                    transform: 'scale(1) translateY(0)',
+                    transition: prefersReducedMotion ? 'none' : `all var(--film-hover-duration) var(--film-hover-easing)`,
+                  }}
+                />
+              )}
+
+              {/* Panel Content - Collapsed State */}
+              {!isFocused && (
+                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-10">
+                  <div className="max-w-2xl">
+                    <h2 
+                      className={`${project.fontClass} text-4xl md:text-6xl lg:text-7xl text-white mb-3`}
+                      style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5)' }}
+                    >
+                      {project.title}
+                    </h2>
+                    <p className="font-body text-white/80 text-sm md:text-base max-w-lg">
+                      {project.shortDescription}
+                    </p>
+                    <div className="flex items-center gap-3 mt-4">
+                      <Play size={20} className="text-white/70" />
+                      <span className="font-body text-xs tracking-wider uppercase text-white/60">
+                        Click to explore
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Expanded Detail View */}
+              {isFocused && (
+                <div 
+                  className={`
+                    relative z-30 min-h-[70vh] flex flex-col
+                    ${prefersReducedMotion ? '' : 'animate-fade-in'}
+                  `}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Close / Navigation Controls */}
+                  <div className="sticky top-16 z-40 flex items-center justify-between p-4 bg-black/60 backdrop-blur-sm">
+                    <div className="flex gap-2">
+                      {focusedIndex > 0 && (
+                        <button
+                          onClick={() => switchProject('prev')}
+                          className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+                          aria-label="Previous project"
+                        >
+                          <ChevronLeft size={20} />
+                        </button>
+                      )}
+                      {focusedIndex < filmProjects.length - 1 && (
+                        <button
+                          onClick={() => switchProject('next')}
+                          className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+                          aria-label="Next project"
+                        >
+                          <ChevronRight size={20} />
+                        </button>
+                      )}
+                    </div>
+                    <button
+                      onClick={closeProject}
+                      className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+                      aria-label="Close project"
+                    >
+                      <X size={20} />
+                    </button>
+                  </div>
+
+                  {/* Main Content */}
+                  <div className="flex-1 p-6 md:p-10 lg:p-16">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                      {/* Video Player */}
+                      <div className="relative aspect-video bg-black rounded-lg overflow-hidden">
+                        <video
+                          ref={focusedVideoRef}
+                          src={project.videoSrc}
+                          className="w-full h-full object-cover"
+                          controls={isPlaying}
+                          playsInline
+                          preload="metadata"
+                        />
+                        {!isPlaying && (
+                          <button
+                            onClick={handlePlay}
+                            className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/30 transition-colors group"
+                            aria-label={`Play ${project.title}`}
+                          >
+                            <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+                              <Play size={32} className="text-black ml-1" fill="currentColor" />
+                            </div>
+                          </button>
+                        )}
+                      </div>
+
+                      {/* Details */}
+                      <div className="flex flex-col justify-center text-white">
+                        <h2 className={`${project.fontClass} text-4xl md:text-5xl lg:text-6xl mb-4`}>
+                          {project.title}
+                        </h2>
+                        <div className="flex flex-wrap gap-3 font-body text-xs tracking-wider uppercase text-white/60 mb-6">
+                          <span>{project.year}</span>
+                          <span>·</span>
+                          <span>{project.role}</span>
+                        </div>
+                        <p className="font-body text-white/80 leading-relaxed mb-6">
+                          {project.fullDescription}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {project.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-full border border-white/30 text-white/70"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Stills / Snippets Row */}
+                    {project.stills.length > 0 && (
+                      <div className="mt-10">
+                        <h3 className="font-body text-xs font-semibold tracking-[0.2em] uppercase text-white/60 mb-4">
+                          Gallery
+                        </h3>
+                        <ScrollArea className="w-full whitespace-nowrap">
+                          <div className="flex gap-4">
+                            {project.stills.map((still, i) => (
+                              <img
+                                key={i}
+                                src={still}
+                                alt={`${project.title} still ${i + 1}`}
+                                className="h-32 md:h-40 w-auto rounded object-cover"
+                                loading="lazy"
+                              />
+                            ))}
+                          </div>
+                          <ScrollBar orientation="horizontal" />
+                        </ScrollArea>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </article>
+          );
+        })}
+      </div>
+
+      {/* Dim overlay when a project is focused */}
+      {focusedIndex !== null && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-0 pointer-events-none"
+          aria-hidden="true"
+        />
+      )}
+    </main>
+  );
+};
+
+export default Filmmaking;

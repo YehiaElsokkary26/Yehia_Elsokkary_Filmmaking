@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Playfair+Display:wght@400;700;900&family=Quicksand:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&family=Pacifico&family=Bebas+Neue&family=Permanent+Marker&family=Lobster&family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Playfair+Display:wght@400;700;900&family=Quicksand:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&family=Pacifico&family=Bebas+Neue&family=Permanent+Marker&family=Lobster&family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Crimson+Pro&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
@@ -61,6 +61,17 @@
     --accent-photo: 45 80% 58%;
     --accent-fashion: 330 40% 80%;
     --accent-street: 0 0% 95%;
+
+    /* Filmmaking project-specific tokens */
+    --film-euphoria-font: 'Cinzel', serif;
+    --film-geziret-font: 'IBM Plex Sans', sans-serif;
+    --film-euphoria-accent: 270 40% 65%;
+    --film-geziret-accent: 35 60% 55%;
+    --film-panel-height: 50vh;
+    --film-panel-gap: 10px;
+    --film-hover-duration: 220ms;
+    --film-hover-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --film-expand-duration: 380ms;
 
     --grain-opacity: 0.04;
     --vignette-opacity: 0.15;
@@ -205,6 +216,21 @@
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1;
+  }
+
+  /* Filmmaking project-specific fonts */
+  .font-euphoria-heading {
+    font-family: var(--film-euphoria-font);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .font-geziret-heading {
+    font-family: var(--film-geziret-font);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.05;
   }
 
   .font-hero {
