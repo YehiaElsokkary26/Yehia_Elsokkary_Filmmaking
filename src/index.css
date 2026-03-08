@@ -55,6 +55,13 @@
     --font-events: 'Lobster', cursive;
     --font-about: 'Pacifico', cursive;
 
+    /* Section-specific accent tokens */
+    --accent-films: 220 20% 18%;
+    --accent-docs: 200 15% 22%;
+    --accent-photo: 45 80% 58%;
+    --accent-fashion: 330 40% 80%;
+    --accent-street: 0 0% 95%;
+
     --grain-opacity: 0.04;
     --vignette-opacity: 0.15;
     --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
