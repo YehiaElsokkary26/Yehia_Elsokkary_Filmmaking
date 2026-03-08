@@ -3,7 +3,7 @@ import ScrollReveal from './ScrollReveal';
 import PolaroidCard from './PolaroidCard';
 import ProjectModal from './ProjectModal';
 import { useState, useCallback } from 'react';
-import { photographyCategories, getProjectsByCategory } from '@/data/portfolioData';
+import { photographyCategories, getProjectsByCategory, scatteredPolaroids, projects } from '@/data/portfolioData';
 
 const videoBackgrounds = [
   '/videos/reel-1.mp4',
