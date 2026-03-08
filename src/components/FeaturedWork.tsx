@@ -1,38 +1,38 @@
 import ScrollReveal from './ScrollReveal';
 
 const videoBackgrounds = [
-  '/videos/reel-1.mp4',
-  '/videos/reel-2.mp4',
-  '/videos/reel-3.mp4',
-  '/videos/reel-4.mp4',
-];
+'/videos/reel-1.mp4',
+'/videos/reel-2.mp4',
+'/videos/reel-3.mp4',
+'/videos/reel-4.mp4'];
+
 
 const featuredProjects = [
-  {
-    title: 'Urban Stories',
-    category: 'Short Film',
-    date: '2025',
-    description: 'A cinematic exploration of city life through the eyes of its people. Raw, real, and unfiltered.',
-  },
-  {
-    title: 'Golden Hour',
-    category: 'Music Video',
-    date: '2025',
-    description: 'Capturing the magic of sunset sessions — music, movement, and golden light.',
-  },
-  {
-    title: 'The Portrait Series',
-    category: 'Photography',
-    date: '2024',
-    description: 'Intimate portraits that reveal character. Natural light, real emotions, no filters.',
-  },
-  {
-    title: 'Night Vision',
-    category: 'Commercial',
-    date: '2024',
-    description: 'After-dark energy brought to life. Neon, shadows, and the pulse of the night.',
-  },
-];
+{
+  title: 'Urban Stories',
+  category: 'Short Film',
+  date: '2025',
+  description: 'A cinematic exploration of city life through the eyes of its people. Raw, real, and unfiltered.'
+},
+{
+  title: 'Golden Hour',
+  category: 'Music Video',
+  date: '2025',
+  description: 'Capturing the magic of sunset sessions — music, movement, and golden light.'
+},
+{
+  title: 'The Portrait Series',
+  category: 'Photography',
+  date: '2024',
+  description: 'Intimate portraits that reveal character. Natural light, real emotions, no filters.'
+},
+{
+  title: 'Night Vision',
+  category: 'Commercial',
+  date: '2024',
+  description: 'After-dark energy brought to life. Neon, shadows, and the pulse of the night.'
+}];
+
 
 const FeaturedWork = () => {
   return (
@@ -67,19 +67,19 @@ const FeaturedWork = () => {
                   src={videoSrc}
                   className="w-full h-full object-cover"
                   style={{ transform: 'scale(1.2)' }}
-                  autoPlay muted loop playsInline
-                />
+                  autoPlay muted loop playsInline />
+                
                 <div className={`absolute inset-0 ${
-                  i % 4 === 0 ? 'bg-studio-teal/15' :
-                  i % 4 === 1 ? 'bg-accent/10' :
-                  i % 4 === 2 ? 'bg-studio-brown/20' :
-                  'bg-studio-dark/15'
-                } mix-blend-multiply`} />
+                i % 4 === 0 ? 'bg-studio-teal/15' :
+                i % 4 === 1 ? 'bg-accent/10' :
+                i % 4 === 2 ? 'bg-studio-brown/20' :
+                'bg-studio-dark/15'} mix-blend-multiply`
+                } />
                 <div className={`absolute inset-0 ${
-                  isEven
-                    ? 'bg-gradient-to-r from-studio-dark/80 via-studio-dark/35 to-transparent'
-                    : 'bg-gradient-to-l from-studio-dark/80 via-studio-dark/35 to-transparent'
-                }`} />
+                isEven ?
+                'bg-gradient-to-r from-studio-dark/80 via-studio-dark/35 to-transparent' :
+                'bg-gradient-to-l from-studio-dark/80 via-studio-dark/35 to-transparent'}`
+                } />
               </div>
 
               <div className="absolute inset-0 flex items-center z-[2] px-8 md:px-20 lg:px-32">
@@ -90,7 +90,7 @@ const FeaturedWork = () => {
                     </span>
                   </ScrollReveal>
                   <ScrollReveal variant={isEven ? 'left' : 'right'} delay={250}>
-                    <h3 className="editorial-display text-5xl md:text-7xl lg:text-8xl text-studio-white mt-4 leading-[0.92]">
+                    <h3 className="editorial-display md:text-7xl lg:text-8xl text-studio-white mt-4 leading-[0.92] py-[4px] my-[24px] mx-[81px] px-0 text-5xl text-justify">
                       {project.title}
                     </h3>
                   </ScrollReveal>
@@ -103,14 +103,14 @@ const FeaturedWork = () => {
               </div>
             </div>
 
-            {i < featuredProjects.length - 1 && (
-              <div className="h-1 bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
-            )}
-          </div>
-        );
+            {i < featuredProjects.length - 1 &&
+            <div className="h-1 bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+            }
+          </div>);
+
       })}
-    </section>
-  );
+    </section>);
+
 };
 
 export default FeaturedWork;
