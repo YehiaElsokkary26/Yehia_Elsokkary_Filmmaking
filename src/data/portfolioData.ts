@@ -1,17 +1,25 @@
-// TEMP ASSET LIST:
-// - placeholder-media-1.jpg (TEMP — replace with user images)
-// - placeholder-media-2.jpg (TEMP — replace with user images)
-// - placeholder-fashion-1.jpg (TEMP — replace with user images)
-// - placeholder-fashion-2.jpg (TEMP — replace with user images)
-// - placeholder-street-1.jpg (TEMP — replace with user images)
-// - placeholder-street-2.jpg (TEMP — replace with user images)
+// ASSET LIST:
+// - kazdura-1.jpg  → Kazdura Music Shoot — 1 (DSCF0997.jpg) — TEMP: user assets
+// - kazdura-2.jpg  → Kazdura Music Shoot — 2 (DSCF1073.jpg) — TEMP: user assets
+// - kazdura-3.jpg  → Kazdura Music Shoot — 3 (DSCF1134.jpg) — TEMP: user assets
+// - kazdura-4.jpg  → Kazdura Music Shoot — 4 (DSCF1220.jpg) — TEMP: user assets
+// - kazdura-5.jpg  → Kazdura Music Shoot — 5 (DSCF1245.jpg) — TEMP: user assets
+// - kazdura-6.jpg  → Kazdura Music Shoot — 6 (DSCF1280.jpg) — TEMP: user assets
+// - kazdura-7.jpg  → Kazdura Music Shoot — 7 (DSCF1282.jpg) — TEMP: user assets
+// - kazdura-8.jpg  → Kazdura Music Shoot — 8 (DSCF1302.jpg) — TEMP: user assets
+// - kazdura-9.jpg  → Kazdura Music Shoot — 9 (DSCF1308.jpg) — TEMP: user assets
+// - kazdura-10.jpg → Kazdura Music Shoot — 10 (DSCF1396.jpg) — TEMP: user assets
 
-import mediaImg1 from '@/assets/placeholder-media-1.jpg';
-import mediaImg2 from '@/assets/placeholder-media-2.jpg';
-import fashionImg1 from '@/assets/placeholder-fashion-1.jpg';
-import fashionImg2 from '@/assets/placeholder-fashion-2.jpg';
-import streetImg1 from '@/assets/placeholder-street-1.jpg';
-import streetImg2 from '@/assets/placeholder-street-2.jpg';
+import kazdura1 from '@/assets/kazdura-1.jpg';
+import kazdura2 from '@/assets/kazdura-2.jpg';
+import kazdura3 from '@/assets/kazdura-3.jpg';
+import kazdura4 from '@/assets/kazdura-4.jpg';
+import kazdura5 from '@/assets/kazdura-5.jpg';
+import kazdura6 from '@/assets/kazdura-6.jpg';
+import kazdura7 from '@/assets/kazdura-7.jpg';
+import kazdura8 from '@/assets/kazdura-8.jpg';
+import kazdura9 from '@/assets/kazdura-9.jpg';
+import kazdura10 from '@/assets/kazdura-10.jpg';
 
 export interface ProjectEntry {
   id: string;
@@ -24,14 +32,37 @@ export interface ProjectEntry {
   category: 'media-coverage' | 'fashion' | 'street' | 'short-films' | 'documentaries';
 }
 
+// Use Kazdura images as thumbnails for all photography categories
 export const photographyCategories = [
-  { slug: 'media-coverage', label: 'Media Coverage', thumbnail: mediaImg1, description: 'Press, events & editorial coverage' },
-  { slug: 'fashion', label: 'Fashion Photography', thumbnail: fashionImg1, description: 'Editorial & high-fashion shoots' },
-  { slug: 'street', label: 'Street Photography', thumbnail: streetImg1, description: 'Raw urban moments, candid life' },
+  { slug: 'media-coverage', label: 'Media Coverage', thumbnail: kazdura2, description: 'Press, events & editorial coverage' },
+  { slug: 'fashion', label: 'Fashion Photography', thumbnail: kazdura1, description: 'Editorial & high-fashion shoots' },
+  { slug: 'street', label: 'Street Photography', thumbnail: kazdura8, description: 'Raw urban moments, candid life' },
 ] as const;
 
 export const projects: ProjectEntry[] = [
-  // Media Coverage
+  // Fashion — Kazdura Music Shoot
+  {
+    id: 'f-kazdura',
+    title: 'Kazdura Music Shoot',
+    year: '',
+    role: 'Photographer',
+    description: 'Kazdura are a band who visited Egypt seeking a fresh visual style. This shoot captures their new aesthetic and stage persona during a location session in Egypt.',
+    tags: ['fashion', 'music', 'band'],
+    media: [
+      { type: 'image', src: kazdura1, caption: 'Kazdura Music Shoot — 1' },
+      { type: 'image', src: kazdura2, caption: 'Kazdura Music Shoot — 2' },
+      { type: 'image', src: kazdura3, caption: 'Kazdura Music Shoot — 3' },
+      { type: 'image', src: kazdura4, caption: 'Kazdura Music Shoot — 4' },
+      { type: 'image', src: kazdura5, caption: 'Kazdura Music Shoot — 5' },
+      { type: 'image', src: kazdura6, caption: 'Kazdura Music Shoot — 6' },
+      { type: 'image', src: kazdura7, caption: 'Kazdura Music Shoot — 7' },
+      { type: 'image', src: kazdura8, caption: 'Kazdura Music Shoot — 8' },
+      { type: 'image', src: kazdura9, caption: 'Kazdura Music Shoot — 9' },
+      { type: 'image', src: kazdura10, caption: 'Kazdura Music Shoot — 10' },
+    ],
+    category: 'fashion',
+  },
+  // Media Coverage — reuse Kazdura images as placeholders
   {
     id: 'mc-1',
     title: 'Press Conference Series',
@@ -40,8 +71,8 @@ export const projects: ProjectEntry[] = [
     description: 'Behind-the-scenes press event coverage capturing the energy of live media.',
     tags: ['documentary', 'press', 'events'],
     media: [
-      { type: 'image', src: mediaImg1, caption: 'Press conference setup — TEMP' },
-      { type: 'image', src: mediaImg2, caption: 'Event coverage — TEMP' },
+      { type: 'image', src: kazdura10, caption: 'Press conference setup' },
+      { type: 'image', src: kazdura9, caption: 'Event coverage' },
     ],
     category: 'media-coverage',
   },
@@ -53,37 +84,11 @@ export const projects: ProjectEntry[] = [
     description: 'Golden hour festival moments — crowds, performers, and atmosphere.',
     tags: ['events', 'documentary'],
     media: [
-      { type: 'image', src: mediaImg2, caption: 'Festival crowd — TEMP' },
+      { type: 'image', src: kazdura4, caption: 'Festival crowd' },
     ],
     category: 'media-coverage',
   },
-  // Fashion
-  {
-    id: 'f-1',
-    title: 'Studio Noir',
-    year: '2025',
-    role: 'Photographer',
-    description: 'Moody studio editorial with dramatic lighting and bold silhouettes.',
-    tags: ['fashion', 'editorial', 'studio'],
-    media: [
-      { type: 'image', src: fashionImg1, caption: 'Studio editorial — TEMP' },
-      { type: 'image', src: fashionImg2, caption: 'Rooftop fashion — TEMP' },
-    ],
-    category: 'fashion',
-  },
-  {
-    id: 'f-2',
-    title: 'Rooftop Sunset',
-    year: '2024',
-    role: 'Photographer',
-    description: 'Golden hour fashion on a city rooftop — flowing fabrics and warm light.',
-    tags: ['fashion', 'outdoor'],
-    media: [
-      { type: 'image', src: fashionImg2, caption: 'Sunset shoot — TEMP' },
-    ],
-    category: 'fashion',
-  },
-  // Street
+  // Street — reuse Kazdura images as placeholders
   {
     id: 's-1',
     title: 'Neon & Rain',
@@ -92,8 +97,8 @@ export const projects: ProjectEntry[] = [
     description: 'Night street photography — neon reflections on wet pavement, urban energy.',
     tags: ['street', 'night', 'urban'],
     media: [
-      { type: 'image', src: streetImg1, caption: 'Rainy night — TEMP' },
-      { type: 'image', src: streetImg2, caption: 'Light beam alley — TEMP' },
+      { type: 'image', src: kazdura5, caption: 'Rainy night' },
+      { type: 'image', src: kazdura6, caption: 'Light beam alley' },
     ],
     category: 'street',
   },
@@ -105,7 +110,7 @@ export const projects: ProjectEntry[] = [
     description: 'Film noir-inspired street scenes with dramatic natural light.',
     tags: ['street', 'noir'],
     media: [
-      { type: 'image', src: streetImg2, caption: 'Alley silhouette — TEMP' },
+      { type: 'image', src: kazdura7, caption: 'Alley silhouette' },
     ],
     category: 'street',
   },
@@ -163,3 +168,14 @@ export const projects: ProjectEntry[] = [
 
 export const getProjectsByCategory = (cat: ProjectEntry['category']) =>
   projects.filter((p) => p.category === cat);
+
+// Scattered polaroid images for homepage use
+export const scatteredPolaroids = [
+  { src: kazdura1, caption: 'Kazdura — guitar session', alt: 'Kazdura Music Shoot — image 1' },
+  { src: kazdura3, caption: 'Kazdura — portrait', alt: 'Kazdura Music Shoot — image 3' },
+  { src: kazdura4, caption: 'Kazdura — golden hour', alt: 'Kazdura Music Shoot — image 4' },
+  { src: kazdura6, caption: 'Kazdura — duo', alt: 'Kazdura Music Shoot — image 6' },
+  { src: kazdura8, caption: 'Kazdura — rooftop', alt: 'Kazdura Music Shoot — image 8' },
+  { src: kazdura9, caption: 'Kazdura — back to back', alt: 'Kazdura Music Shoot — image 9' },
+  { src: kazdura10, caption: 'Kazdura — close up', alt: 'Kazdura Music Shoot — image 10' },
+];
