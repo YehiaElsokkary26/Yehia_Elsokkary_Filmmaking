@@ -9,25 +9,25 @@ const videoBackgrounds = [
 
 const featuredProjects = [
 {
-  title: 'Urban Stories',
+  title: 'Brand shoots and ADVERTISEMENTS',
   category: 'Short Film',
   date: '2025',
-  description: 'A cinematic exploration of city life through the eyes of its people. Raw, real, and unfiltered.'
+  description: 'NIVI - NOVEL WEER '
 },
 {
-  title: 'Golden Hour',
+  title: 'documentries ',
   category: 'Music Video',
   date: '2025',
-  description: 'Capturing the magic of sunset sessions — music, movement, and golden light.'
+  description: 'Documenting people, Places, Moments'
 },
 {
-  title: 'The Portrait Series',
+  title: 'Euphoria series',
   category: 'Photography',
   date: '2024',
   description: 'Intimate portraits that reveal character. Natural light, real emotions, no filters.'
 },
 {
-  title: 'Night Vision',
+  title: 'Short \nFilms',
   category: 'Commercial',
   date: '2024',
   description: 'After-dark energy brought to life. Neon, shadows, and the pulse of the night.'
