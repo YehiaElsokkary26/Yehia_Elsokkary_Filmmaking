@@ -7,7 +7,7 @@ import { photographyCategories, getProjectsByCategory, scatteredPolaroids, proje
 
 const videoBackgrounds = [
   '/videos/reel-1.mp4',
-  '/videos/reel-2.mp4',
+  '/videos/people-of-moiz.mp4',
   '/videos/reel-3.mp4',
   '/videos/reel-4.mp4',
 ];
