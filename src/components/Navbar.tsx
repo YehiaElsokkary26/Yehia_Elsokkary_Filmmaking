@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { photographyCategories } from '@/data/portfolioData';
 
 const navLinks = [
   { label: 'Home', path: '/' },
   { label: 'Work', path: '/#work' },
+  { label: 'Photography', path: '/photography' },
   { label: 'Reels', path: '/#reels' },
   { label: 'About', path: '/#about' },
   { label: 'Contact', path: '/#contact' },
@@ -13,6 +15,7 @@ const navLinks = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [photoHover, setPhotoHover] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -40,18 +43,51 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 lg:px-12">
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <Link
+            <div
               key={link.path}
-              to={link.path}
-              onClick={() => handleNavClick(link.path)}
-              className={`font-body text-[11px] font-semibold tracking-[0.2em] uppercase transition-colors duration-300 ${
-                scrolled
-                  ? (location.pathname === link.path ? 'text-foreground' : 'text-muted-foreground hover:text-foreground')
-                  : (location.pathname === link.path ? 'text-studio-white' : 'text-studio-white/60 hover:text-studio-white')
-              }`}
+              className="relative"
+              onMouseEnter={() => link.label === 'Photography' && setPhotoHover(true)}
+              onMouseLeave={() => link.label === 'Photography' && setPhotoHover(false)}
             >
-              {link.label}
-            </Link>
+              <Link
+                to={link.path}
+                onClick={() => handleNavClick(link.path)}
+                className={`font-body text-[11px] font-semibold tracking-[0.2em] uppercase transition-colors duration-300 ${
+                  scrolled
+                    ? (location.pathname.startsWith(link.path) && link.path !== '/' ? 'text-foreground' : location.pathname === link.path ? 'text-foreground' : 'text-muted-foreground hover:text-foreground')
+                    : (location.pathname === link.path ? 'text-studio-white' : 'text-studio-white/60 hover:text-studio-white')
+                }`}
+              >
+                {link.label}
+              </Link>
+
+              {/* Photography hover preview */}
+              {link.label === 'Photography' && photoHover && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50">
+                  <div className="bg-background border border-border/30 rounded-lg shadow-lg p-4 flex gap-4 min-w-[340px]">
+                    {photographyCategories.map((cat) => (
+                      <Link
+                        key={cat.slug}
+                        to={`/photography/${cat.slug}`}
+                        className="group flex-1 text-center"
+                        onClick={() => setPhotoHover(false)}
+                      >
+                        <div className="polaroid !transform-none !p-1 !pb-6">
+                          <div className="aspect-[3/4] overflow-hidden bg-muted">
+                            <img
+                              src={cat.thumbnail}
+                              alt={cat.label}
+                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                          </div>
+                          <p className="polaroid-caption !text-[10px] !pt-1">{cat.label.replace(' Photography', '')}</p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
         </div>
 

@@ -73,7 +73,12 @@ export default {
           white: 'hsl(var(--studio-white))',
           dark: 'hsl(var(--studio-dark))',
           brown: 'hsl(var(--studio-brown))'
-        }
+        },
+        'section-films': 'hsl(var(--accent-films))',
+        'section-docs': 'hsl(var(--accent-docs))',
+        'section-photo': 'hsl(var(--accent-photo))',
+        'section-fashion': 'hsl(var(--accent-fashion))',
+        'section-street': 'hsl(var(--accent-street))',
       },
       borderRadius: {
         lg: 'var(--radius)',

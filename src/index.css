@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Playfair+Display:wght@400;700;900&family=Quicksand:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&family=Pacifico&family=Bebas+Neue&family=Permanent+Marker&family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Playfair+Display:wght@400;700;900&family=Quicksand:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&family=Pacifico&family=Bebas+Neue&family=Permanent+Marker&family=Lobster&family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Crimson+Pro&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
@@ -54,6 +54,13 @@
     --font-hero: 'Bebas Neue', sans-serif;
     --font-events: 'Lobster', cursive;
     --font-about: 'Pacifico', cursive;
+
+    /* Section-specific accent tokens */
+    --accent-films: 220 20% 18%;
+    --accent-docs: 200 15% 22%;
+    --accent-photo: 45 80% 58%;
+    --accent-fashion: 330 40% 80%;
+    --accent-street: 0 0% 95%;
 
     --grain-opacity: 0.04;
     --vignette-opacity: 0.15;
@@ -171,6 +178,33 @@
     font-weight: 400;
     letter-spacing: 0.01em;
     line-height: 0.95;
+  }
+
+  /* Section-specific heading fonts */
+  .font-films-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    line-height: 1;
+  }
+  .font-photo-heading {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .font-fashion-heading {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.05;
+  }
+  .font-street-heading {
+    font-family: 'Space Grotesk', monospace, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
   }
 
   .font-hero {

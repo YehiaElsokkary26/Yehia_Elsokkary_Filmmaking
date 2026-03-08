@@ -1,40 +1,58 @@
+import { Link } from 'react-router-dom';
 import ScrollReveal from './ScrollReveal';
+import PolaroidCard from './PolaroidCard';
+import ProjectModal from './ProjectModal';
+import { useState, useCallback } from 'react';
+import { photographyCategories, getProjectsByCategory } from '@/data/portfolioData';
 
 const videoBackgrounds = [
-'/videos/reel-1.mp4',
-'/videos/reel-2.mp4',
-'/videos/reel-3.mp4',
-'/videos/reel-4.mp4'];
-
+  '/videos/reel-1.mp4',
+  '/videos/reel-2.mp4',
+  '/videos/reel-3.mp4',
+  '/videos/reel-4.mp4',
+];
 
 const featuredProjects = [
-{
-  title: 'Brand shoots and ADVERTISEMENTS',
-  category: 'Short Film',
-  date: '2025',
-  description: 'NIVI - NOVEL WEER '
-},
-{
-  title: 'documentries ',
-  category: 'Music Video',
-  date: '2025',
-  description: 'Documenting people, Places, Moments'
-},
-{
-  title: 'Euphoria series',
-  category: 'Photography',
-  date: '2024',
-  description: 'Intimate portraits that reveal character. Natural light, real emotions, no filters.'
-},
-{
-  title: 'Short \nFilms',
-  category: 'Commercial',
-  date: '2024',
-  description: 'After-dark energy brought to life. Neon, shadows, and the pulse of the night.'
-}];
-
+  {
+    title: 'Brand shoots and ADVERTISEMENTS',
+    category: 'Short Film',
+    date: '2025',
+    description: 'NIVI - NOVEL WEER ',
+    link: '/video/short-films',
+  },
+  {
+    title: 'documentries',
+    category: 'Music Video',
+    date: '2025',
+    description: 'Documenting people, Places, Moments',
+    link: '/video/documentaries',
+  },
+  {
+    title: 'Euphoria series',
+    category: 'Photography',
+    date: '2024',
+    description: 'Intimate portraits that reveal character. Natural light, real emotions, no filters.',
+    link: '/photography',
+  },
+  {
+    title: 'Short \nFilms',
+    category: 'Commercial',
+    date: '2024',
+    description: 'After-dark energy brought to life. Neon, shadows, and the pulse of the night.',
+    link: '/video/short-films',
+  },
+];
 
 const FeaturedWork = () => {
+  // Get a few photo projects for scattered polaroids
+  const photoProjects = [
+    ...getProjectsByCategory('fashion').slice(0, 1),
+    ...getProjectsByCategory('street').slice(0, 1),
+    ...getProjectsByCategory('media-coverage').slice(0, 1),
+  ];
+  const [modalIdx, setModalIdx] = useState<number | null>(null);
+  const closeModal = useCallback(() => setModalIdx(null), []);
+
   return (
     <section className="relative overflow-hidden" id="work">
       <div className="section-padding mood-teal pb-12">
@@ -60,26 +78,26 @@ const FeaturedWork = () => {
         const isFullHeight = i % 3 === 0;
 
         return (
-          <div key={project.title} className="relative group">
+          <Link to={project.link} key={project.title} className="block relative group">
             <div className={`relative ${isFullHeight ? 'h-[90vh]' : 'h-[60vh] md:h-[75vh]'} overflow-hidden`}>
               <div className="absolute inset-0 will-change-transform">
                 <video
                   src={videoSrc}
                   className="w-full h-full object-cover"
                   style={{ transform: 'scale(1.2)' }}
-                  autoPlay muted loop playsInline />
-                
+                  autoPlay muted loop playsInline
+                />
                 <div className={`absolute inset-0 ${
-                i % 4 === 0 ? 'bg-studio-teal/15' :
-                i % 4 === 1 ? 'bg-accent/10' :
-                i % 4 === 2 ? 'bg-studio-brown/20' :
-                'bg-studio-dark/15'} mix-blend-multiply`
-                } />
+                  i % 4 === 0 ? 'bg-studio-teal/15' :
+                  i % 4 === 1 ? 'bg-accent/10' :
+                  i % 4 === 2 ? 'bg-studio-brown/20' :
+                  'bg-studio-dark/15'} mix-blend-multiply`}
+                />
                 <div className={`absolute inset-0 ${
-                isEven ?
-                'bg-gradient-to-r from-studio-dark/80 via-studio-dark/35 to-transparent' :
-                'bg-gradient-to-l from-studio-dark/80 via-studio-dark/35 to-transparent'}`
-                } />
+                  isEven
+                    ? 'bg-gradient-to-r from-studio-dark/80 via-studio-dark/35 to-transparent'
+                    : 'bg-gradient-to-l from-studio-dark/80 via-studio-dark/35 to-transparent'}`}
+                />
               </div>
 
               <div className="absolute inset-0 flex items-center z-[2] px-8 md:px-20 lg:px-32">
@@ -90,7 +108,7 @@ const FeaturedWork = () => {
                     </span>
                   </ScrollReveal>
                   <ScrollReveal variant={isEven ? 'left' : 'right'} delay={250}>
-                    <h3 className="editorial-display md:text-7xl lg:text-8xl text-studio-white mt-4 leading-[0.92] py-[4px] my-[24px] mx-[81px] px-0 text-5xl text-justify">
+                    <h3 className="editorial-display md:text-7xl lg:text-8xl text-studio-white mt-4 leading-[0.92] py-[4px] my-[24px] mx-[81px] px-0 text-5xl text-justify whitespace-pre-line">
                       {project.title}
                     </h3>
                   </ScrollReveal>
@@ -103,14 +121,80 @@ const FeaturedWork = () => {
               </div>
             </div>
 
-            {i < featuredProjects.length - 1 &&
-            <div className="h-1 bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
-            }
-          </div>);
-
+            {i < featuredProjects.length - 1 && (
+              <div className="h-1 bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+            )}
+          </Link>
+        );
       })}
-    </section>);
 
+      {/* Photography Section */}
+      <div className="section-padding" id="photography">
+        <div className="max-w-6xl mx-auto">
+          <ScrollReveal variant="left">
+            <div className="editorial-divider !mx-0 mb-8" />
+            <p className="font-body text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-5">Photography</p>
+          </ScrollReveal>
+          <ScrollReveal variant="left" delay={150}>
+            <h2 className="font-photo-heading text-5xl md:text-7xl lg:text-8xl text-foreground">PHOTOGRAPHY</h2>
+          </ScrollReveal>
+          <ScrollReveal variant="right" delay={300}>
+            <p className="handwritten text-lg text-muted-foreground mt-4 mb-12">Browse categories below ✦</p>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            {photographyCategories.map((cat, i) => (
+              <ScrollReveal key={cat.slug} variant={i % 2 === 0 ? 'left' : 'right'} delay={i * 150}>
+                <Link
+                  to={`/photography/${cat.slug}`}
+                  className="group block polaroid cursor-pointer"
+                  style={{ transform: `rotate(${i % 2 === 0 ? -2 : 2}deg)` }}
+                >
+                  <div className="aspect-[4/5] overflow-hidden bg-muted">
+                    <img
+                      src={cat.thumbnail}
+                      alt={cat.label}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="pt-3 pb-1 text-center">
+                    <p className="font-handwriting text-lg text-foreground">{cat.label}</p>
+                    <p className="font-body text-[10px] text-muted-foreground tracking-wider uppercase mt-1">{cat.description}</p>
+                  </div>
+                </Link>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Scattered polaroids section */}
+      <div className="section-padding bg-background pb-8">
+        <div className="max-w-5xl mx-auto">
+          <ScrollReveal>
+            <p className="handwritten text-center text-muted-foreground mb-10">some recent captures ✦</p>
+          </ScrollReveal>
+          <div className="flex flex-wrap justify-center gap-6 md:gap-10">
+            {photoProjects.map((p, i) => (
+              <ScrollReveal key={p.id} variant="scale" delay={i * 200} className="w-48 md:w-56">
+                <PolaroidCard project={p} onClick={() => setModalIdx(i)} />
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {modalIdx !== null && photoProjects[modalIdx] && (
+        <ProjectModal
+          project={photoProjects[modalIdx]}
+          onClose={closeModal}
+          onPrev={modalIdx > 0 ? () => setModalIdx(modalIdx - 1) : undefined}
+          onNext={modalIdx < photoProjects.length - 1 ? () => setModalIdx(modalIdx + 1) : undefined}
+        />
+      )}
+    </section>
+  );
 };
 
 export default FeaturedWork;

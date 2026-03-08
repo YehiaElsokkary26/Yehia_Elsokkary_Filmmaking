@@ -7,6 +7,9 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import PhotographyLanding from "./pages/PhotographyLanding";
+import CategoryGallery from "./pages/CategoryGallery";
+import VideoIndex from "./pages/VideoIndex";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +22,9 @@ const App = () => (
         <Navbar />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/photography" element={<PhotographyLanding />} />
+          <Route path="/photography/:category" element={<CategoryGallery />} />
+          <Route path="/video/:type" element={<VideoIndex />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
