@@ -117,6 +117,18 @@ export const projects: ProjectEntry[] = [
   },
   // Short Films
   {
+    id: 'sf-dalal',
+    title: 'Dalal',
+    year: '',
+    role: 'Filmmaker / Videographer',
+    description: 'Dalal — short film (5:00). Preview compilation of key moments from the film.',
+    tags: ['short-film', 'preview', 'snippets'],
+    media: [
+      { type: 'video', src: '/videos/dalal-preview.mp4', caption: 'Dalal — preview snippet' },
+    ],
+    category: 'short-films',
+  },
+  {
     id: 'sf-1',
     title: 'After Dark',
     year: '2024',
