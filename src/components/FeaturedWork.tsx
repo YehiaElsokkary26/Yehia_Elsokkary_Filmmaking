@@ -44,12 +44,10 @@ const featuredProjects = [
 ];
 
 const FeaturedWork = () => {
-  // Get a few photo projects for scattered polaroids
-  const photoProjects = [
-    ...getProjectsByCategory('fashion').slice(0, 1),
-    ...getProjectsByCategory('street').slice(0, 1),
-    ...getProjectsByCategory('media-coverage').slice(0, 1),
-  ];
+  // Use Kazdura project for scattered polaroids
+  const kazduraProject = projects.find(p => p.id === 'f-kazdura')!;
+  // Create sub-projects from individual Kazdura images for the scattered section
+  const photoProjects = [kazduraProject, ...getProjectsByCategory('street').slice(0, 1), ...getProjectsByCategory('media-coverage').slice(0, 1)];
   const [modalIdx, setModalIdx] = useState<number | null>(null);
   const closeModal = useCallback(() => setModalIdx(null), []);
 
