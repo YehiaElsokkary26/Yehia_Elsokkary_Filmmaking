@@ -56,13 +56,17 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }: ProjectModalProps) =
 
         {/* Media */}
         <div className="p-6">
-          <div className="grid gap-4">
+          <div className={`grid gap-4 ${
+            project.media.length > 1 && project.media[0].type === 'image'
+              ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+              : 'grid-cols-1'
+          }`}>
             {project.media.map((m, i) => (
               <div key={i} className="overflow-hidden rounded-sm">
                 {m.type === 'image' ? (
-                  <img src={m.src} alt={m.caption || project.title} className="w-full h-auto" />
+                  <img src={m.src} alt={m.caption || project.title} className="w-full h-auto object-cover aspect-[4/5]" loading="lazy" />
                 ) : (
-                  <video src={m.src} controls className="w-full" playsInline />
+                  <video src={m.src} controls className="w-full" playsInline preload="metadata" />
                 )}
                 {m.caption && <p className="font-handwriting text-sm text-muted-foreground mt-2">{m.caption}</p>}
               </div>

@@ -9,6 +9,7 @@
 // - kazdura-8.jpg  → Kazdura Music Shoot — 8 (DSCF1302.jpg) — TEMP: user assets
 // - kazdura-9.jpg  → Kazdura Music Shoot — 9 (DSCF1308.jpg) — TEMP: user assets
 // - kazdura-10.jpg → Kazdura Music Shoot — 10 (DSCF1396.jpg) — TEMP: user assets
+// - people-of-moiz.mp4 → People of Moiz documentary — USER UPLOAD — do not regenerate
 
 import kazdura1 from '@/assets/kazdura-1.jpg';
 import kazdura2 from '@/assets/kazdura-2.jpg';
