@@ -141,6 +141,18 @@ export const projects: ProjectEntry[] = [
   },
   // Documentaries
   {
+    id: 'd-moiz',
+    title: 'People of Moiz',
+    year: '',
+    role: 'Filmmaker / Videographer',
+    description: 'A short series documenting people\'s lives in Khan al-Khalili, Cairo — intimate street portraits and daily moments.',
+    tags: ['documentary', 'cairo', 'street', 'people', 'culture'],
+    media: [
+      { type: 'video', src: '/videos/people-of-moiz.mp4', caption: 'People of Moiz — USER UPLOAD' },
+    ],
+    category: 'documentaries',
+  },
+  {
     id: 'd-1',
     title: 'People of the City',
     year: '2025',
