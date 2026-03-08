@@ -169,16 +169,35 @@ const FeaturedWork = () => {
 
       {/* Scattered polaroids section */}
       <div className="section-padding bg-background pb-8">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <p className="handwritten text-center text-muted-foreground mb-10">some recent captures ✦</p>
           </ScrollReveal>
           <div className="flex flex-wrap justify-center gap-6 md:gap-10">
-            {photoProjects.map((p, i) => (
-              <ScrollReveal key={p.id} variant="scale" delay={i * 200} className="w-48 md:w-56">
-                <PolaroidCard project={p} onClick={() => setModalIdx(i)} />
-              </ScrollReveal>
-            ))}
+            {scatteredPolaroids.slice(0, 5).map((img, i) => {
+              const rot = [-5, 3, -2, 4, -3][i];
+              return (
+                <ScrollReveal key={i} variant="scale" delay={i * 150} className="w-44 md:w-52">
+                  <button
+                    onClick={() => setModalIdx(0)}
+                    className="group text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-ring w-full"
+                    aria-label={`View: ${img.alt}`}
+                  >
+                    <div className="polaroid cursor-pointer" style={{ transform: `rotate(${rot}deg)` }}>
+                      <div className="aspect-[4/5] overflow-hidden bg-muted">
+                        <img
+                          src={img.src}
+                          alt={img.alt}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                      </div>
+                      <p className="polaroid-caption">{img.caption}</p>
+                    </div>
+                  </button>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </div>
