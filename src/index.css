@@ -218,6 +218,21 @@
     line-height: 1;
   }
 
+  /* Filmmaking project-specific fonts */
+  .font-euphoria-heading {
+    font-family: var(--film-euphoria-font);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .font-geziret-heading {
+    font-family: var(--film-geziret-font);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.05;
+  }
+
   .font-hero {
     font-family: var(--font-hero);
     letter-spacing: 0.06em;
