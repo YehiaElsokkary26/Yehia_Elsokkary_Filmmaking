@@ -110,7 +110,7 @@ const HeroVideo = () => {
             Visual storyteller ✦
           </p>
           <h1 className="font-hero text-8xl md:text-[12vw] lg:text-[9vw] xl:text-[160px] text-studio-white uppercase mb-6">
-            Your Name<br />Here
+            Yehia<br />elsokkary
           </h1>
           <p className="font-body text-studio-white/55 text-sm md:text-base max-w-lg mb-10 tracking-wide font-medium">
             Photographer · Videographer · Filmmaker. Capturing moments that move.
