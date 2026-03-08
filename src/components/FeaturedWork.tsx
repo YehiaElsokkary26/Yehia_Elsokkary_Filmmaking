@@ -8,8 +8,8 @@ import { photographyCategories, getProjectsByCategory, scatteredPolaroids, proje
 const videoBackgrounds = [
   '/videos/reel-1.mp4',
   '/videos/people-of-moiz.mp4',
-  '/videos/reel-3.mp4',
-  '/videos/reel-4.mp4',
+  '/videos/euphoria.mp4',
+  '/videos/geziret.mp4',
 ];
 
 const featuredProjects = [
@@ -28,11 +28,11 @@ const featuredProjects = [
     link: '/video/documentaries',
   },
   {
-    title: 'Euphoria series',
-    category: 'Photography',
+    title: 'Filmmaking',
+    category: 'Films',
     date: '2024',
-    description: 'Intimate portraits that reveal character. Natural light, real emotions, no filters.',
-    link: '/photography',
+    description: 'Cinematic stories — Euphoria and Geziret El-Dahab. Urban euphoria meets intimate landscapes.',
+    link: '/filmmaking',
   },
   {
     title: 'Short \nFilms',
