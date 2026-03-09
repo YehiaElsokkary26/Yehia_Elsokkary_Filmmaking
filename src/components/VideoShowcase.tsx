@@ -65,13 +65,13 @@ const VideoShowcase = () => {
         </div>
       </div>
 
-      {/* Bottom subtle background video — 30% opacity (texture only) */}
+      {/* Bottom subtle background video — 30% opacity (texture only) — alternatives: 20%, 40% */}
       <div className="relative py-20 overflow-hidden">
         <video
           src={bottomBgVideo}
           className="absolute inset-0 w-full h-full object-cover opacity-30"
           autoPlay muted loop playsInline
-          loading="lazy"
+          preload="metadata"
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-background/60" />

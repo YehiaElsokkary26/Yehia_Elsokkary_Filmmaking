@@ -60,8 +60,8 @@ const FeaturedWork = () => {
   const [modalIdx, setModalIdx] = useState<number | null>(null);
   const closeModal = useCallback(() => setModalIdx(null), []);
 
-  // Photography shuffle state
-  const [shuffledCategories, setShuffledCategories] = useState(photographyCategories);
+  // Photography shuffle state - cast to mutable array
+  const [shuffledCategories, setShuffledCategories] = useState([...photographyCategories]);
   const shuffleTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const lastShuffleRef = useRef(0);
 
