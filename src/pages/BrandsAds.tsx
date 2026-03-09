@@ -31,6 +31,34 @@ const brandProjects: BrandProject[] = [
     accentVar: '--project-nevi-accent',
     stills: ['/videos/nevi-2.mp4', '/videos/nevi-3.mp4'],
   },
+  {
+    id: 'nevi-bts',
+    title: 'Nevi — Behind the Scenes',
+    shortDescription: 'Behind-the-scenes footage from the Nevi beanie campaign shoot.',
+    fullDescription:
+      "A raw look at the making of the 'Who we vibe with' campaign — capturing candid moments between takes, lighting setups, and the creative energy on set. The BTS reel highlights the collaborative process and the playful atmosphere that defined the Nevi shoot.",
+    year: '',
+    role: 'Director / Creative',
+    tags: ['campaign', 'behind-the-scenes', 'fashion', 'beanie'],
+    videoSrc: '/videos/nevi-2.mp4',
+    fontClass: 'font-nevi-heading',
+    accentVar: '--project-nevi-accent',
+    stills: ['/videos/nevi-preview.mp4', '/videos/nevi-3.mp4'],
+  },
+  {
+    id: 'nevi-lookbook',
+    title: 'Nevi — Lookbook',
+    shortDescription: 'Visual lookbook showcasing the Nevi beanie collection styling.',
+    fullDescription:
+      "A cinematic lookbook reel pairing the Nevi beanie with street-ready fits. Each look is framed to emphasise texture, color blocking, and attitude — translating the campaign's comedic energy into pure visual style.",
+    year: '',
+    role: 'Director / Photographer',
+    tags: ['campaign', 'lookbook', 'fashion', 'styling', 'beanie'],
+    videoSrc: '/videos/nevi-3.mp4',
+    fontClass: 'font-nevi-heading',
+    accentVar: '--project-nevi-accent',
+    stills: ['/videos/nevi-preview.mp4', '/videos/nevi-2.mp4'],
+  },
 ];
 
 const BrandsAds = () => {
