@@ -20,7 +20,7 @@ const featuredProjects = [
     category: 'Short Film',
     date: '2025',
     description: 'NIVI - NOVEL WEER ',
-    link: '/video/short-films',
+    link: '/brands',
   },
   {
     title: 'documentries',

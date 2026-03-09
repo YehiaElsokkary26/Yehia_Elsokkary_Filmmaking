@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Play, X, ChevronLeft, ChevronRight } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom';
 
 interface BrandProject {
   id: string;
@@ -13,7 +13,6 @@ interface BrandProject {
   videoSrc: string;
   fontClass: string;
   accentVar: string;
-  stills: string[];
 }
 
 const brandProjects: BrandProject[] = [
@@ -29,7 +28,32 @@ const brandProjects: BrandProject[] = [
     videoSrc: '/videos/nevi-preview.mp4',
     fontClass: 'font-nevi-heading',
     accentVar: '--project-nevi-accent',
-    stills: ['/videos/nevi-2.mp4', '/videos/nevi-3.mp4'],
+  },
+  {
+    id: 'nevi-bts',
+    title: 'Nevi — Behind the Scenes',
+    shortDescription: 'A raw look at the making of the "Who we vibe with" campaign.',
+    fullDescription:
+      "Go behind the camera on the Nevi shoot — capturing candid moments between takes, lighting setups, and the creative energy that brought the beanie campaign to life. From location scouting to final wrap, every frame tells the story behind the story.",
+    year: '',
+    role: 'Director / Creative',
+    tags: ['campaign', 'bts', 'fashion'],
+    videoSrc: '/videos/nevi-2.mp4',
+    fontClass: 'font-nevi-heading',
+    accentVar: '--project-nevi-accent',
+  },
+  {
+    id: 'nevi-lookbook',
+    title: 'Nevi — Lookbook',
+    shortDescription: 'A cinematic lookbook reel — styling, attitude, and street-ready fits.',
+    fullDescription:
+      "A cinematic lookbook reel pairing the beanie with street-ready fits. Each look emphasises texture, color blocking, and attitude. Shot across multiple Cairo locations, the lookbook captures the brand's urban identity.",
+    year: '',
+    role: 'Director / Photographer',
+    tags: ['lookbook', 'fashion', 'cinematic'],
+    videoSrc: '/videos/nevi-3.mp4',
+    fontClass: 'font-nevi-heading',
+    accentVar: '--project-nevi-accent',
   },
 ];
 
@@ -39,6 +63,7 @@ const BrandsAds = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const focusedVideoRef = useRef<HTMLVideoElement | null>(null);
+  const navigate = useNavigate();
 
   const prefersReducedMotion =
     typeof window !== 'undefined'
@@ -76,6 +101,16 @@ const BrandsAds = () => {
     }
   }, []);
 
+  const handleContactClick = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate('/');
+    setTimeout(() => {
+      const el = document.getElementById('contact');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  }, [navigate]);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (focusedIndex !== null) {
@@ -103,7 +138,6 @@ const BrandsAds = () => {
 
   return (
     <main className="min-h-screen pt-16" ref={containerRef}>
-      {/* Header */}
       <section className="px-6 py-8 md:px-12 mood-brown">
         <div className="max-w-6xl mx-auto">
           <p className="font-body text-xs font-semibold tracking-[0.3em] uppercase text-accent mb-3">
@@ -114,7 +148,6 @@ const BrandsAds = () => {
         </div>
       </section>
 
-      {/* Project Panels */}
       <div
         className="flex flex-col"
         style={{ gap: 'var(--film-panel-gap)' }}
@@ -131,7 +164,7 @@ const BrandsAds = () => {
               role="listitem"
               aria-expanded={isFocused}
               className={`
-                relative overflow-hidden cursor-pointer transition-all
+                relative overflow-hidden cursor-pointer transition-all group
                 ${prefersReducedMotion ? '' : 'duration-[var(--film-expand-duration)]'}
                 ${isFocused ? 'z-20' : 'z-10'}
                 ${isOtherFocused ? 'opacity-40 pointer-events-auto' : 'opacity-100'}
@@ -148,39 +181,26 @@ const BrandsAds = () => {
             >
               {/* Background Video */}
               <video
-                ref={(el) => {
-                  videoRefs.current[index] = el;
-                }}
+                ref={(el) => { videoRefs.current[index] = el; }}
                 src={project.videoSrc}
                 className={`
                   absolute inset-0 w-full h-full object-cover transition-transform
                   ${prefersReducedMotion ? '' : 'duration-[var(--film-hover-duration)]'}
                   ${!isFocused ? 'group-hover:scale-[1.04]' : ''}
                 `}
-                muted
-                loop
-                playsInline
-                autoPlay
-                preload="metadata"
+                muted loop playsInline autoPlay preload="metadata"
                 aria-label={`${project.title} video preview`}
               />
 
-              {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
-              {/* Hover border effect */}
               {!isFocused && (
                 <div
                   className={`
                     absolute inset-0 pointer-events-none border-2 border-white/0 transition-all
                     ${prefersReducedMotion ? '' : 'duration-[var(--film-hover-duration)]'}
-                    hover:border-white/80 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)]
+                    group-hover:border-white/80 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)]
                   `}
-                  style={{
-                    transition: prefersReducedMotion
-                      ? 'none'
-                      : `all var(--film-hover-duration) var(--film-hover-easing)`,
-                  }}
                 />
               )}
 
@@ -210,64 +230,45 @@ const BrandsAds = () => {
               {/* Expanded Detail View */}
               {isFocused && (
                 <div
-                  className={`
-                    relative z-30 min-h-[70vh] flex flex-col
-                    ${prefersReducedMotion ? '' : 'animate-fade-in'}
-                  `}
+                  className={`relative z-30 min-h-[70vh] flex flex-col ${prefersReducedMotion ? '' : 'animate-fade-in'}`}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {/* Controls */}
                   <div className="sticky top-16 z-40 flex items-center justify-between p-4 bg-black/60 backdrop-blur-sm">
                     <div className="flex gap-2">
                       {focusedIndex > 0 && (
-                        <button
-                          onClick={() => switchProject('prev')}
-                          className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
-                          aria-label="Previous project"
-                        >
+                        <button onClick={() => switchProject('prev')} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white" aria-label="Previous project">
                           <ChevronLeft size={20} />
                         </button>
                       )}
                       {focusedIndex < brandProjects.length - 1 && (
-                        <button
-                          onClick={() => switchProject('next')}
-                          className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
-                          aria-label="Next project"
-                        >
+                        <button onClick={() => switchProject('next')} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white" aria-label="Next project">
                           <ChevronRight size={20} />
                         </button>
                       )}
                     </div>
-                    <button
-                      onClick={closeProject}
-                      className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
-                      aria-label="Close project"
-                    >
+                    <button onClick={closeProject} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white" aria-label="Close project">
                       <X size={20} />
                     </button>
                   </div>
 
-                  {/* Main Content */}
                   <div className="flex-1 p-6 md:p-10 lg:p-16">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                      {/* Video Player */}
                       <div className="relative aspect-video bg-black rounded-lg overflow-hidden">
                         <video
                           ref={focusedVideoRef}
                           src={project.videoSrc}
                           className="w-full h-full object-cover"
                           controls={isPlaying}
-                          playsInline
-                          preload="metadata"
+                          playsInline preload="metadata"
                           aria-label={`${project.title} full video`}
                         />
                         {!isPlaying && (
                           <button
                             onClick={handlePlay}
-                            className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/30 transition-colors group"
+                            className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/30 transition-colors group/play"
                             aria-label={`Play ${project.title}`}
                           >
-                            <div className="w-20 h-20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform"
+                            <div className="w-20 h-20 rounded-full flex items-center justify-center group-hover/play:scale-110 transition-transform"
                               style={{ backgroundColor: `hsl(var(${project.accentVar}) / 0.9)` }}
                             >
                               <Play size={32} className="text-white ml-1" fill="currentColor" />
@@ -276,92 +277,29 @@ const BrandsAds = () => {
                         )}
                       </div>
 
-                      {/* Details */}
                       <div className="flex flex-col justify-center text-white">
-                        <h2 className={`${project.fontClass} text-4xl md:text-5xl lg:text-6xl mb-4`}>
-                          {project.title}
-                        </h2>
+                        <h2 className={`${project.fontClass} text-4xl md:text-5xl lg:text-6xl mb-4`}>{project.title}</h2>
                         <div className="flex flex-wrap gap-3 font-body text-xs tracking-wider uppercase text-white/60 mb-6">
                           {project.year && <><span>{project.year}</span><span>·</span></>}
                           <span>{project.role}</span>
                         </div>
-                        <p className="font-body text-white/80 leading-relaxed mb-6">
-                          {project.fullDescription}
-                        </p>
+                        <p className="font-body text-white/80 leading-relaxed mb-6">{project.fullDescription}</p>
                         <div className="flex flex-wrap gap-2 mb-6">
                           {project.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-full border border-white/30 text-white/70"
-                            >
+                            <span key={tag} className="px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-full border border-white/30 text-white/70">
                               {tag}
                             </span>
                           ))}
                         </div>
-                        <a
-                          href="/#contact"
+                        <button
+                          onClick={handleContactClick}
                           className="self-start inline-block px-6 py-3 rounded-full font-body text-xs font-bold tracking-widest uppercase text-white transition-transform hover:scale-105"
                           style={{ backgroundColor: `hsl(var(${project.accentVar}))` }}
                         >
                           Contact Me Now
-                        </a>
+                        </button>
                       </div>
                     </div>
-
-                    {/* Thumbstrip of related stills / extra clips */}
-                    {project.stills.length > 0 && (
-                      <div className="mt-10">
-                        <h3 className="font-body text-xs font-semibold tracking-[0.2em] uppercase text-white/60 mb-4">
-                          Related clips
-                        </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          {project.stills.map((src, i) => (
-                            <div
-                              key={i}
-                              className="relative aspect-video rounded-lg overflow-hidden group cursor-pointer"
-                            >
-                              <video
-                                src={src}
-                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.04]"
-                                muted
-                                loop
-                                playsInline
-                                autoPlay
-                                preload="metadata"
-                                aria-label={`${project.title} related clip ${i + 1}`}
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                              <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/80 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)] transition-all duration-300 rounded-lg" />
-                              <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col justify-end">
-                                <h4 className={`${project.fontClass} text-2xl md:text-3xl text-white mb-1`}>
-                                  {i === 0 ? `${project.title} — Behind the Scenes` : `${project.title} — Lookbook`}
-                                </h4>
-                                <p className="font-body text-white/70 text-xs mb-1">{project.role}</p>
-                                <p className="font-body text-white/60 text-sm leading-relaxed mb-3 max-w-md">
-                                  {i === 0
-                                    ? "A raw look at the making of the campaign — capturing candid moments between takes, lighting setups, and creative energy on set."
-                                    : "A cinematic lookbook reel pairing the beanie with street-ready fits. Each look emphasises texture, color blocking, and attitude."}
-                                </p>
-                                <div className="flex flex-wrap gap-2 mb-3">
-                                  {project.tags.slice(0, 3).map((tag) => (
-                                    <span key={tag} className="px-2 py-0.5 text-[9px] font-bold tracking-widest uppercase rounded-full border border-white/30 text-white/70">
-                                      {tag}
-                                    </span>
-                                  ))}
-                                </div>
-                                <a
-                                  href="/#contact"
-                                  className="self-start inline-block px-4 py-2 rounded-full font-body text-[10px] font-bold tracking-widest uppercase text-white transition-transform hover:scale-105"
-                                  style={{ backgroundColor: `hsl(var(${project.accentVar}))` }}
-                                >
-                                  Contact Me Now
-                                </a>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
                   </div>
                 </div>
               )}
