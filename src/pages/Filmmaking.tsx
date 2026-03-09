@@ -16,6 +16,7 @@ interface FilmProject {
   stills: string[];
 }
 
+// USER UPLOAD videos — do not regenerate
 const filmProjects: FilmProject[] = [
   {
     id: 'euphoria',
@@ -33,7 +34,7 @@ const filmProjects: FilmProject[] = [
   {
     id: 'geziret-el-dahab',
     title: 'Geziret El-Dahab',
-    shortDescription: 'A visual, immersive piece capturing the landscapes and local stories of Geziret El-Dahab.',
+    shortDescription: 'A visual journey through the golden island — capturing landscapes, local life, and stories of resilience.',
     fullDescription: 'Geziret El-Dahab (The Golden Island) is an intimate documentary exploring the hidden gem of this Nile island community. Through patient observation and genuine connection with locals, the film reveals daily rhythms, timeless traditions, and the quiet resilience of island life. The piece serves as both a portrait of place and a meditation on belonging.',
     year: '2024',
     role: 'Director / Cinematographer',
@@ -160,7 +161,7 @@ const Filmmaking = () => {
               tabIndex={0}
               onKeyDown={(e) => e.key === 'Enter' && !isFocused && openProject(index)}
             >
-              {/* Background Video */}
+              {/* Background Video — USER UPLOAD preview */}
               <video
                 ref={(el) => { videoRefs.current[index] = el; }}
                 src={project.videoSrc}
@@ -174,7 +175,7 @@ const Filmmaking = () => {
                 loop
                 playsInline
                 preload="metadata"
-                aria-hidden="true"
+                aria-label={`${project.title} video preview — USER UPLOAD`}
               />
 
               {/* Gradient Overlay */}
@@ -211,7 +212,7 @@ const Filmmaking = () => {
                       {project.shortDescription}
                     </p>
                     <div className="flex items-center gap-3 mt-4">
-                      <Play size={20} className="text-white/70" />
+                      <Play size={20} className="text-white/70" aria-hidden="true" />
                       <span className="font-body text-xs tracking-wider uppercase text-white/60">
                         Click to explore
                       </span>
@@ -272,6 +273,7 @@ const Filmmaking = () => {
                           controls={isPlaying}
                           playsInline
                           preload="metadata"
+                          aria-label={`${project.title} full video — USER UPLOAD`}
                         />
                         {!isPlaying && (
                           <button
