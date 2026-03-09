@@ -1,14 +1,15 @@
 // ASSET LIST:
-// - kazdura-1.jpg  → Kazdura Music Shoot — 1 (DSCF0997.jpg) — TEMP: user assets
-// - kazdura-2.jpg  → Kazdura Music Shoot — 2 (DSCF1073.jpg) — TEMP: user assets
-// - kazdura-3.jpg  → Kazdura Music Shoot — 3 (DSCF1134.jpg) — TEMP: user assets
-// - kazdura-4.jpg  → Kazdura Music Shoot — 4 (DSCF1220.jpg) — TEMP: user assets
-// - kazdura-5.jpg  → Kazdura Music Shoot — 5 (DSCF1245.jpg) — TEMP: user assets
-// - kazdura-6.jpg  → Kazdura Music Shoot — 6 (DSCF1280.jpg) — TEMP: user assets
-// - kazdura-7.jpg  → Kazdura Music Shoot — 7 (DSCF1282.jpg) — TEMP: user assets
-// - kazdura-8.jpg  → Kazdura Music Shoot — 8 (DSCF1302.jpg) — TEMP: user assets
-// - kazdura-9.jpg  → Kazdura Music Shoot — 9 (DSCF1308.jpg) — TEMP: user assets
-// - kazdura-10.jpg → Kazdura Music Shoot — 10 (DSCF1396.jpg) — TEMP: user assets
+// - kazdura-1.jpg  → Kazdura Music Shoot — 1 (DSCF0997.jpg) — USER UPLOAD
+// - kazdura-2.jpg  → Kazdura Music Shoot — 2 (DSCF1073.jpg) — USER UPLOAD
+// - kazdura-3.jpg  → Kazdura Music Shoot — 3 (DSCF1134.jpg) — USER UPLOAD
+// - kazdura-4.jpg  → Kazdura Music Shoot — 4 (DSCF1220.jpg) — USER UPLOAD
+// - kazdura-5.jpg  → Kazdura Music Shoot — 5 (DSCF1245.jpg) — USER UPLOAD
+// - kazdura-6.jpg  → Kazdura Music Shoot — 6 (DSCF1280.jpg) — USER UPLOAD
+// - kazdura-7.jpg  → Kazdura Music Shoot — 7 (DSCF1282.jpg) — USER UPLOAD
+// - kazdura-8.jpg  → Kazdura Music Shoot — 8 (DSCF1302.jpg) — USER UPLOAD
+// - kazdura-9.jpg  → Kazdura Music Shoot — 9 (DSCF1308.jpg) — USER UPLOAD
+// - kazdura-10.jpg → Kazdura Music Shoot — 10 (DSCF1396.jpg) — USER UPLOAD
+// - rani-1.jpg to rani-10.jpg → Rani Shoot — USER UPLOAD
 // - people-of-moiz.mp4 → People of Moiz documentary — USER UPLOAD — do not regenerate
 
 import kazdura1 from '@/assets/kazdura-1.jpg';
@@ -21,6 +22,17 @@ import kazdura7 from '@/assets/kazdura-7.jpg';
 import kazdura8 from '@/assets/kazdura-8.jpg';
 import kazdura9 from '@/assets/kazdura-9.jpg';
 import kazdura10 from '@/assets/kazdura-10.jpg';
+
+import rani1 from '@/assets/rani-1.jpg';
+import rani2 from '@/assets/rani-2.jpg';
+import rani3 from '@/assets/rani-3.jpg';
+import rani4 from '@/assets/rani-4.jpg';
+import rani5 from '@/assets/rani-5.jpg';
+import rani6 from '@/assets/rani-6.jpg';
+import rani7 from '@/assets/rani-7.jpg';
+import rani8 from '@/assets/rani-8.jpg';
+import rani9 from '@/assets/rani-9.jpg';
+import rani10 from '@/assets/rani-10.jpg';
 
 export interface ProjectEntry {
   id: string;
