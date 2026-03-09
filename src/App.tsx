@@ -11,6 +11,7 @@ import PhotographyLanding from "./pages/PhotographyLanding";
 import CategoryGallery from "./pages/CategoryGallery";
 import VideoIndex from "./pages/VideoIndex";
 import Filmmaking from "./pages/Filmmaking";
+import BrandsAds from "./pages/BrandsAds";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/photography/:category" element={<CategoryGallery />} />
           <Route path="/video/:type" element={<VideoIndex />} />
           <Route path="/filmmaking" element={<Filmmaking />} />
+          <Route path="/brands" element={<BrandsAds />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

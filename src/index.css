@@ -237,6 +237,14 @@
     line-height: 1.05;
   }
 
+  /* Brands & Ads — Nevi */
+  .font-nevi-heading {
+    font-family: var(--project-nevi-font);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+  }
+
   .font-hero {
     font-family: var(--font-hero);
     letter-spacing: 0.06em;
