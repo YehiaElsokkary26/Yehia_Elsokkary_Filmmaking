@@ -8,6 +8,7 @@ const navLinks = [
   { label: 'Work', path: '/#work' },
   { label: 'Photography', path: '/photography' },
   { label: 'Filmmaking', path: '/filmmaking' },
+  { label: 'Brands', path: '/brands' },
   { label: 'Reels', path: '/#reels' },
   { label: 'About', path: '/#about' },
   { label: 'Contact', path: '/#contact' },

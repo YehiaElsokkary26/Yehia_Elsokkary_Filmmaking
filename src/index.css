@@ -73,6 +73,10 @@
     --film-hover-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
     --film-expand-duration: 380ms;
 
+    /* Brands & Ads — Nevi project tokens */
+    --project-nevi-font: 'Permanent Marker', cursive;
+    --project-nevi-accent: 340 75% 55%;
+
     --grain-opacity: 0.04;
     --vignette-opacity: 0.15;
     --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
@@ -231,6 +235,14 @@
     font-weight: 600;
     letter-spacing: 0.02em;
     line-height: 1.05;
+  }
+
+  /* Brands & Ads — Nevi */
+  .font-nevi-heading {
+    font-family: var(--project-nevi-font);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
   }
 
   .font-hero {
