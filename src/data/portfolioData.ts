@@ -75,6 +75,28 @@ export const projects: ProjectEntry[] = [
     ],
     category: 'fashion',
   },
+  // Fashion — Rani Shoot
+  {
+    id: 'f-rani',
+    title: 'Rani Shoot',
+    year: '',
+    role: 'Photographer',
+    description: 'A fashion editorial shot in rural Egypt — capturing timeless elegance against rustic landscapes, fields, and the Nile.',
+    tags: ['fashion', 'editorial', 'portrait'],
+    media: [
+      { type: 'image', src: rani1, caption: 'Rani Shoot — 1' },
+      { type: 'image', src: rani2, caption: 'Rani Shoot — 2' },
+      { type: 'image', src: rani3, caption: 'Rani Shoot — 3' },
+      { type: 'image', src: rani4, caption: 'Rani Shoot — 4' },
+      { type: 'image', src: rani5, caption: 'Rani Shoot — 5' },
+      { type: 'image', src: rani6, caption: 'Rani Shoot — 6' },
+      { type: 'image', src: rani7, caption: 'Rani Shoot — 7' },
+      { type: 'image', src: rani8, caption: 'Rani Shoot — 8' },
+      { type: 'image', src: rani9, caption: 'Rani Shoot — 9' },
+      { type: 'image', src: rani10, caption: 'Rani Shoot — 10' },
+    ],
+    category: 'fashion',
+  },
   // Media Coverage — reuse Kazdura images as placeholders
   {
     id: 'mc-1',
