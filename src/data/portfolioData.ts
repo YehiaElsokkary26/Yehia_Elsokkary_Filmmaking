@@ -1,14 +1,15 @@
 // ASSET LIST:
-// - kazdura-1.jpg  → Kazdura Music Shoot — 1 (DSCF0997.jpg) — TEMP: user assets
-// - kazdura-2.jpg  → Kazdura Music Shoot — 2 (DSCF1073.jpg) — TEMP: user assets
-// - kazdura-3.jpg  → Kazdura Music Shoot — 3 (DSCF1134.jpg) — TEMP: user assets
-// - kazdura-4.jpg  → Kazdura Music Shoot — 4 (DSCF1220.jpg) — TEMP: user assets
-// - kazdura-5.jpg  → Kazdura Music Shoot — 5 (DSCF1245.jpg) — TEMP: user assets
-// - kazdura-6.jpg  → Kazdura Music Shoot — 6 (DSCF1280.jpg) — TEMP: user assets
-// - kazdura-7.jpg  → Kazdura Music Shoot — 7 (DSCF1282.jpg) — TEMP: user assets
-// - kazdura-8.jpg  → Kazdura Music Shoot — 8 (DSCF1302.jpg) — TEMP: user assets
-// - kazdura-9.jpg  → Kazdura Music Shoot — 9 (DSCF1308.jpg) — TEMP: user assets
-// - kazdura-10.jpg → Kazdura Music Shoot — 10 (DSCF1396.jpg) — TEMP: user assets
+// - kazdura-1.jpg  → Kazdura Music Shoot — 1 (DSCF0997.jpg) — USER UPLOAD
+// - kazdura-2.jpg  → Kazdura Music Shoot — 2 (DSCF1073.jpg) — USER UPLOAD
+// - kazdura-3.jpg  → Kazdura Music Shoot — 3 (DSCF1134.jpg) — USER UPLOAD
+// - kazdura-4.jpg  → Kazdura Music Shoot — 4 (DSCF1220.jpg) — USER UPLOAD
+// - kazdura-5.jpg  → Kazdura Music Shoot — 5 (DSCF1245.jpg) — USER UPLOAD
+// - kazdura-6.jpg  → Kazdura Music Shoot — 6 (DSCF1280.jpg) — USER UPLOAD
+// - kazdura-7.jpg  → Kazdura Music Shoot — 7 (DSCF1282.jpg) — USER UPLOAD
+// - kazdura-8.jpg  → Kazdura Music Shoot — 8 (DSCF1302.jpg) — USER UPLOAD
+// - kazdura-9.jpg  → Kazdura Music Shoot — 9 (DSCF1308.jpg) — USER UPLOAD
+// - kazdura-10.jpg → Kazdura Music Shoot — 10 (DSCF1396.jpg) — USER UPLOAD
+// - rani-1.jpg to rani-10.jpg → Rani Shoot — USER UPLOAD
 // - people-of-moiz.mp4 → People of Moiz documentary — USER UPLOAD — do not regenerate
 
 import kazdura1 from '@/assets/kazdura-1.jpg';
@@ -21,6 +22,17 @@ import kazdura7 from '@/assets/kazdura-7.jpg';
 import kazdura8 from '@/assets/kazdura-8.jpg';
 import kazdura9 from '@/assets/kazdura-9.jpg';
 import kazdura10 from '@/assets/kazdura-10.jpg';
+
+import rani1 from '@/assets/rani-1.jpg';
+import rani2 from '@/assets/rani-2.jpg';
+import rani3 from '@/assets/rani-3.jpg';
+import rani4 from '@/assets/rani-4.jpg';
+import rani5 from '@/assets/rani-5.jpg';
+import rani6 from '@/assets/rani-6.jpg';
+import rani7 from '@/assets/rani-7.jpg';
+import rani8 from '@/assets/rani-8.jpg';
+import rani9 from '@/assets/rani-9.jpg';
+import rani10 from '@/assets/rani-10.jpg';
 
 export interface ProjectEntry {
   id: string;
@@ -60,6 +72,28 @@ export const projects: ProjectEntry[] = [
       { type: 'image', src: kazdura8, caption: 'Kazdura Music Shoot — 8' },
       { type: 'image', src: kazdura9, caption: 'Kazdura Music Shoot — 9' },
       { type: 'image', src: kazdura10, caption: 'Kazdura Music Shoot — 10' },
+    ],
+    category: 'fashion',
+  },
+  // Fashion — Rani Shoot
+  {
+    id: 'f-rani',
+    title: 'Rani Shoot',
+    year: '',
+    role: 'Photographer',
+    description: 'A fashion editorial shot in rural Egypt — capturing timeless elegance against rustic landscapes, fields, and the Nile.',
+    tags: ['fashion', 'editorial', 'portrait'],
+    media: [
+      { type: 'image', src: rani1, caption: 'Rani Shoot — 1' },
+      { type: 'image', src: rani2, caption: 'Rani Shoot — 2' },
+      { type: 'image', src: rani3, caption: 'Rani Shoot — 3' },
+      { type: 'image', src: rani4, caption: 'Rani Shoot — 4' },
+      { type: 'image', src: rani5, caption: 'Rani Shoot — 5' },
+      { type: 'image', src: rani6, caption: 'Rani Shoot — 6' },
+      { type: 'image', src: rani7, caption: 'Rani Shoot — 7' },
+      { type: 'image', src: rani8, caption: 'Rani Shoot — 8' },
+      { type: 'image', src: rani9, caption: 'Rani Shoot — 9' },
+      { type: 'image', src: rani10, caption: 'Rani Shoot — 10' },
     ],
     category: 'fashion',
   },
@@ -194,7 +228,7 @@ export const projects: ProjectEntry[] = [
 export const getProjectsByCategory = (cat: ProjectEntry['category']) =>
   projects.filter((p) => p.category === cat);
 
-// Scattered polaroid images for homepage use
+// Scattered polaroid images for homepage use — USER UPLOADS
 export const scatteredPolaroids = [
   { src: kazdura1, caption: 'Kazdura — guitar session', alt: 'Kazdura Music Shoot — image 1' },
   { src: kazdura3, caption: 'Kazdura — portrait', alt: 'Kazdura Music Shoot — image 3' },
@@ -203,4 +237,14 @@ export const scatteredPolaroids = [
   { src: kazdura8, caption: 'Kazdura — rooftop', alt: 'Kazdura Music Shoot — image 8' },
   { src: kazdura9, caption: 'Kazdura — back to back', alt: 'Kazdura Music Shoot — image 9' },
   { src: kazdura10, caption: 'Kazdura — close up', alt: 'Kazdura Music Shoot — image 10' },
+  { src: rani1, caption: 'Rani — hay bales', alt: 'Rani Shoot — image 1' },
+  { src: rani2, caption: 'Rani — church', alt: 'Rani Shoot — image 2' },
+  { src: rani3, caption: 'Rani — barn', alt: 'Rani Shoot — image 3' },
+  { src: rani4, caption: 'Rani — adobe wall', alt: 'Rani Shoot — image 4' },
+  { src: rani5, caption: 'Rani — boat', alt: 'Rani Shoot — image 5' },
+  { src: rani6, caption: 'Rani — field', alt: 'Rani Shoot — image 6' },
+  { src: rani7, caption: 'Rani — tall grass', alt: 'Rani Shoot — image 7' },
+  { src: rani8, caption: 'Rani — ruins', alt: 'Rani Shoot — image 8' },
+  { src: rani9, caption: 'Rani — brick wall', alt: 'Rani Shoot — image 9' },
+  { src: rani10, caption: 'Rani — Nile', alt: 'Rani Shoot — image 10' },
 ];
