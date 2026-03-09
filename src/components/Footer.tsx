@@ -26,14 +26,11 @@ const Footer = () => {
               <a href="#contact" className="font-body text-xs font-bold tracking-[0.2em] uppercase text-accent hover:opacity-70 transition-opacity">
                 Hire Me
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="opacity-50 hover:opacity-100 transition-opacity" aria-label="Instagram">
+              <a href="https://www.instagram.com/yehia.elsokkaryy?igsh=NWNwMTM1aDE2eTR0&utm_source=qr" target="_blank" rel="noopener noreferrer" className="opacity-50 hover:opacity-100 transition-opacity" aria-label="Instagram">
                 <Instagram size={18} />
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="opacity-50 hover:opacity-100 transition-opacity" aria-label="YouTube">
-                <Youtube size={18} />
-              </a>
-              <a href="mailto:hello@yourname.com" className="opacity-50 hover:opacity-100 transition-opacity" aria-label="Email">
-                <Mail size={18} />
+              <a href="tel:+201550654567" className="opacity-50 hover:opacity-100 transition-opacity" aria-label="Phone">
+                <Phone size={18} />
               </a>
             </div>
 

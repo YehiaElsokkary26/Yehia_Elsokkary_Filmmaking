@@ -314,25 +314,52 @@ const BrandsAds = () => {
                         <h3 className="font-body text-xs font-semibold tracking-[0.2em] uppercase text-white/60 mb-4">
                           Related clips
                         </h3>
-                        <ScrollArea className="w-full whitespace-nowrap">
-                          <div className="flex gap-4">
-                            {project.stills.map((src, i) => (
-                              <div key={i} className="h-32 md:h-40 w-56 md:w-72 rounded overflow-hidden flex-shrink-0 bg-black">
-                                <video
-                                  src={src}
-                                  className="w-full h-full object-cover"
-                                  muted
-                                  loop
-                                  playsInline
-                                  autoPlay
-                                  preload="metadata"
-                                  aria-label={`${project.title} related clip ${i + 1}`}
-                                />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          {project.stills.map((src, i) => (
+                            <div
+                              key={i}
+                              className="relative aspect-video rounded-lg overflow-hidden group cursor-pointer"
+                            >
+                              <video
+                                src={src}
+                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.04]"
+                                muted
+                                loop
+                                playsInline
+                                autoPlay
+                                preload="metadata"
+                                aria-label={`${project.title} related clip ${i + 1}`}
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                              <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/80 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)] transition-all duration-300 rounded-lg" />
+                              <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col justify-end">
+                                <h4 className={`${project.fontClass} text-2xl md:text-3xl text-white mb-1`}>
+                                  {i === 0 ? `${project.title} — Behind the Scenes` : `${project.title} — Lookbook`}
+                                </h4>
+                                <p className="font-body text-white/70 text-xs mb-1">{project.role}</p>
+                                <p className="font-body text-white/60 text-sm leading-relaxed mb-3 max-w-md">
+                                  {i === 0
+                                    ? "A raw look at the making of the campaign — capturing candid moments between takes, lighting setups, and creative energy on set."
+                                    : "A cinematic lookbook reel pairing the beanie with street-ready fits. Each look emphasises texture, color blocking, and attitude."}
+                                </p>
+                                <div className="flex flex-wrap gap-2 mb-3">
+                                  {project.tags.slice(0, 3).map((tag) => (
+                                    <span key={tag} className="px-2 py-0.5 text-[9px] font-bold tracking-widest uppercase rounded-full border border-white/30 text-white/70">
+                                      {tag}
+                                    </span>
+                                  ))}
+                                </div>
+                                <a
+                                  href="/#contact"
+                                  className="self-start inline-block px-4 py-2 rounded-full font-body text-[10px] font-bold tracking-widest uppercase text-white transition-transform hover:scale-105"
+                                  style={{ backgroundColor: `hsl(var(${project.accentVar}))` }}
+                                >
+                                  Contact Me Now
+                                </a>
                               </div>
-                            ))}
-                          </div>
-                          <ScrollBar orientation="horizontal" />
-                        </ScrollArea>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     )}
                   </div>

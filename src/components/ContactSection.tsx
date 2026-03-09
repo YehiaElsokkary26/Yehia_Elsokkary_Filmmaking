@@ -1,4 +1,4 @@
-import { Instagram, Mail, Youtube } from 'lucide-react';
+import { Instagram, Phone } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
 const ContactSection = () => {
@@ -21,23 +21,20 @@ const ContactSection = () => {
 
         <ScrollReveal delay={300}>
           <div className="flex items-center justify-center gap-6">
-            <a href="mailto:hello@yourname.com" className="btn-pill bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground">
-              <Mail size={16} className="inline mr-2" />
-              Email Me
+            <a href="tel:+201550654567" className="btn-pill bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground">
+              <Phone size={16} className="inline mr-2" />
+              +20 155 065 4567
             </a>
           </div>
         </ScrollReveal>
 
         <ScrollReveal delay={400}>
           <div className="flex items-center justify-center gap-8 mt-12">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Instagram">
+            <a href="https://www.instagram.com/yehia.elsokkaryy?igsh=NWNwMTM1aDE2eTR0&utm_source=qr" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Instagram">
               <Instagram size={22} />
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="YouTube">
-              <Youtube size={22} />
-            </a>
-            <a href="mailto:hello@yourname.com" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Email">
-              <Mail size={22} />
+            <a href="tel:+201550654567" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Phone">
+              <Phone size={22} />
             </a>
           </div>
         </ScrollReveal>
