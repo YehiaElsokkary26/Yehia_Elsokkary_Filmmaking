@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Play, X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+
 
 interface BrandProject {
   id: string;
