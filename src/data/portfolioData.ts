@@ -228,7 +228,7 @@ export const projects: ProjectEntry[] = [
 export const getProjectsByCategory = (cat: ProjectEntry['category']) =>
   projects.filter((p) => p.category === cat);
 
-// Scattered polaroid images for homepage use
+// Scattered polaroid images for homepage use — USER UPLOADS
 export const scatteredPolaroids = [
   { src: kazdura1, caption: 'Kazdura — guitar session', alt: 'Kazdura Music Shoot — image 1' },
   { src: kazdura3, caption: 'Kazdura — portrait', alt: 'Kazdura Music Shoot — image 3' },
@@ -237,4 +237,14 @@ export const scatteredPolaroids = [
   { src: kazdura8, caption: 'Kazdura — rooftop', alt: 'Kazdura Music Shoot — image 8' },
   { src: kazdura9, caption: 'Kazdura — back to back', alt: 'Kazdura Music Shoot — image 9' },
   { src: kazdura10, caption: 'Kazdura — close up', alt: 'Kazdura Music Shoot — image 10' },
+  { src: rani1, caption: 'Rani — hay bales', alt: 'Rani Shoot — image 1' },
+  { src: rani2, caption: 'Rani — church', alt: 'Rani Shoot — image 2' },
+  { src: rani3, caption: 'Rani — barn', alt: 'Rani Shoot — image 3' },
+  { src: rani4, caption: 'Rani — adobe wall', alt: 'Rani Shoot — image 4' },
+  { src: rani5, caption: 'Rani — boat', alt: 'Rani Shoot — image 5' },
+  { src: rani6, caption: 'Rani — field', alt: 'Rani Shoot — image 6' },
+  { src: rani7, caption: 'Rani — tall grass', alt: 'Rani Shoot — image 7' },
+  { src: rani8, caption: 'Rani — ruins', alt: 'Rani Shoot — image 8' },
+  { src: rani9, caption: 'Rani — brick wall', alt: 'Rani Shoot — image 9' },
+  { src: rani10, caption: 'Rani — Nile', alt: 'Rani Shoot — image 10' },
 ];
