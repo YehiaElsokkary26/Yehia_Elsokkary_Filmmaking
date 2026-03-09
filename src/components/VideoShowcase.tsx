@@ -21,7 +21,7 @@ const VideoShowcase = () => {
           className="absolute inset-0 w-full h-full object-cover"
           style={{ transform: 'scale(1.15)' }}
           autoPlay muted loop playsInline
-          loading="lazy"
+          preload="metadata"
           aria-label="From the Lens background video — USER UPLOAD"
         />
         <div className="absolute inset-0 bg-studio-dark/70" />
