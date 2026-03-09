@@ -1,15 +1,7 @@
 // ASSET LIST:
-// - kazdura-1.jpg  → Kazdura Music Shoot — 1 (DSCF0997.jpg) — USER UPLOAD
-// - kazdura-2.jpg  → Kazdura Music Shoot — 2 (DSCF1073.jpg) — USER UPLOAD
-// - kazdura-3.jpg  → Kazdura Music Shoot — 3 (DSCF1134.jpg) — USER UPLOAD
-// - kazdura-4.jpg  → Kazdura Music Shoot — 4 (DSCF1220.jpg) — USER UPLOAD
-// - kazdura-5.jpg  → Kazdura Music Shoot — 5 (DSCF1245.jpg) — USER UPLOAD
-// - kazdura-6.jpg  → Kazdura Music Shoot — 6 (DSCF1280.jpg) — USER UPLOAD
-// - kazdura-7.jpg  → Kazdura Music Shoot — 7 (DSCF1282.jpg) — USER UPLOAD
-// - kazdura-8.jpg  → Kazdura Music Shoot — 8 (DSCF1302.jpg) — USER UPLOAD
-// - kazdura-9.jpg  → Kazdura Music Shoot — 9 (DSCF1308.jpg) — USER UPLOAD
-// - kazdura-10.jpg → Kazdura Music Shoot — 10 (DSCF1396.jpg) — USER UPLOAD
+// - kazdura-1.jpg to kazdura-10.jpg → Kazdura Music Shoot — USER UPLOAD
 // - rani-1.jpg to rani-10.jpg → Rani Shoot — USER UPLOAD
+// - ahmad-1.jpg to ahmad-10.jpg → Ahmad Dawood Moez Shoot — USER UPLOAD
 // - people-of-moiz.mp4 → People of Moiz documentary — USER UPLOAD — do not regenerate
 
 import kazdura1 from '@/assets/kazdura-1.jpg';
@@ -34,6 +26,17 @@ import rani8 from '@/assets/rani-8.jpg';
 import rani9 from '@/assets/rani-9.jpg';
 import rani10 from '@/assets/rani-10.jpg';
 
+import ahmad1 from '@/assets/ahmad-1.jpg';
+import ahmad2 from '@/assets/ahmad-2.jpg';
+import ahmad3 from '@/assets/ahmad-3.jpg';
+import ahmad4 from '@/assets/ahmad-4.jpg';
+import ahmad5 from '@/assets/ahmad-5.jpg';
+import ahmad6 from '@/assets/ahmad-6.jpg';
+import ahmad7 from '@/assets/ahmad-7.jpg';
+import ahmad8 from '@/assets/ahmad-8.jpg';
+import ahmad9 from '@/assets/ahmad-9.jpg';
+import ahmad10 from '@/assets/ahmad-10.jpg';
+
 export interface ProjectEntry {
   id: string;
   title: string;
@@ -45,7 +48,6 @@ export interface ProjectEntry {
   category: 'media-coverage' | 'fashion' | 'street' | 'short-films' | 'documentaries';
 }
 
-// Use Kazdura images as thumbnails for all photography categories
 export const photographyCategories = [
   { slug: 'media-coverage', label: 'Media Coverage', thumbnail: kazdura2, description: 'Press, events & editorial coverage' },
   { slug: 'fashion', label: 'Fashion Photography', thumbnail: kazdura1, description: 'Editorial & high-fashion shoots' },
@@ -97,7 +99,29 @@ export const projects: ProjectEntry[] = [
     ],
     category: 'fashion',
   },
-  // Media Coverage — reuse Kazdura images as placeholders
+  // Fashion — Ahmad Dawood Moez Shoot
+  {
+    id: 'f-ahmad',
+    title: 'Ahmad Dawood Moez Shoot',
+    year: '',
+    role: 'Photographer',
+    description: 'A cinematic portrait series shot across Old Cairo — blending classic tailoring with gritty urban textures, Vespa reds, and golden-hour light.',
+    tags: ['fashion', 'portrait', 'editorial', 'cairo'],
+    media: [
+      { type: 'image', src: ahmad1, caption: 'Ahmad Dawood Moez — 1' },
+      { type: 'image', src: ahmad2, caption: 'Ahmad Dawood Moez — 2' },
+      { type: 'image', src: ahmad3, caption: 'Ahmad Dawood Moez — 3' },
+      { type: 'image', src: ahmad4, caption: 'Ahmad Dawood Moez — 4' },
+      { type: 'image', src: ahmad5, caption: 'Ahmad Dawood Moez — 5' },
+      { type: 'image', src: ahmad6, caption: 'Ahmad Dawood Moez — 6' },
+      { type: 'image', src: ahmad7, caption: 'Ahmad Dawood Moez — 7' },
+      { type: 'image', src: ahmad8, caption: 'Ahmad Dawood Moez — 8' },
+      { type: 'image', src: ahmad9, caption: 'Ahmad Dawood Moez — 9' },
+      { type: 'image', src: ahmad10, caption: 'Ahmad Dawood Moez — 10' },
+    ],
+    category: 'fashion',
+  },
+  // Media Coverage
   {
     id: 'mc-1',
     title: 'Press Conference Series',
@@ -123,7 +147,7 @@ export const projects: ProjectEntry[] = [
     ],
     category: 'media-coverage',
   },
-  // Street — reuse Kazdura images as placeholders
+  // Street
   {
     id: 's-1',
     title: 'Neon & Rain',
@@ -186,40 +210,16 @@ export const projects: ProjectEntry[] = [
     ],
     category: 'short-films',
   },
-  // Documentaries
+  // Documentaries — only People of Moiz
   {
     id: 'd-moiz',
     title: 'People of Moiz',
     year: '',
     role: 'Filmmaker / Videographer',
-    description: 'A short series documenting people\'s lives in Khan al-Khalili, Cairo — intimate street portraits and daily moments.',
+    description: 'A short documentary series capturing the daily lives, stories, and spirit of the people in Khan al-Khalili, Cairo — one of the oldest and most vibrant markets in the Middle East. Intimate street portraits meet ambient sound design.',
     tags: ['documentary', 'cairo', 'street', 'people', 'culture'],
     media: [
       { type: 'video', src: '/videos/people-of-moiz.mp4', caption: 'People of Moiz — USER UPLOAD' },
-    ],
-    category: 'documentaries',
-  },
-  {
-    id: 'd-1',
-    title: 'People of the City',
-    year: '2025',
-    role: 'Director / Videographer',
-    description: 'Documenting everyday people, their stories, and the places they inhabit.',
-    tags: ['documentary', 'people'],
-    media: [
-      { type: 'video', src: '/videos/reel-2.mp4', caption: 'People of the City' },
-    ],
-    category: 'documentaries',
-  },
-  {
-    id: 'd-2',
-    title: 'Hidden Corners',
-    year: '2024',
-    role: 'Director / Videographer',
-    description: 'Exploring hidden spots and untold stories in urban landscapes.',
-    tags: ['documentary', 'urban'],
-    media: [
-      { type: 'video', src: '/videos/reel-4.mp4', caption: 'Hidden Corners' },
     ],
     category: 'documentaries',
   },
@@ -247,4 +247,15 @@ export const scatteredPolaroids = [
   { src: rani8, caption: 'Rani — ruins', alt: 'Rani Shoot — image 8' },
   { src: rani9, caption: 'Rani — brick wall', alt: 'Rani Shoot — image 9' },
   { src: rani10, caption: 'Rani — Nile', alt: 'Rani Shoot — image 10' },
+  // Ahmad Dawood Moez
+  { src: ahmad1, caption: 'Ahmad — leaves', alt: 'Ahmad Dawood Moez — image 1' },
+  { src: ahmad2, caption: 'Ahmad — close-up', alt: 'Ahmad Dawood Moez — image 2' },
+  { src: ahmad3, caption: 'Ahmad — red door', alt: 'Ahmad Dawood Moez — image 3' },
+  { src: ahmad4, caption: 'Ahmad — Vespa', alt: 'Ahmad Dawood Moez — image 4' },
+  { src: ahmad5, caption: 'Ahmad — stone wall', alt: 'Ahmad Dawood Moez — image 5' },
+  { src: ahmad6, caption: 'Ahmad — iron fence', alt: 'Ahmad Dawood Moez — image 6' },
+  { src: ahmad7, caption: 'Ahmad — golden light', alt: 'Ahmad Dawood Moez — image 7' },
+  { src: ahmad8, caption: 'Ahmad — Vespa 2', alt: 'Ahmad Dawood Moez — image 8' },
+  { src: ahmad9, caption: 'Ahmad — graffiti wall', alt: 'Ahmad Dawood Moez — image 9' },
+  { src: ahmad10, caption: 'Ahmad — alley', alt: 'Ahmad Dawood Moez — image 10' },
 ];
