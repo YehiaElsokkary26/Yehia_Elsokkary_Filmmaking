@@ -31,14 +31,13 @@ const PolaroidCard = ({ project, onClick, className = '' }: PolaroidCardProps) =
               loading="lazy"
             />
           ) : (
-            <video
+          <video
               src={thumb.src}
               className="w-full h-full object-cover"
               muted
               loop
               playsInline
-              onMouseEnter={(e) => e.currentTarget.play()}
-              onMouseLeave={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
+              autoPlay
             />
           )}
         </div>
