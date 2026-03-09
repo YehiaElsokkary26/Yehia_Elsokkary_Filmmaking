@@ -298,12 +298,13 @@ const BrandsAds = () => {
                             </span>
                           ))}
                         </div>
-                        <button
-                          className="self-start px-6 py-3 rounded-full font-body text-xs font-bold tracking-widest uppercase text-white transition-transform hover:scale-105"
+                        <a
+                          href="/#contact"
+                          className="self-start inline-block px-6 py-3 rounded-full font-body text-xs font-bold tracking-widest uppercase text-white transition-transform hover:scale-105"
                           style={{ backgroundColor: `hsl(var(${project.accentVar}))` }}
                         >
-                          View Storyboard / View Assets
-                        </button>
+                          Contact Me Now
+                        </a>
                       </div>
                     </div>
 
