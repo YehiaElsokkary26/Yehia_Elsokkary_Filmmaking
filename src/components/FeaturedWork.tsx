@@ -220,37 +220,40 @@ const FeaturedWork = () => {
         </div>
       </div>
 
-      {/* Scattered polaroids section — expanded with more photos */}
+      {/* Scattered polaroids section — shuffled on each render */}
       <div className="px-6 py-4 md:px-12 lg:px-24 lg:py-6 bg-background">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <p className="handwritten text-center text-muted-foreground mb-6">some recent captures ✦</p>
           </ScrollReveal>
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-            {allPolaroids.slice(0, 10).map((img, i) => {
-              const rot = [-5, 3, -2, 4, -3, 2, -4, 5, -1, 3][i % 10];
-              return (
-                <ScrollReveal key={i} variant="scale" delay={i * 100} className="w-36 md:w-44">
-                  <button
-                    onClick={() => setModalIdx(0)}
-                    className="group text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-ring w-full"
-                    aria-label={`View: ${img.alt}`}
-                  >
-                    <div className="polaroid cursor-pointer" style={{ transform: `rotate(${rot}deg)` }}>
-                      <div className="aspect-[4/5] overflow-hidden bg-muted">
-                        <img
-                          src={img.src}
-                          alt={img.alt}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          loading="lazy"
-                        />
+            {[...scatteredPolaroids]
+              .sort(() => Math.random() - 0.5)
+              .slice(0, 12)
+              .map((img, i) => {
+                const rot = [-5, 3, -2, 4, -3, 2, -4, 5, -1, 3, -2, 4][i % 12];
+                return (
+                  <ScrollReveal key={`${img.alt}-${i}`} variant="scale" delay={i * 80} className="w-36 md:w-44">
+                    <button
+                      onClick={() => setModalIdx(0)}
+                      className="group text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-ring w-full"
+                      aria-label={`View: ${img.alt}`}
+                    >
+                      <div className="polaroid cursor-pointer" style={{ transform: `rotate(${rot}deg)` }}>
+                        <div className="aspect-[4/5] overflow-hidden bg-muted">
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy"
+                          />
+                        </div>
+                        <p className="polaroid-caption text-xs">{img.caption}</p>
                       </div>
-                      <p className="polaroid-caption text-xs">{img.caption}</p>
-                    </div>
-                  </button>
-                </ScrollReveal>
-              );
-            })}
+                    </button>
+                  </ScrollReveal>
+                );
+              })}
           </div>
         </div>
       </div>
