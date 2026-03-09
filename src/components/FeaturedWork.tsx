@@ -45,15 +45,7 @@ const featuredProjects = [
   },
 ];
 
-// Extended polaroids - all user images, then TEMP AI placeholders if needed
-const allPolaroids = [
-  ...scatteredPolaroids,
-  // Mark any extra as TEMP — AI placeholder if user images exhausted
-  { src: scatteredPolaroids[0].src, caption: 'captured moment', alt: 'Kazdura — extra 1' },
-  { src: scatteredPolaroids[1].src, caption: 'behind the lens', alt: 'Kazdura — extra 2' },
-  { src: scatteredPolaroids[2].src, caption: 'golden light', alt: 'Kazdura — extra 3' },
-];
-
+// Use scatteredPolaroids directly - no need for allPolaroids anymore
 const FeaturedWork = () => {
   const kazduraProject = projects.find(p => p.id === 'f-kazdura')!;
   const photoProjects = [kazduraProject, ...getProjectsByCategory('street').slice(0, 1), ...getProjectsByCategory('media-coverage').slice(0, 1)];
