@@ -6,7 +6,7 @@ import ProjectModal from '@/components/ProjectModal';
 import { getProjectsByCategory, ProjectEntry, photographyCategories } from '@/data/portfolioData';
 
 const sectionFonts: Record<string, string> = {
-  'media-coverage': 'font-heading',
+  studio: 'font-heading',
   fashion: 'font-fashion-heading',
   street: 'font-street-heading',
 };

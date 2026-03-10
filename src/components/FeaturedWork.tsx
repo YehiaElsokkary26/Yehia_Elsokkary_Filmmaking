@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import ScrollReveal from './ScrollReveal';
 import ProjectModal from './ProjectModal';
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { photographyCategories, getProjectsByCategory, scatteredPolaroids, projects } from '@/data/portfolioData';
+import { photographyCategories, scatteredPolaroids, projects, ProjectEntry } from '@/data/portfolioData';
 
 // All project videos — USER UPLOADS
 const videoBackgrounds = [
@@ -45,19 +45,34 @@ const featuredProjects = [
   },
 ];
 
-// Use scatteredPolaroids directly - no need for allPolaroids anymore
 const FeaturedWork = () => {
-  const kazduraProject = projects.find(p => p.id === 'f-kazdura')!;
-  const photoProjects = [kazduraProject, ...getProjectsByCategory('street').slice(0, 1), ...getProjectsByCategory('media-coverage').slice(0, 1)];
-  const [modalIdx, setModalIdx] = useState<number | null>(null);
-  const closeModal = useCallback(() => setModalIdx(null), []);
+  const [modalProject, setModalProject] = useState<ProjectEntry | null>(null);
+  const closeModal = useCallback(() => setModalProject(null), []);
 
-  // Photography shuffle state - cast to mutable array
+  // Photography shuffle state
   const [shuffledCategories, setShuffledCategories] = useState([...photographyCategories]);
-  const shuffleTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const lastShuffleRef = useRef(0);
 
-  // Shuffle on scroll — throttled to 600ms
+  // Continuous shuffle for "some recent captures" with interval
+  const [displayPolaroids, setDisplayPolaroids] = useState(() =>
+    [...scatteredPolaroids].sort(() => Math.random() - 0.5).slice(0, 12)
+  );
+
+  // Shuffle polaroids every 4 seconds with fade
+  useEffect(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    const interval = setInterval(() => {
+      setDisplayPolaroids(
+        [...scatteredPolaroids].sort(() => Math.random() - 0.5).slice(0, 12)
+      );
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Shuffle categories on scroll — throttled to 600ms
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
@@ -65,17 +80,15 @@ const FeaturedWork = () => {
     const handleScroll = () => {
       const now = Date.now();
       if (now - lastShuffleRef.current < 600) return;
-      
-      // Only shuffle when in photography section viewport
+
       const photoSection = document.getElementById('photography');
       if (!photoSection) return;
-      
+
       const rect = photoSection.getBoundingClientRect();
       const inView = rect.top < window.innerHeight && rect.bottom > 0;
-      
+
       if (inView) {
         lastShuffleRef.current = now;
-        // Shuffle with fade effect
         setShuffledCategories(prev => {
           const arr = [...prev];
           for (let i = arr.length - 1; i > 0; i--) {
@@ -88,10 +101,12 @@ const FeaturedWork = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (shuffleTimeoutRef.current) clearTimeout(shuffleTimeoutRef.current);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handlePolaroidClick = useCallback((projectId: string) => {
+    const project = projects.find(p => p.id === projectId);
+    if (project) setModalProject(project);
   }, []);
 
   return (
@@ -119,7 +134,7 @@ const FeaturedWork = () => {
         const isFullHeight = i % 3 === 0;
 
         return (
-          <Link to={project.link} key={project.title} className="block relative group">
+          <Link to={project.link} key={project.title} className="block relative group" data-project-link>
             <div className={`relative ${isFullHeight ? 'h-[90vh]' : 'h-[60vh] md:h-[75vh]'} overflow-hidden`}>
               <div className="absolute inset-0 will-change-transform">
                 <video
@@ -170,7 +185,7 @@ const FeaturedWork = () => {
         );
       })}
 
-      {/* Photography Section — reduced vertical spacing */}
+      {/* Photography Section */}
       <div className="px-6 py-6 md:px-12 lg:px-24 lg:py-8" id="photography">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal variant="left">
@@ -184,7 +199,6 @@ const FeaturedWork = () => {
             <p className="handwritten text-lg text-muted-foreground mt-3 mb-3">Browse categories below ✦</p>
           </ScrollReveal>
 
-          {/* Reduced gap: 12px desktop, 10px mobile */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[10px] md:gap-[12px] mt-3">
             {shuffledCategories.map((cat, i) => (
               <ScrollReveal key={cat.slug} variant={i % 2 === 0 ? 'left' : 'right'} delay={i * 100}>
@@ -212,50 +226,48 @@ const FeaturedWork = () => {
         </div>
       </div>
 
-      {/* Scattered polaroids section — shuffled on each render */}
+      {/* Scattered polaroids section — continuously shuffled */}
       <div className="px-6 py-4 md:px-12 lg:px-24 lg:py-6 bg-background">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <p className="handwritten text-center text-muted-foreground mb-6">some recent captures ✦</p>
           </ScrollReveal>
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-            {[...scatteredPolaroids]
-              .sort(() => Math.random() - 0.5)
-              .slice(0, 12)
-              .map((img, i) => {
-                const rot = [-5, 3, -2, 4, -3, 2, -4, 5, -1, 3, -2, 4][i % 12];
-                return (
-                  <ScrollReveal key={`${img.alt}-${i}`} variant="scale" delay={i * 80} className="w-36 md:w-44">
-                    <button
-                      onClick={() => setModalIdx(0)}
-                      className="group text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-ring w-full"
-                      aria-label={`View: ${img.alt}`}
-                    >
-                      <div className="polaroid cursor-pointer" style={{ transform: `rotate(${rot}deg)` }}>
-                        <div className="aspect-[4/5] overflow-hidden bg-muted">
-                          <img
-                            src={img.src}
-                            alt={img.alt}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            loading="lazy"
-                          />
-                        </div>
-                        <p className="polaroid-caption text-xs">{img.caption}</p>
+            {displayPolaroids.map((img, i) => {
+              const rot = [-5, 3, -2, 4, -3, 2, -4, 5, -1, 3, -2, 4][i % 12];
+              return (
+                <div key={`${img.projectId}-${img.alt}-${i}`} className="w-36 md:w-44 transition-opacity duration-700">
+                  <button
+                    onClick={() => handlePolaroidClick(img.projectId)}
+                    className="group text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-ring w-full"
+                    aria-label={`View: ${img.alt}`}
+                    data-project-slug={img.projectId}
+                  >
+                    <div className="polaroid cursor-pointer" style={{ transform: `rotate(${rot}deg)` }}>
+                      <div className="aspect-[4/5] overflow-hidden bg-muted">
+                        <img
+                          src={img.src}
+                          alt={img.alt}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          loading="lazy"
+                          data-project={img.projectId}
+                          data-slug={img.projectId}
+                        />
                       </div>
-                    </button>
-                  </ScrollReveal>
-                );
-              })}
+                      <p className="polaroid-caption text-xs">{img.caption}</p>
+                    </div>
+                  </button>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
 
-      {modalIdx !== null && photoProjects[modalIdx] && (
+      {modalProject && (
         <ProjectModal
-          project={photoProjects[modalIdx]}
+          project={modalProject}
           onClose={closeModal}
-          onPrev={modalIdx > 0 ? () => setModalIdx(modalIdx - 1) : undefined}
-          onNext={modalIdx < photoProjects.length - 1 ? () => setModalIdx(modalIdx + 1) : undefined}
         />
       )}
     </section>

@@ -45,11 +45,11 @@ export interface ProjectEntry {
   description: string;
   tags: string[];
   media: { type: 'image' | 'video'; src: string; caption?: string }[];
-  category: 'media-coverage' | 'fashion' | 'street' | 'short-films' | 'documentaries';
+  category: 'studio' | 'fashion' | 'street' | 'short-films' | 'documentaries';
 }
 
 export const photographyCategories = [
-  { slug: 'media-coverage', label: 'Media Coverage', thumbnail: kazdura2, description: 'Press, events & editorial coverage' },
+  { slug: 'studio', label: 'Studio', thumbnail: kazdura2, description: 'Studio sessions & editorial coverage' },
   { slug: 'fashion', label: 'Fashion Photography', thumbnail: kazdura1, description: 'Editorial & high-fashion shoots' },
   { slug: 'street', label: 'Street Photography', thumbnail: kazdura8, description: 'Raw urban moments, candid life' },
 ] as const;
@@ -121,9 +121,24 @@ export const projects: ProjectEntry[] = [
     ],
     category: 'fashion',
   },
-  // Media Coverage
+  // Fashion — Novel Wear (placeholder images — replace when real ones uploaded)
   {
-    id: 'mc-1',
+    id: 'f-novel-wear',
+    title: 'Novel Wear Project',
+    year: '',
+    role: 'Photographer / Creative Director',
+    description: 'Editorial / studio campaign for Novel Wear — creative direction & fashion stills. Modern silhouettes meet bold studio lighting.',
+    tags: ['fashion', 'studio', 'editorial', 'campaign'],
+    media: [
+      { type: 'image', src: kazdura3, caption: 'Novel Wear — look 1' },
+      { type: 'image', src: kazdura5, caption: 'Novel Wear — look 2' },
+      { type: 'image', src: kazdura7, caption: 'Novel Wear — look 3' },
+    ],
+    category: 'fashion',
+  },
+  // Studio (formerly Media Coverage)
+  {
+    id: 'st-1',
     title: 'Press Conference Series',
     year: '2025',
     role: 'Photographer',
@@ -133,10 +148,10 @@ export const projects: ProjectEntry[] = [
       { type: 'image', src: kazdura10, caption: 'Press conference setup' },
       { type: 'image', src: kazdura9, caption: 'Event coverage' },
     ],
-    category: 'media-coverage',
+    category: 'studio',
   },
   {
-    id: 'mc-2',
+    id: 'st-2',
     title: 'Festival Coverage',
     year: '2024',
     role: 'Photographer',
@@ -145,7 +160,22 @@ export const projects: ProjectEntry[] = [
     media: [
       { type: 'image', src: kazdura4, caption: 'Festival crowd' },
     ],
-    category: 'media-coverage',
+    category: 'studio',
+  },
+  // Studio — Novel Wear (also appears in fashion)
+  {
+    id: 'st-novel-wear',
+    title: 'Novel Wear Project',
+    year: '',
+    role: 'Photographer / Creative Director',
+    description: 'Novel Wear — studio editorial exploring modern silhouettes. Photographed & directed by Yehia Elsokkary.',
+    tags: ['studio', 'fashion', 'editorial', 'campaign'],
+    media: [
+      { type: 'image', src: kazdura3, caption: 'Novel Wear — look 1' },
+      { type: 'image', src: kazdura5, caption: 'Novel Wear — look 2' },
+      { type: 'image', src: kazdura7, caption: 'Novel Wear — look 3' },
+    ],
+    category: 'studio',
   },
   // Street
   {
@@ -229,33 +259,38 @@ export const getProjectsByCategory = (cat: ProjectEntry['category']) =>
   projects.filter((p) => p.category === cat);
 
 // Scattered polaroid images for homepage use — USER UPLOADS
+// Each entry includes projectId so clicks navigate to the correct project
 export const scatteredPolaroids = [
-  { src: kazdura1, caption: 'Kazdura — guitar session', alt: 'Kazdura Music Shoot — image 1' },
-  { src: kazdura3, caption: 'Kazdura — portrait', alt: 'Kazdura Music Shoot — image 3' },
-  { src: kazdura4, caption: 'Kazdura — golden hour', alt: 'Kazdura Music Shoot — image 4' },
-  { src: kazdura6, caption: 'Kazdura — duo', alt: 'Kazdura Music Shoot — image 6' },
-  { src: kazdura8, caption: 'Kazdura — rooftop', alt: 'Kazdura Music Shoot — image 8' },
-  { src: kazdura9, caption: 'Kazdura — back to back', alt: 'Kazdura Music Shoot — image 9' },
-  { src: kazdura10, caption: 'Kazdura — close up', alt: 'Kazdura Music Shoot — image 10' },
-  { src: rani1, caption: 'Rani — hay bales', alt: 'Rani Shoot — image 1' },
-  { src: rani2, caption: 'Rani — church', alt: 'Rani Shoot — image 2' },
-  { src: rani3, caption: 'Rani — barn', alt: 'Rani Shoot — image 3' },
-  { src: rani4, caption: 'Rani — adobe wall', alt: 'Rani Shoot — image 4' },
-  { src: rani5, caption: 'Rani — boat', alt: 'Rani Shoot — image 5' },
-  { src: rani6, caption: 'Rani — field', alt: 'Rani Shoot — image 6' },
-  { src: rani7, caption: 'Rani — tall grass', alt: 'Rani Shoot — image 7' },
-  { src: rani8, caption: 'Rani — ruins', alt: 'Rani Shoot — image 8' },
-  { src: rani9, caption: 'Rani — brick wall', alt: 'Rani Shoot — image 9' },
-  { src: rani10, caption: 'Rani — Nile', alt: 'Rani Shoot — image 10' },
+  { src: kazdura1, caption: 'Kazdura — guitar session', alt: 'Kazdura Music Shoot — image 1', projectId: 'f-kazdura' },
+  { src: kazdura3, caption: 'Kazdura — portrait', alt: 'Kazdura Music Shoot — image 3', projectId: 'f-kazdura' },
+  { src: kazdura4, caption: 'Kazdura — golden hour', alt: 'Kazdura Music Shoot — image 4', projectId: 'f-kazdura' },
+  { src: kazdura6, caption: 'Kazdura — duo', alt: 'Kazdura Music Shoot — image 6', projectId: 'f-kazdura' },
+  { src: kazdura8, caption: 'Kazdura — rooftop', alt: 'Kazdura Music Shoot — image 8', projectId: 'f-kazdura' },
+  { src: kazdura9, caption: 'Kazdura — back to back', alt: 'Kazdura Music Shoot — image 9', projectId: 'f-kazdura' },
+  { src: kazdura10, caption: 'Kazdura — close up', alt: 'Kazdura Music Shoot — image 10', projectId: 'f-kazdura' },
+  { src: rani1, caption: 'Rani — hay bales', alt: 'Rani Shoot — image 1', projectId: 'f-rani' },
+  { src: rani2, caption: 'Rani — church', alt: 'Rani Shoot — image 2', projectId: 'f-rani' },
+  { src: rani3, caption: 'Rani — barn', alt: 'Rani Shoot — image 3', projectId: 'f-rani' },
+  { src: rani4, caption: 'Rani — adobe wall', alt: 'Rani Shoot — image 4', projectId: 'f-rani' },
+  { src: rani5, caption: 'Rani — boat', alt: 'Rani Shoot — image 5', projectId: 'f-rani' },
+  { src: rani6, caption: 'Rani — field', alt: 'Rani Shoot — image 6', projectId: 'f-rani' },
+  { src: rani7, caption: 'Rani — tall grass', alt: 'Rani Shoot — image 7', projectId: 'f-rani' },
+  { src: rani8, caption: 'Rani — ruins', alt: 'Rani Shoot — image 8', projectId: 'f-rani' },
+  { src: rani9, caption: 'Rani — brick wall', alt: 'Rani Shoot — image 9', projectId: 'f-rani' },
+  { src: rani10, caption: 'Rani — Nile', alt: 'Rani Shoot — image 10', projectId: 'f-rani' },
   // Ahmad Dawood Moez
-  { src: ahmad1, caption: 'Ahmad — leaves', alt: 'Ahmad Dawood Moez — image 1' },
-  { src: ahmad2, caption: 'Ahmad — close-up', alt: 'Ahmad Dawood Moez — image 2' },
-  { src: ahmad3, caption: 'Ahmad — red door', alt: 'Ahmad Dawood Moez — image 3' },
-  { src: ahmad4, caption: 'Ahmad — Vespa', alt: 'Ahmad Dawood Moez — image 4' },
-  { src: ahmad5, caption: 'Ahmad — stone wall', alt: 'Ahmad Dawood Moez — image 5' },
-  { src: ahmad6, caption: 'Ahmad — iron fence', alt: 'Ahmad Dawood Moez — image 6' },
-  { src: ahmad7, caption: 'Ahmad — golden light', alt: 'Ahmad Dawood Moez — image 7' },
-  { src: ahmad8, caption: 'Ahmad — Vespa 2', alt: 'Ahmad Dawood Moez — image 8' },
-  { src: ahmad9, caption: 'Ahmad — graffiti wall', alt: 'Ahmad Dawood Moez — image 9' },
-  { src: ahmad10, caption: 'Ahmad — alley', alt: 'Ahmad Dawood Moez — image 10' },
+  { src: ahmad1, caption: 'Ahmad — leaves', alt: 'Ahmad Dawood Moez — image 1', projectId: 'f-ahmad' },
+  { src: ahmad2, caption: 'Ahmad — close-up', alt: 'Ahmad Dawood Moez — image 2', projectId: 'f-ahmad' },
+  { src: ahmad3, caption: 'Ahmad — red door', alt: 'Ahmad Dawood Moez — image 3', projectId: 'f-ahmad' },
+  { src: ahmad4, caption: 'Ahmad — Vespa', alt: 'Ahmad Dawood Moez — image 4', projectId: 'f-ahmad' },
+  { src: ahmad5, caption: 'Ahmad — stone wall', alt: 'Ahmad Dawood Moez — image 5', projectId: 'f-ahmad' },
+  { src: ahmad6, caption: 'Ahmad — iron fence', alt: 'Ahmad Dawood Moez — image 6', projectId: 'f-ahmad' },
+  { src: ahmad7, caption: 'Ahmad — golden light', alt: 'Ahmad Dawood Moez — image 7', projectId: 'f-ahmad' },
+  { src: ahmad8, caption: 'Ahmad — Vespa 2', alt: 'Ahmad Dawood Moez — image 8', projectId: 'f-ahmad' },
+  { src: ahmad9, caption: 'Ahmad — graffiti wall', alt: 'Ahmad Dawood Moez — image 9', projectId: 'f-ahmad' },
+  { src: ahmad10, caption: 'Ahmad — alley', alt: 'Ahmad Dawood Moez — image 10', projectId: 'f-ahmad' },
+  // Novel Wear (placeholder — replace with real images when uploaded)
+  { src: kazdura3, caption: 'Novel Wear — look 1', alt: 'Novel Wear — image 1', projectId: 'f-novel-wear' },
+  { src: kazdura5, caption: 'Novel Wear — look 2', alt: 'Novel Wear — image 2', projectId: 'f-novel-wear' },
+  { src: kazdura7, caption: 'Novel Wear — look 3', alt: 'Novel Wear — image 3', projectId: 'f-novel-wear' },
 ];
