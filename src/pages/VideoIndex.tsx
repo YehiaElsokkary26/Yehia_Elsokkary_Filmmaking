@@ -103,7 +103,7 @@ const VideoIndex = () => {
             ref={bgVideoRef}
             src={videoSrc}
             className={`absolute inset-0 w-full h-full object-cover transition-transform duration-300 ${!focusedDoc ? 'group-hover:scale-[1.04]' : ''}`}
-            muted loop playsInline autoPlay preload="metadata"
+            muted loop playsInline autoPlay preload="auto"
             aria-label={`${project.title} video preview`}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />

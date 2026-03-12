@@ -246,11 +246,12 @@ const FeaturedWork = () => {
                   >
                     <div className="polaroid cursor-pointer" style={{ transform: `rotate(${rot}deg)` }}>
                       <div className="aspect-[4/5] overflow-hidden bg-muted">
-                        <img
+                         <img
                           src={img.src}
                           alt={img.alt}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                           loading="lazy"
+                          decoding="async"
                           data-project={img.projectId}
                           data-slug={img.projectId}
                         />
