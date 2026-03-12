@@ -19,19 +19,6 @@ interface FilmProject {
 // USER UPLOAD videos — do not regenerate
 const filmProjects: FilmProject[] = [
   {
-    id: 'euphoria',
-    title: 'Euphoria',
-    shortDescription: 'A short film exploring youthful urban euphoria and intimate city moments.',
-    fullDescription: 'Euphoria is a cinematic journey through the electric pulse of city nights, capturing fleeting moments of joy, connection, and the raw energy of youth. Shot on location across urban landscapes, the film weaves together intimate vignettes that celebrate the beauty found in spontaneous encounters and nocturnal wanderings.',
-    year: '2024',
-    role: 'Director / Cinematographer',
-    tags: ['short-film', 'cinematic', 'urban', 'youth'],
-    videoSrc: '/videos/euphoria.mp4',
-    fontClass: 'font-euphoria-heading',
-    accentVar: '--film-euphoria-accent',
-    stills: [],
-  },
-  {
     id: 'geziret-el-dahab',
     title: 'Geziret El-Dahab',
     shortDescription: 'A visual journey through the golden island — capturing landscapes, local life, and stories of resilience.',
