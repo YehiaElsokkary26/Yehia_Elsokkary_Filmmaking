@@ -2,6 +2,7 @@
 // - kazdura-1.jpg to kazdura-10.jpg → Kazdura Music Shoot — USER UPLOAD
 // - rani-1.jpg to rani-10.jpg → Rani Shoot — USER UPLOAD
 // - ahmad-1.jpg to ahmad-10.jpg → Ahmad Dawood Moez Shoot — USER UPLOAD
+// - novelwear-1.jpg to novelwear-9.jpg → Novel Wear Project — USER UPLOAD
 // - people-of-moiz.mp4 → People of Moiz documentary — USER UPLOAD — do not regenerate
 
 import kazdura1 from '@/assets/kazdura-1.jpg';
@@ -37,6 +38,16 @@ import ahmad8 from '@/assets/ahmad-8.jpg';
 import ahmad9 from '@/assets/ahmad-9.jpg';
 import ahmad10 from '@/assets/ahmad-10.jpg';
 
+import novelwear1 from '@/assets/novelwear-1.jpg';
+import novelwear2 from '@/assets/novelwear-2.jpg';
+import novelwear3 from '@/assets/novelwear-3.jpg';
+import novelwear4 from '@/assets/novelwear-4.jpg';
+import novelwear5 from '@/assets/novelwear-5.jpg';
+import novelwear6 from '@/assets/novelwear-6.jpg';
+import novelwear7 from '@/assets/novelwear-7.jpg';
+import novelwear8 from '@/assets/novelwear-8.jpg';
+import novelwear9 from '@/assets/novelwear-9.jpg';
+
 export interface ProjectEntry {
   id: string;
   title: string;
@@ -49,7 +60,7 @@ export interface ProjectEntry {
 }
 
 export const photographyCategories = [
-  { slug: 'studio', label: 'Studio', thumbnail: kazdura2, description: 'Studio sessions & editorial coverage' },
+  { slug: 'studio', label: 'Studio', thumbnail: novelwear1, description: 'Studio sessions & editorial coverage' },
   { slug: 'fashion', label: 'Fashion Photography', thumbnail: kazdura1, description: 'Editorial & high-fashion shoots' },
   { slug: 'street', label: 'Street Photography', thumbnail: kazdura8, description: 'Raw urban moments, candid life' },
 ] as const;
@@ -121,7 +132,7 @@ export const projects: ProjectEntry[] = [
     ],
     category: 'fashion',
   },
-  // Fashion — Novel Wear (placeholder images — replace when real ones uploaded)
+  // Fashion — Novel Wear — USER UPLOAD
   {
     id: 'f-novel-wear',
     title: 'Novel Wear Project',
@@ -130,13 +141,40 @@ export const projects: ProjectEntry[] = [
     description: 'Editorial / studio campaign for Novel Wear — creative direction & fashion stills. Modern silhouettes meet bold studio lighting.',
     tags: ['fashion', 'studio', 'editorial', 'campaign'],
     media: [
-      { type: 'image', src: kazdura3, caption: 'Novel Wear — look 1' },
-      { type: 'image', src: kazdura5, caption: 'Novel Wear — look 2' },
-      { type: 'image', src: kazdura7, caption: 'Novel Wear — look 3' },
+      { type: 'image', src: novelwear1, caption: 'Novel Wear — look 1' },
+      { type: 'image', src: novelwear2, caption: 'Novel Wear — look 2' },
+      { type: 'image', src: novelwear3, caption: 'Novel Wear — look 3' },
+      { type: 'image', src: novelwear4, caption: 'Novel Wear — look 4' },
+      { type: 'image', src: novelwear5, caption: 'Novel Wear — look 5' },
+      { type: 'image', src: novelwear6, caption: 'Novel Wear — look 6' },
+      { type: 'image', src: novelwear7, caption: 'Novel Wear — look 7' },
+      { type: 'image', src: novelwear8, caption: 'Novel Wear — look 8' },
+      { type: 'image', src: novelwear9, caption: 'Novel Wear — look 9' },
     ],
     category: 'fashion',
   },
-  // Studio (formerly Media Coverage)
+  // Studio — Novel Wear (also appears in fashion)
+  {
+    id: 'st-novel-wear',
+    title: 'Novel Wear Project',
+    year: '',
+    role: 'Photographer / Creative Director',
+    description: 'Novel Wear — studio editorial exploring modern silhouettes. Photographed & directed by Yehia Elsokkary.',
+    tags: ['studio', 'fashion', 'editorial', 'campaign'],
+    media: [
+      { type: 'image', src: novelwear1, caption: 'Novel Wear — look 1' },
+      { type: 'image', src: novelwear2, caption: 'Novel Wear — look 2' },
+      { type: 'image', src: novelwear3, caption: 'Novel Wear — look 3' },
+      { type: 'image', src: novelwear4, caption: 'Novel Wear — look 4' },
+      { type: 'image', src: novelwear5, caption: 'Novel Wear — look 5' },
+      { type: 'image', src: novelwear6, caption: 'Novel Wear — look 6' },
+      { type: 'image', src: novelwear7, caption: 'Novel Wear — look 7' },
+      { type: 'image', src: novelwear8, caption: 'Novel Wear — look 8' },
+      { type: 'image', src: novelwear9, caption: 'Novel Wear — look 9' },
+    ],
+    category: 'studio',
+  },
+  // Studio
   {
     id: 'st-1',
     title: 'Press Conference Series',
@@ -159,21 +197,6 @@ export const projects: ProjectEntry[] = [
     tags: ['events', 'documentary'],
     media: [
       { type: 'image', src: kazdura4, caption: 'Festival crowd' },
-    ],
-    category: 'studio',
-  },
-  // Studio — Novel Wear (also appears in fashion)
-  {
-    id: 'st-novel-wear',
-    title: 'Novel Wear Project',
-    year: '',
-    role: 'Photographer / Creative Director',
-    description: 'Novel Wear — studio editorial exploring modern silhouettes. Photographed & directed by Yehia Elsokkary.',
-    tags: ['studio', 'fashion', 'editorial', 'campaign'],
-    media: [
-      { type: 'image', src: kazdura3, caption: 'Novel Wear — look 1' },
-      { type: 'image', src: kazdura5, caption: 'Novel Wear — look 2' },
-      { type: 'image', src: kazdura7, caption: 'Novel Wear — look 3' },
     ],
     category: 'studio',
   },
@@ -289,8 +312,11 @@ export const scatteredPolaroids = [
   { src: ahmad8, caption: 'Ahmad — Vespa 2', alt: 'Ahmad Dawood Moez — image 8', projectId: 'f-ahmad' },
   { src: ahmad9, caption: 'Ahmad — graffiti wall', alt: 'Ahmad Dawood Moez — image 9', projectId: 'f-ahmad' },
   { src: ahmad10, caption: 'Ahmad — alley', alt: 'Ahmad Dawood Moez — image 10', projectId: 'f-ahmad' },
-  // Novel Wear (placeholder — replace with real images when uploaded)
-  { src: kazdura3, caption: 'Novel Wear — look 1', alt: 'Novel Wear — image 1', projectId: 'f-novel-wear' },
-  { src: kazdura5, caption: 'Novel Wear — look 2', alt: 'Novel Wear — image 2', projectId: 'f-novel-wear' },
-  { src: kazdura7, caption: 'Novel Wear — look 3', alt: 'Novel Wear — image 3', projectId: 'f-novel-wear' },
+  // Novel Wear — USER UPLOAD
+  { src: novelwear1, caption: 'Novel Wear — black hoodie', alt: 'Novel Wear — image 1', projectId: 'f-novel-wear' },
+  { src: novelwear2, caption: 'Novel Wear — green hoodie', alt: 'Novel Wear — image 2', projectId: 'f-novel-wear' },
+  { src: novelwear3, caption: 'Novel Wear — Colorado', alt: 'Novel Wear — image 3', projectId: 'f-novel-wear' },
+  { src: novelwear5, caption: 'Novel Wear — full body', alt: 'Novel Wear — image 5', projectId: 'f-novel-wear' },
+  { src: novelwear6, caption: 'Novel Wear — grey polo', alt: 'Novel Wear — image 6', projectId: 'f-novel-wear' },
+  { src: novelwear8, caption: 'Novel Wear — seated', alt: 'Novel Wear — image 8', projectId: 'f-novel-wear' },
 ];
