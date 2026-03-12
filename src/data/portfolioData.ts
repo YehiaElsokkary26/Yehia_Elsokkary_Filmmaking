@@ -239,30 +239,6 @@ export const projects: ProjectEntry[] = [
     ],
     category: 'short-films',
   },
-  {
-    id: 'sf-1',
-    title: 'After Dark',
-    year: '2024',
-    role: 'Director / Videographer',
-    description: 'A cinematic short exploring nightlife energy and neon-lit streets.',
-    tags: ['short-film', 'cinematic', 'night'],
-    media: [
-      { type: 'video', src: '/videos/reel-3.mp4', caption: 'After Dark — short film' },
-    ],
-    category: 'short-films',
-  },
-  {
-    id: 'sf-2',
-    title: 'Euphoria',
-    year: '2025',
-    role: 'Director',
-    description: 'A visual poem about youth, freedom, and fleeting moments.',
-    tags: ['short-film', 'experimental'],
-    media: [
-      { type: 'video', src: '/videos/reel-1.mp4', caption: 'Euphoria — short film' },
-    ],
-    category: 'short-films',
-  },
   // Documentaries — only People of Moiz
   {
     id: 'd-moiz',
