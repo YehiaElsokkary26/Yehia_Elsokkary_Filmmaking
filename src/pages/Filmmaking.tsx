@@ -31,6 +31,19 @@ const filmProjects: FilmProject[] = [
     accentVar: '--film-geziret-accent',
     stills: [],
   },
+  {
+    id: 'euphoria',
+    title: 'Euphoria',
+    shortDescription: 'A visually arresting short film focusing on color, mood, and raw emotion.',
+    fullDescription: 'Euphoria is a sensory-driven short film that immerses viewers in waves of color and feeling. Blending abstract imagery with intimate human moments, the piece explores heightened states of joy, longing, and release. Every frame is crafted to evoke emotion through bold color grading, dynamic camera movement, and a pulsing rhythm that mirrors the intensity of lived experience.',
+    year: '2024',
+    role: 'Director / Editor / Colorist',
+    tags: ['short film', 'experimental', 'color', 'mood'],
+    videoSrc: '/videos/euphoria.mp4',
+    fontClass: 'font-films-heading',
+    accentVar: '--film-geziret-accent',
+    stills: [],
+  },
 ];
 
 const Filmmaking = () => {
@@ -75,7 +88,6 @@ const Filmmaking = () => {
     }
   }, []);
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (focusedIndex !== null) {
@@ -88,7 +100,6 @@ const Filmmaking = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [focusedIndex, closeProject, switchProject]);
 
-  // Video hover preview
   const handleMouseEnter = (index: number) => {
     const video = videoRefs.current[index];
     if (video && focusedIndex === null) {
@@ -106,7 +117,6 @@ const Filmmaking = () => {
 
   return (
     <main className="min-h-screen pt-16" ref={containerRef}>
-      {/* Header */}
       <section className="px-6 py-8 md:px-12 mood-brown">
         <div className="max-w-6xl mx-auto">
           <p className="font-body text-xs font-semibold tracking-[0.3em] uppercase text-accent mb-3">Portfolio</p>
@@ -115,7 +125,6 @@ const Filmmaking = () => {
         </div>
       </section>
 
-      {/* Project Panels */}
       <div 
         className="flex flex-col"
         style={{ gap: 'var(--film-panel-gap)' }}
@@ -132,8 +141,7 @@ const Filmmaking = () => {
               role="listitem"
               aria-expanded={isFocused}
               className={`
-                relative overflow-hidden cursor-pointer
-                transition-all
+                relative overflow-hidden cursor-pointer transition-all
                 ${prefersReducedMotion ? '' : 'duration-[var(--film-expand-duration)]'}
                 ${isFocused ? 'z-20' : 'z-10'}
                 ${isOtherFocused ? 'opacity-40 pointer-events-auto' : 'opacity-100'}
@@ -148,126 +156,66 @@ const Filmmaking = () => {
               tabIndex={0}
               onKeyDown={(e) => e.key === 'Enter' && !isFocused && openProject(index)}
             >
-              {/* Background Video — USER UPLOAD preview */}
               <video
                 ref={(el) => { videoRefs.current[index] = el; }}
                 src={project.videoSrc}
-                className={`
-                  absolute inset-0 w-full h-full object-cover
-                  transition-transform
-                  ${prefersReducedMotion ? '' : 'duration-[var(--film-hover-duration)]'}
-                  ${!isFocused ? 'group-hover:scale-[1.04]' : ''}
-                `}
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label={`${project.title} video preview — USER UPLOAD`}
+                className={`absolute inset-0 w-full h-full object-cover transition-transform ${prefersReducedMotion ? '' : 'duration-[var(--film-hover-duration)]'} ${!isFocused ? 'group-hover:scale-[1.04]' : ''}`}
+                muted loop playsInline preload="metadata"
+                aria-label={`${project.title} video preview`}
               />
-
-              {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
-              {/* Hover Effects (only when not focused) */}
               {!isFocused && (
-                <div
-                  className={`
-                    absolute inset-0 pointer-events-none
-                    border-2 border-white/0 
-                    transition-all
-                    ${prefersReducedMotion ? '' : 'duration-[var(--film-hover-duration)]'}
-                    hover:border-white/80 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)]
-                  `}
-                  style={{
-                    transform: 'scale(1) translateY(0)',
-                    transition: prefersReducedMotion ? 'none' : `all var(--film-hover-duration) var(--film-hover-easing)`,
-                  }}
-                />
+                <div className={`absolute inset-0 pointer-events-none border-2 border-white/0 transition-all ${prefersReducedMotion ? '' : 'duration-[var(--film-hover-duration)]'} hover:border-white/80 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)]`} />
               )}
 
-              {/* Panel Content - Collapsed State */}
               {!isFocused && (
                 <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-10">
                   <div className="max-w-2xl">
-                    <h2 
-                      className={`${project.fontClass} text-4xl md:text-6xl lg:text-7xl text-white mb-3`}
-                      style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5)' }}
-                    >
+                    <h2 className={`${project.fontClass} text-4xl md:text-6xl lg:text-7xl text-white mb-3`} style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5)' }}>
                       {project.title}
                     </h2>
-                    <p className="font-body text-white/80 text-sm md:text-base max-w-lg">
-                      {project.shortDescription}
-                    </p>
+                    <p className="font-body text-white/80 text-sm md:text-base max-w-lg">{project.shortDescription}</p>
                     <div className="flex items-center gap-3 mt-4">
                       <Play size={20} className="text-white/70" aria-hidden="true" />
-                      <span className="font-body text-xs tracking-wider uppercase text-white/60">
-                        Click to explore
-                      </span>
+                      <span className="font-body text-xs tracking-wider uppercase text-white/60">Click to explore</span>
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* Expanded Detail View */}
               {isFocused && (
-                <div 
-                  className={`
-                    relative z-30 min-h-[70vh] flex flex-col
-                    ${prefersReducedMotion ? '' : 'animate-fade-in'}
-                  `}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  {/* Close / Navigation Controls */}
+                <div className={`relative z-30 min-h-[70vh] flex flex-col ${prefersReducedMotion ? '' : 'animate-fade-in'}`} onClick={(e) => e.stopPropagation()}>
                   <div className="sticky top-16 z-40 flex items-center justify-between p-4 bg-black/60 backdrop-blur-sm">
                     <div className="flex gap-2">
-                      {focusedIndex > 0 && (
-                        <button
-                          onClick={() => switchProject('prev')}
-                          className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
-                          aria-label="Previous project"
-                        >
+                      {focusedIndex! > 0 && (
+                        <button onClick={() => switchProject('prev')} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white" aria-label="Previous project">
                           <ChevronLeft size={20} />
                         </button>
                       )}
-                      {focusedIndex < filmProjects.length - 1 && (
-                        <button
-                          onClick={() => switchProject('next')}
-                          className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
-                          aria-label="Next project"
-                        >
+                      {focusedIndex! < filmProjects.length - 1 && (
+                        <button onClick={() => switchProject('next')} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white" aria-label="Next project">
                           <ChevronRight size={20} />
                         </button>
                       )}
                     </div>
-                    <button
-                      onClick={closeProject}
-                      className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
-                      aria-label="Close project"
-                    >
+                    <button onClick={closeProject} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white" aria-label="Close project">
                       <X size={20} />
                     </button>
                   </div>
 
-                  {/* Main Content */}
                   <div className="flex-1 p-6 md:p-10 lg:p-16">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                      {/* Video Player */}
                       <div className="relative aspect-video bg-black rounded-lg overflow-hidden">
                         <video
                           ref={focusedVideoRef}
                           src={project.videoSrc}
                           className="w-full h-full object-cover"
-                          controls={isPlaying}
-                          playsInline
-                          preload="metadata"
-                          aria-label={`${project.title} full video — USER UPLOAD`}
+                          controls={isPlaying} playsInline preload="metadata"
+                          aria-label={`${project.title} full video`}
                         />
                         {!isPlaying && (
-                          <button
-                            onClick={handlePlay}
-                            className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/30 transition-colors group"
-                            aria-label={`Play ${project.title}`}
-                          >
+                          <button onClick={handlePlay} className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/30 transition-colors group" aria-label={`Play ${project.title}`}>
                             <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
                               <Play size={32} className="text-black ml-1" fill="currentColor" />
                             </div>
@@ -275,48 +223,27 @@ const Filmmaking = () => {
                         )}
                       </div>
 
-                      {/* Details */}
                       <div className="flex flex-col justify-center text-white">
-                        <h2 className={`${project.fontClass} text-4xl md:text-5xl lg:text-6xl mb-4`}>
-                          {project.title}
-                        </h2>
+                        <h2 className={`${project.fontClass} text-4xl md:text-5xl lg:text-6xl mb-4`}>{project.title}</h2>
                         <div className="flex flex-wrap gap-3 font-body text-xs tracking-wider uppercase text-white/60 mb-6">
-                          <span>{project.year}</span>
-                          <span>·</span>
-                          <span>{project.role}</span>
+                          <span>{project.year}</span><span>·</span><span>{project.role}</span>
                         </div>
-                        <p className="font-body text-white/80 leading-relaxed mb-6">
-                          {project.fullDescription}
-                        </p>
+                        <p className="font-body text-white/80 leading-relaxed mb-6">{project.fullDescription}</p>
                         <div className="flex flex-wrap gap-2">
                           {project.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-full border border-white/30 text-white/70"
-                            >
-                              {tag}
-                            </span>
+                            <span key={tag} className="px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-full border border-white/30 text-white/70">{tag}</span>
                           ))}
                         </div>
                       </div>
                     </div>
 
-                    {/* Stills / Snippets Row */}
                     {project.stills.length > 0 && (
                       <div className="mt-10">
-                        <h3 className="font-body text-xs font-semibold tracking-[0.2em] uppercase text-white/60 mb-4">
-                          Gallery
-                        </h3>
+                        <h3 className="font-body text-xs font-semibold tracking-[0.2em] uppercase text-white/60 mb-4">Gallery</h3>
                         <ScrollArea className="w-full whitespace-nowrap">
                           <div className="flex gap-4">
                             {project.stills.map((still, i) => (
-                              <img
-                                key={i}
-                                src={still}
-                                alt={`${project.title} still ${i + 1}`}
-                                className="h-32 md:h-40 w-auto rounded object-cover"
-                                loading="lazy"
-                              />
+                              <img key={i} src={still} alt={`${project.title} still ${i + 1}`} className="h-32 md:h-40 w-auto rounded object-cover" loading="lazy" />
                             ))}
                           </div>
                           <ScrollBar orientation="horizontal" />
@@ -331,12 +258,8 @@ const Filmmaking = () => {
         })}
       </div>
 
-      {/* Dim overlay when a project is focused */}
       {focusedIndex !== null && (
-        <div 
-          className="fixed inset-0 bg-black/50 z-0 pointer-events-none"
-          aria-hidden="true"
-        />
+        <div className="fixed inset-0 bg-black/50 z-0 pointer-events-none" aria-hidden="true" />
       )}
     </main>
   );
