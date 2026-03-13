@@ -48,7 +48,7 @@ const Footer = () => {
           </div>
 
           <p className="font-body text-[10px] opacity-20 tracking-wider text-center mt-10">
-            © {new Date().getFullYear()} Your Name. All rights reserved.
+            © {new Date().getFullYear()} Yehia's Visuals. All rights reserved.
           </p>
         </div>
       </div>
