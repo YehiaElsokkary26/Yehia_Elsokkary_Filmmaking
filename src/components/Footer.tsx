@@ -16,7 +16,7 @@ const Footer = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="editorial-heading text-4xl md:text-6xl lg:text-7xl text-studio-white/90 mb-4">
-              Your Name Here
+              Yehia's Visuals
             </h2>
             <p className="handwritten text-lg text-studio-white/30">Photographer · Videographer · Filmmaker ✦</p>
           </div>
