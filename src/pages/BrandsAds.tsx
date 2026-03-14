@@ -21,7 +21,7 @@ const brandProjects: BrandProject[] = [
 {
   id: 'nivi',
   title: 'NIVI',
-  subtitle: 'Beanie brand campaign — direction, creative concept & production across three formats.',
+  subtitle: 'Beanie brand campaign — Latest as a Directior, creative direction, DOP, Colorist and Editor. ',
   description: '',
   role: '',
   tags: [],
@@ -29,18 +29,18 @@ const brandProjects: BrandProject[] = [
   clips: [
   {
     id: 'nivi-campaign',
-    label: 'Campaign',
-    title: 'NIVI — Campaign',
+    label: 'to who we vibe with ep3',
+    title: 'NIVI — Stand By NIVI',
     description:
     "Campaign concept: 'Who we vibe with' — a comedic sketch where a person not wearing the beanie clearly doesn't 'vibe' with the group.",
     role: 'Director / Creative / Photographer',
-    tags: ['campaign', 'sketch', 'comedy'],
+    tags: ['FILMMAKING', 'color grading', 'cinematic'],
     videoSrc: '/videos/nevi-preview.mp4',
-    synopsis: 'Playful, sketch-like comedy selling the beanie as a social signal.'
+    synopsis: 'a fashion film video portrying them in a cinematic way '
   },
   {
     id: 'nivi-bts',
-    label: 'Behind the Scenes',
+    label: 'to who we vibe with ep2',
     title: 'NIVI — Behind the Scenes',
     description:
     'Go behind the camera — capturing candid moments between takes, lighting setups, and the creative energy that brought the campaign to life.',
@@ -51,7 +51,7 @@ const brandProjects: BrandProject[] = [
   },
   {
     id: 'nivi-lookbook',
-    label: 'Lookbook',
+    label: 'to who we vibe with ep1',
     title: 'NIVI — Lookbook',
     description:
     'A cinematic lookbook reel pairing the beanie with street-ready fits. Texture, color blocking, and attitude across multiple Cairo locations.',
@@ -65,9 +65,9 @@ const brandProjects: BrandProject[] = [
 {
   id: 'ameto',
   title: 'AMETO',
-  subtitle: 'A bold, vertical-format brand film — videography, editing & color grading.',
+  subtitle: 'Suhoor Food Truck in New Cairo',
   description:
-  'Ameto is a striking brand film built around contrast and intensity. Shot in vertical 9:16 to feel native on mobile, the piece pairs deep blacks with vivid reds to create a visceral, high-energy visual identity. Every frame was carefully graded to amplify mood and texture.',
+  'a simple, but professional portrayal of my work shooting Brands.',
   role: 'Videographer / Editor / Colorist',
   tags: ['brand film', 'color grading', 'vertical', 'editorial'],
   videoSrc: '/videos/ameto.mp4',
