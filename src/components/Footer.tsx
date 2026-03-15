@@ -12,16 +12,16 @@ const Footer = () => {
         <div className="absolute inset-0 bg-foreground/90" />
       </div>
 
-      <div className="relative z-[2] text-primary-foreground px-6 py-20 md:px-12 lg:px-24">
+      <div className="relative z-[2] text-primary-foreground px-6 py-8 md:px-12 lg:px-24">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="editorial-heading text-4xl md:text-6xl lg:text-7xl text-studio-white/90 mb-4">
+          <div className="text-center mb-6">
+            <h2 className="editorial-heading text-2xl md:text-3xl lg:text-4xl text-studio-white/90 mb-2">
               Yehia's Visuals
             </h2>
-            <p className="handwritten text-lg text-studio-white/30">Photographer · Videographer · Filmmaker ✦</p>
+            <p className="handwritten text-sm text-studio-white/30">Photographer · Videographer · Filmmaker ✦</p>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 border-t border-studio-white/10 pt-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-t border-studio-white/10 pt-6">
             <div className="flex items-center gap-6">
               <a href="#contact" className="font-body text-xs font-bold tracking-[0.2em] uppercase text-accent hover:opacity-70 transition-opacity">
                 Hire Me
@@ -47,7 +47,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <p className="font-body text-[10px] opacity-20 tracking-wider text-center mt-10">
+          <p className="font-body text-[10px] opacity-20 tracking-wider text-center mt-4">
             © {new Date().getFullYear()} Yehia's Visuals. All rights reserved.
           </p>
         </div>
