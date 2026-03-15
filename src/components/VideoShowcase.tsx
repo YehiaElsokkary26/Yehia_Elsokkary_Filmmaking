@@ -38,34 +38,42 @@ const VideoShowcase = () => {
         </div>
       </div>
 
-      {/* Video grid */}
-      <div className="section-padding mood-brown">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* Immersive video collage — no borders, overlapping, autoplay */}
+      <div className="relative py-16 md:py-24 overflow-hidden bg-studio-dark">
+        {/* Background layer: all videos playing as a collage */}
+        <div className="absolute inset-0 grid grid-cols-2 md:grid-cols-4 gap-0">
+          {showcaseVideos.map((vid, i) => (
+            <div key={i} className="relative overflow-hidden">
+              <video
+                src={vid.src}
+                className="w-full h-full object-cover scale-110"
+                autoPlay muted loop playsInline
+                preload="metadata"
+                aria-label={`Video: ${vid.caption}`}
+              />
+              <div className="absolute inset-0 bg-studio-dark/30 mix-blend-multiply" />
+            </div>
+          ))}
+        </div>
+
+        {/* Overlay gradient for depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-studio-dark/60 via-transparent to-studio-dark/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-studio-dark/40 via-transparent to-studio-dark/40" />
+
+        {/* Floating captions */}
+        <div className="relative z-10 flex flex-wrap justify-center gap-8 md:gap-16 px-6">
           {showcaseVideos.map((vid, i) => (
             <ScrollReveal key={i} delay={i * 150} variant={i % 2 === 0 ? 'left' : 'right'}>
-              <div className="film-frame-border">
-                <div className="aspect-[9/16] md:aspect-[3/4] overflow-hidden relative group">
-                  <video
-                    src={vid.src}
-                    className="w-full h-full object-cover"
-                    muted loop playsInline
-                    preload="metadata"
-                    onMouseEnter={(e) => e.currentTarget.play()}
-                    onMouseLeave={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
-                    aria-label={`Video preview: ${vid.caption}`}
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-foreground/60 to-transparent p-4">
-                    <p className="handwritten text-sm text-studio-white">{vid.caption}</p>
-                    <p className="font-body text-[10px] text-studio-white/50 mt-1">{vid.credit}</p>
-                  </div>
-                </div>
+              <div className="text-center">
+                <p className="handwritten text-lg md:text-xl text-studio-white drop-shadow-lg">{vid.caption}</p>
+                <p className="font-body text-[10px] text-studio-white/50 mt-1 tracking-wider uppercase">{vid.credit}</p>
               </div>
             </ScrollReveal>
           ))}
         </div>
       </div>
 
-      {/* Bottom subtle background video — 30% opacity (texture only) — alternatives: 20%, 40% */}
+      {/* Bottom subtle background video — 30% opacity (texture only) */}
       <div className="relative py-20 overflow-hidden">
         <video
           src={bottomBgVideo}
