@@ -66,6 +66,7 @@ export default {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))'
         },
+        burgundy: 'hsl(var(--burgundy))',
         studio: {
           teal: 'hsl(var(--studio-teal))',
           orange: 'hsl(var(--studio-orange))',
