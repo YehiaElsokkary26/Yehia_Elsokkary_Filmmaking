@@ -328,7 +328,7 @@
   .editorial-divider {
     width: 60px;
     height: 1px;
-    background: hsl(var(--muted-foreground) / 0.2);
+    background: hsl(var(--burgundy));
     margin: 0 auto;
   }
 

@@ -37,7 +37,8 @@ const AboutSection = () => {
             </p>
             <a
               href="#contact"
-              className="btn-pill border-2 border-foreground/20 text-foreground hover:bg-foreground hover:text-primary-foreground"
+              className="btn-pill border-2 text-primary-foreground"
+              style={{ backgroundColor: 'hsl(var(--burgundy))', borderColor: 'hsl(var(--burgundy))' }}
             >
               Work With Me
             </a>

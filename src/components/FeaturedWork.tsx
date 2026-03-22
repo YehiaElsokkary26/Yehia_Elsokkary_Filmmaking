@@ -120,7 +120,7 @@ const FeaturedWork = () => {
             </div>
           </ScrollReveal>
           <ScrollReveal variant="left" delay={150}>
-            <h2 className="font-heading text-6xl md:text-8xl lg:text-9xl text-foreground tracking-wide" style={{ transform: 'rotate(-2deg)', fontFamily: "'Cinzel', serif", fontWeight: 700 }}>My Work</h2>
+            <h2 className="font-heading text-6xl md:text-8xl lg:text-9xl tracking-wide" style={{ transform: 'rotate(-2deg)', fontFamily: "'Abril Fatface', serif", fontWeight: 400, color: 'hsl(var(--burgundy))' }}>My Work</h2>
           </ScrollReveal>
           <ScrollReveal variant="right" delay={300}>
             <p className="handwritten text-lg text-muted-foreground mt-4">Every frame tells a story ✦</p>

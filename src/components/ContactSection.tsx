@@ -32,7 +32,7 @@ const ContactSection = () => {
 
           <ScrollReveal delay={300}>
             <div className="flex items-center justify-center gap-6">
-              <a href="tel:+201550654567" className="btn-pill bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground">
+              <a href="tel:+201550654567" className="btn-pill text-primary-foreground hover:opacity-90" style={{ backgroundColor: 'hsl(var(--burgundy))' }}>
                 <Phone size={16} className="inline mr-2" />
                 +20 155 065 4567
               </a>

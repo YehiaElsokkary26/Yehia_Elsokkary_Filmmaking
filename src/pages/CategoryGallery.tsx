@@ -44,12 +44,22 @@ const CategoryGallery = () => {
       </section>
 
       <section className="px-6 pb-24 md:px-12 lg:px-24">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {items.map((p, i) => (
-            <ScrollReveal key={p.id} variant="scale" delay={i * 100}>
-              <PolaroidCard project={p} onClick={() => openModal(i)} />
-            </ScrollReveal>
-          ))}
+        <div className="max-w-6xl mx-auto">
+          {category === 'street' ? (
+            <div className="text-center py-20">
+              <p className="font-body text-lg" style={{ color: 'hsl(var(--burgundy))' }}>
+                Coming soon — check back later.
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {items.map((p, i) => (
+                <ScrollReveal key={p.id} variant="scale" delay={i * 100}>
+                  <PolaroidCard project={p} onClick={() => openModal(i)} />
+                </ScrollReveal>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
