@@ -46,10 +46,10 @@ const AboutSection = () => {
             <div className="relative">
               <div className="film-frame-border">
                 <div className="aspect-[4/5] overflow-hidden relative">
-                  <video
-                    src="/videos/reel-2.mp4"
+                  <img
+                    src={yehiaPortrait}
+                    alt="Yehia — photographer portrait"
                     className="w-full h-full object-cover"
-                    muted loop playsInline autoPlay
                   />
                 </div>
               </div>
