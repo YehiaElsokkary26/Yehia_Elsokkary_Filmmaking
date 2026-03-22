@@ -78,6 +78,7 @@
     --project-nevi-accent: 340 75% 55%;
 
     --grain-opacity: 0.04;
+    --burgundy: 345 100% 25%;
     --vignette-opacity: 0.15;
     --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -274,6 +275,7 @@
   .polaroid:hover {
     transform: rotate(0deg) scale(1.02);
     box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    border-top: 2px solid hsl(var(--burgundy));
   }
 
   .polaroid-caption {
@@ -327,7 +329,7 @@
   .editorial-divider {
     width: 60px;
     height: 1px;
-    background: hsl(var(--muted-foreground) / 0.2);
+    background: hsl(var(--burgundy));
     margin: 0 auto;
   }
 

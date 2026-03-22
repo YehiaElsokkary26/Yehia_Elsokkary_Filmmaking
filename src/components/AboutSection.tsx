@@ -1,5 +1,6 @@
 import ScrollReveal from './ScrollReveal';
 import { scatteredPolaroids } from '@/data/portfolioData';
+import yehiaPortrait from '@/assets/yehia-portrait.png';
 
 const AboutSection = () => {
   return (
@@ -36,7 +37,8 @@ const AboutSection = () => {
             </p>
             <a
               href="#contact"
-              className="btn-pill border-2 border-foreground/20 text-foreground hover:bg-foreground hover:text-primary-foreground"
+              className="btn-pill border-2 text-primary-foreground"
+              style={{ backgroundColor: 'hsl(var(--burgundy))', borderColor: 'hsl(var(--burgundy))' }}
             >
               Work With Me
             </a>
@@ -45,10 +47,10 @@ const AboutSection = () => {
             <div className="relative">
               <div className="film-frame-border">
                 <div className="aspect-[4/5] overflow-hidden relative">
-                  <video
-                    src="/videos/reel-2.mp4"
+                  <img
+                    src={yehiaPortrait}
+                    alt="Yehia — photographer portrait"
                     className="w-full h-full object-cover"
-                    muted loop playsInline autoPlay
                   />
                 </div>
               </div>

@@ -56,9 +56,19 @@ const Navbar = () => {
                 onClick={() => handleNavClick(link.path)}
                 className={`font-body text-[11px] font-semibold tracking-[0.2em] uppercase transition-colors duration-300 ${
                   scrolled
-                    ? (location.pathname.startsWith(link.path) && link.path !== '/' ? 'text-foreground' : location.pathname === link.path ? 'text-foreground' : 'text-muted-foreground hover:text-foreground')
-                    : (location.pathname === link.path ? 'text-studio-white' : 'text-studio-white/60 hover:text-studio-white')
+                    ? (location.pathname.startsWith(link.path) && link.path !== '/' ? 'text-foreground' : location.pathname === link.path ? 'text-foreground' : 'text-muted-foreground')
+                    : (location.pathname === link.path ? 'text-studio-white' : 'text-studio-white/60')
                 }`}
+                style={{
+                  ...(scrolled && (location.pathname === link.path || (location.pathname.startsWith(link.path) && link.path !== '/'))
+                    ? { color: 'hsl(var(--burgundy))' } : {})
+                }}
+                onMouseEnter={(e) => { if (scrolled) e.currentTarget.style.color = 'hsl(var(--burgundy))'; else e.currentTarget.style.color = 'hsl(0 0% 100%)'; }}
+                onMouseLeave={(e) => {
+                  const isActive = location.pathname === link.path || (location.pathname.startsWith(link.path) && link.path !== '/');
+                  if (scrolled) e.currentTarget.style.color = isActive ? 'hsl(var(--burgundy))' : '';
+                  else e.currentTarget.style.color = isActive ? 'hsl(0 0% 100%)' : 'hsl(0 0% 100% / 0.6)';
+                }}
               >
                 {link.label}
               </Link>
