@@ -1,5 +1,6 @@
 import ScrollReveal from './ScrollReveal';
 import { scatteredPolaroids } from '@/data/portfolioData';
+import yehiaPortrait from '@/assets/yehia-portrait.png';
 
 const AboutSection = () => {
   return (
