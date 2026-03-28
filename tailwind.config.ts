@@ -14,12 +14,12 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Abril Fatface', 'Georgia', 'serif'],
-        editorial: ['Playfair Display', 'Georgia', 'serif'],
+        heading: ['Lora', 'Georgia', 'serif'],
+        editorial: ['Lora', 'Georgia', 'serif'],
         body: ['Quicksand', 'system-ui', 'sans-serif'],
         handwriting: ['Caveat', 'cursive'],
-        sans: ['DM Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['Crimson Pro', 'ui-serif', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
+        sans: ['Quicksand', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['Lora', 'ui-serif', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
         mono: ['Space Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
       },
       colors: {
