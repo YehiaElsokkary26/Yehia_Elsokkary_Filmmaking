@@ -63,6 +63,19 @@ const brandProjects: BrandProject[] = [
 
 },
 {
+  id: 'wtvr-bts',
+  title: 'THE WTVR BTS Shoot',
+  subtitle: 'Behind the scenes of a creative shoot — pure energy and good vibes.',
+  description:
+  'This was a BTS shoot for THE WTVR and honestly, I had a lot of fun with it. The energy on set was electric — capturing candid moments, raw reactions, and the creative chaos that makes every shoot memorable. Sometimes the best content comes from what happens between the takes.',
+  role: 'Videographer / Editor',
+  tags: ['BTS', 'brand', 'creative', 'fun'],
+  videoSrc: '/videos/wtvr-bts.mp4',
+  year: '2024',
+  synopsis: 'A fun, energetic behind-the-scenes shoot.',
+  aspectRatio: '16:9'
+},
+{
   id: 'ameto',
   title: 'AMETO',
   subtitle: 'Suhoor Food Truck in New Cairo',
