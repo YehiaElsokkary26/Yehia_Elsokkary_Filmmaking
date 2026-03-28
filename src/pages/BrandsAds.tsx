@@ -479,9 +479,9 @@ const BrandsAds = () => {
       {brandProjects.map((project) =>
       project.clips ?
       <NiviSection key={project.id} project={project} /> :
-
-      <AmetoSection key={project.id} project={project} />
-
+      project.theme === 'red' ?
+      <AmetoSection key={project.id} project={project} /> :
+      <WtvrSection key={project.id} project={project} />
       )}
     </main>);
 
