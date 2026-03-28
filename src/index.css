@@ -7,45 +7,45 @@
 
 @layer base {
   :root {
-    --background: 32 97.6744% 83.1373%;
-    --foreground: 24 20% 16%;
+    --background: 20 30% 96%;
+    --foreground: 240 20% 20%;
     --card: 0 0% 100%;
-    --card-foreground: 24 20% 16%;
-    --popover: 32 97.6744% 83.1373%;
-    --popover-foreground: 24 20% 16%;
-    --primary: 180 84% 30%;
-    --primary-foreground: 167 85.4545% 89.2157%;
-    --secondary: 43 52% 92%;
-    --secondary-foreground: 24 20% 16%;
-    --muted: 40 30% 88%;
-    --muted-foreground: 24 10% 40%;
-    --accent: 33 92% 60%;
-    --accent-foreground: 24 20% 16%;
+    --card-foreground: 240 20% 20%;
+    --popover: 20 30% 96%;
+    --popover-foreground: 240 20% 20%;
+    --primary: 210 40% 35%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 20 60% 88%;
+    --secondary-foreground: 240 20% 20%;
+    --muted: 300 10% 90%;
+    --muted-foreground: 270 15% 40%;
+    --accent: 350 70% 60%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 40 20% 82%;
-    --input: 40 20% 82%;
-    --ring: 180 84% 30%;
+    --border: 300 10% 82%;
+    --input: 300 10% 82%;
+    --ring: 210 40% 35%;
     --radius: 0.625rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5% 26%;
-    --sidebar-primary: 180 84% 30%;
+    --sidebar-primary: 210 40% 35%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 43 52% 92%;
-    --sidebar-accent-foreground: 24 20% 16%;
-    --sidebar-border: 40 20% 82%;
-    --sidebar-ring: 180 84% 30%;
+    --sidebar-accent: 20 60% 88%;
+    --sidebar-accent-foreground: 240 20% 20%;
+    --sidebar-border: 300 10% 82%;
+    --sidebar-ring: 210 40% 35%;
 
-    --studio-teal: 180 84% 30%;
-    --studio-orange: 33 92% 60%;
-    --studio-cream: 43 52% 92%;
+    --studio-teal: 210 40% 35%;
+    --studio-orange: 350 70% 60%;
+    --studio-cream: 20 60% 88%;
     --studio-white: 0 0% 100%;
-    --studio-dark: 24 20% 16%;
-    --studio-brown: 24 36% 25%;
+    --studio-dark: 270 15% 30%;
+    --studio-brown: 270 15% 25%;
 
-    --font-heading: 'Abril Fatface', Georgia, serif;
-    --font-editorial: 'Playfair Display', Georgia, serif;
+    --font-heading: 'Lora', Georgia, serif;
+    --font-editorial: 'Lora', Georgia, serif;
     --font-body: 'Quicksand', system-ui, sans-serif;
     --font-handwriting: 'Caveat', cursive;
     --font-fun: 'Permanent Marker', cursive;
@@ -54,17 +54,17 @@
     --font-about: 'Pacifico', cursive;
 
     /* Section-specific accent tokens */
-    --accent-films: 220 20% 18%;
-    --accent-docs: 200 15% 22%;
-    --accent-photo: 45 80% 58%;
-    --accent-fashion: 330 40% 80%;
+    --accent-films: 210 40% 18%;
+    --accent-docs: 210 30% 22%;
+    --accent-photo: 20 80% 65%;
+    --accent-fashion: 330 30% 65%;
     --accent-street: 0 0% 95%;
 
     /* Filmmaking project-specific tokens */
     --film-euphoria-font: 'Cinzel', serif;
     --film-geziret-font: 'IBM Plex Sans', sans-serif;
     --film-euphoria-accent: 270 40% 65%;
-    --film-geziret-accent: 35 60% 55%;
+    --film-geziret-accent: 20 60% 55%;
     --film-panel-height: 50vh;
     --film-panel-gap: 10px;
     --film-hover-duration: 220ms;
@@ -73,14 +73,14 @@
 
     /* Brands & Ads — Nevi project tokens */
     --project-nevi-font: 'Permanent Marker', cursive;
-    --project-nevi-accent: 340 75% 55%;
+    --project-nevi-accent: 350 70% 55%;
 
     --grain-opacity: 0.04;
-    --burgundy: 345 100% 25%;
+    --burgundy: 350 70% 60%;
     --vignette-opacity: 0.15;
-    --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "Quicksand", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    --font-serif: "Crimson Pro", ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
+    --font-serif: "Lora", ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
     --shadow-sm: 0px -1px 16.5px 0px hsla(0, 0%, 0%, 0.09);
     --shadow: 0px -1px 33px 0px hsla(0, 0%, 0%, 0.09);
     --shadow-md: 0px -1px 49.5px 0px hsla(0, 0%, 0%, 0.09);
