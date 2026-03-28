@@ -287,6 +287,143 @@ const NiviSection = ({ project }: {project: BrandProject;}) => {
 
 };
 
+/* ─── WTVR BTS Section (single 16:9 video) ─── */
+const WtvrSection = ({ project }: {project: BrandProject;}) => {
+  const navigate = useNavigate();
+  const [featurePlaying, setFeaturePlaying] = useState(false);
+  const featureRef = useRef<HTMLVideoElement>(null);
+  const bgRef = useRef<HTMLVideoElement>(null);
+
+  const handleContactClick = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      navigate('/');
+      setTimeout(() => {
+        const el = document.getElementById('contact');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    },
+    [navigate]
+  );
+
+  const playFeature = useCallback(() => {
+    setFeaturePlaying(true);
+    requestAnimationFrame(() => {
+      if (featureRef.current) {
+        featureRef.current.currentTime = 0;
+        featureRef.current.play().catch(() => {});
+      }
+    });
+  }, []);
+
+  const pauseFeature = useCallback(() => {
+    setFeaturePlaying(false);
+  }, []);
+
+  useEffect(() => {
+    if (bgRef.current) bgRef.current.play().catch(() => {});
+  }, []);
+
+  return (
+    <section data-project-slug={project.id} className="relative overflow-hidden">
+      <div className="px-6 py-10 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <p className="font-body text-xs font-semibold tracking-[0.3em] uppercase text-accent mb-3">Portfolio</p>
+          <h2 className="font-films-heading text-5xl md:text-7xl text-white">{project.title}</h2>
+          <p className="font-body text-sm text-white/40 mt-2 max-w-xl">{project.subtitle}</p>
+        </div>
+      </div>
+
+      <div className="relative w-full min-h-[70vh]">
+        <video
+          ref={bgRef}
+          src={project.videoSrc}
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay muted loop playsInline preload="metadata" />
+        <div className="absolute inset-0 bg-black/50" />
+
+        {/* Desktop */}
+        <div className="relative z-10 hidden lg:flex items-center justify-center min-h-[70vh] px-8 xl:px-16 gap-12">
+          <div className="relative w-[50%] max-w-[600px] aspect-video rounded-lg overflow-hidden shadow-2xl">
+            {!featurePlaying ? (
+              <>
+                <video src={project.videoSrc} className="w-full h-full object-cover" muted loop autoPlay playsInline preload="metadata" />
+                <div className="absolute inset-0 bg-black/20" />
+                <button
+                  onClick={playFeature}
+                  className="absolute inset-0 flex items-center justify-center group/play"
+                  aria-label={`Play ${project.title} with sound`}>
+                  <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center transition-transform group-hover/play:scale-110">
+                    <Play size={28} className="text-white ml-1" fill="currentColor" />
+                  </div>
+                </button>
+                <div className="absolute bottom-3 left-3 flex items-center gap-1.5 text-white/50">
+                  <Volume2 size={14} />
+                  <span className="font-body text-[10px] tracking-wider uppercase">Play with sound</span>
+                </div>
+              </>
+            ) : (
+              <video
+                ref={featureRef}
+                src={project.videoSrc}
+                className="w-full h-full object-contain bg-black"
+                controls playsInline
+                onPause={pauseFeature}
+                onEnded={pauseFeature} />
+            )}
+          </div>
+
+          <div className="flex flex-col justify-center max-w-[380px]">
+            <h3 className="font-heading text-4xl xl:text-5xl text-white mb-3 drop-shadow-lg">{project.title}</h3>
+            {project.synopsis && <p className="font-body text-white/90 text-base italic mb-3 drop-shadow-md">{project.synopsis}</p>}
+            <p className="font-body text-white/60 text-xs tracking-wider uppercase mb-2">{project.year} · {project.role}</p>
+            <p className="font-body text-white/70 text-sm leading-relaxed mb-5 drop-shadow-sm">{project.description}</p>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {project.tags.map((tag) => (
+                <span key={tag} className="px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-white/60 border border-white/20 rounded-full">{tag}</span>
+              ))}
+            </div>
+            <button onClick={handleContactClick} className="self-start px-6 py-3 rounded-full bg-white font-body text-xs font-bold tracking-widest uppercase text-black transition-transform hover:scale-105">
+              Contact Me Now
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile */}
+        <div className="relative z-10 lg:hidden flex flex-col items-center px-6 py-10">
+          <div className="relative w-full max-w-[400px] aspect-video rounded-lg overflow-hidden shadow-2xl">
+            {!featurePlaying ? (
+              <>
+                <video src={project.videoSrc} className="w-full h-full object-cover" muted loop autoPlay playsInline preload="metadata" />
+                <div className="absolute inset-0 bg-black/20" />
+                <button onClick={playFeature} className="absolute inset-0 flex items-center justify-center" aria-label={`Play ${project.title}`}>
+                  <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                    <Play size={28} className="text-white ml-1" fill="currentColor" />
+                  </div>
+                </button>
+              </>
+            ) : (
+              <video ref={featureRef} src={project.videoSrc} className="w-full h-full object-contain bg-black" controls playsInline autoPlay onPause={pauseFeature} onEnded={pauseFeature} />
+            )}
+          </div>
+          <div className="mt-6 text-center">
+            <h3 className="font-heading text-3xl text-white mb-2">{project.title}</h3>
+            {project.synopsis && <p className="font-body text-white/80 text-sm italic mb-2">{project.synopsis}</p>}
+            <p className="font-body text-white/50 text-xs tracking-wider uppercase mb-2">{project.year} · {project.role}</p>
+            <p className="font-body text-white/60 text-sm leading-relaxed mb-4 max-w-md mx-auto">{project.description}</p>
+            <div className="flex flex-wrap justify-center gap-2 mb-5">
+              {project.tags.map((tag) => (
+                <span key={tag} className="px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-white/50 border border-white/20 rounded-full">{tag}</span>
+              ))}
+            </div>
+            <button onClick={handleContactClick} className="px-6 py-3 rounded-full bg-white font-body text-xs font-bold tracking-widest uppercase text-black">Contact Me Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 /* ─── AMETO Section (single vertical video, red/black theme) ─── */
 const AmetoSection = ({ project }: {project: BrandProject;}) => {
   const navigate = useNavigate();
