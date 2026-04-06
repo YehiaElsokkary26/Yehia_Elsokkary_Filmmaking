@@ -126,6 +126,7 @@ const HeroVideo = () => {
           src={heroVideos[currentVideo]}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms] ${crossfading ? 'opacity-0' : 'opacity-100'}`}
           autoPlay muted={isMuted} loop playsInline
+          preload="auto"
           aria-label="Background video preview"
         />
         {crossfading && (

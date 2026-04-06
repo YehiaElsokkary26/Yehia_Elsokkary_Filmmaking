@@ -14,12 +14,12 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Lora', 'Georgia', 'serif'],
-        editorial: ['Lora', 'Georgia', 'serif'],
-        body: ['Quicksand', 'system-ui', 'sans-serif'],
+        heading: ['Bebas Neue', 'sans-serif'],
+        editorial: ['Bebas Neue', 'sans-serif'],
+        body: ['Montserrat', 'system-ui', 'sans-serif'],
         handwriting: ['Caveat', 'cursive'],
-        sans: ['Quicksand', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['Lora', 'ui-serif', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
+        sans: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['Bebas Neue', 'ui-serif', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
         mono: ['Space Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
       },
       colors: {

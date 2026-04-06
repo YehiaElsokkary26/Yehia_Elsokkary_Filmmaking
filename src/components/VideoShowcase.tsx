@@ -16,12 +16,12 @@ const VideoShowcase = () => {
     <section className="relative overflow-hidden" id="reels">
       {/* Main "From the Lens" header with video background */}
       <div className="relative h-[50vh] md:h-[60vh] overflow-hidden">
-        <video
+         <video
           src={bgVideo}
           className="absolute inset-0 w-full h-full object-cover"
           style={{ transform: 'scale(1.15)' }}
           autoPlay muted loop playsInline
-          preload="metadata"
+          preload="auto"
           aria-label="From the Lens background video — USER UPLOAD"
         />
         <div className="absolute inset-0 bg-studio-dark/70" />
@@ -48,7 +48,7 @@ const VideoShowcase = () => {
                 src={vid.src}
                 className="w-full h-full object-cover scale-110"
                 autoPlay muted loop playsInline
-                preload="metadata"
+                preload="auto"
                 aria-label={`Video: ${vid.caption}`}
               />
               <div className="absolute inset-0 bg-studio-dark/30 mix-blend-multiply" />
@@ -79,7 +79,7 @@ const VideoShowcase = () => {
           src={bottomBgVideo}
           className="absolute inset-0 w-full h-full object-cover opacity-30"
           autoPlay muted loop playsInline
-          preload="metadata"
+          preload="auto"
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-background/60" />

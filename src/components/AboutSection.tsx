@@ -14,6 +14,7 @@ const AboutSection = () => {
           loop
           playsInline
           autoPlay
+          preload="auto"
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-background/75" />
