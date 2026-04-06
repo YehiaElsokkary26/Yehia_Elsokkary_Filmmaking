@@ -37,7 +37,7 @@ const featuredProjects = [
     link: '/filmmaking',
   },
   {
-    title: 'Short \nFilms',
+    title: 'Short Films',
     category: 'DALAL OUT NOW!!',
     date: '',
     description: 'Writing, experimentation, artisitc, non commercial',
