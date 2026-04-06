@@ -78,9 +78,9 @@
     --grain-opacity: 0.04;
     --burgundy: 350 70% 60%;
     --vignette-opacity: 0.15;
-    --font-sans: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    --font-serif: "Lora", ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
+    --font-serif: "Bebas Neue", ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
     --shadow-sm: 0px -1px 16.5px 0px hsla(0, 0%, 0%, 0.09);
     --shadow: 0px -1px 33px 0px hsla(0, 0%, 0%, 0.09);
     --shadow-md: 0px -1px 49.5px 0px hsla(0, 0%, 0%, 0.09);
