@@ -158,14 +158,14 @@ const FeaturedWork = () => {
                 />
               </div>
 
-              <div className="absolute inset-0 flex items-center z-[2] px-8 md:px-20 lg:px-32">
+              <div className="absolute inset-0 flex items-center z-[2] px-8 md:px-20 lg:px-32 text-base">
                 <div className={`max-w-xl ${isEven ? '' : 'ml-auto text-right'}`}>
                   <ScrollReveal variant={isEven ? 'left' : 'right'} delay={100}>
                     <span className="text-[10px] tracking-[0.3em] uppercase text-accent font-bold" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                      {project.category} — {project.date}
+                      {project.category}{project.date ? ` — ${project.date}` : ''}
                     </span>
                   </ScrollReveal>
-                  <ScrollReveal variant={isEven ? 'left' : 'right'} delay={250}>
+                  <ScrollReveal variant={isEven ? 'left' : 'right'} delay={250} className="text-sm text-left">
                     <h3 className="md:text-7xl lg:text-8xl text-studio-white mt-4 leading-[0.92] py-[4px] my-[24px] mx-[81px] px-0 text-5xl text-justify whitespace-pre-line" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 700, letterSpacing: '0.02em' }}>
                       {project.title}
                     </h3>
