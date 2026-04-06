@@ -3,6 +3,7 @@ import MarqueeStrip from '@/components/MarqueeStrip';
 import FeaturedWork from '@/components/FeaturedWork';
 import AboutSection from '@/components/AboutSection';
 import VideoShowcase from '@/components/VideoShowcase';
+import MarqueeStripBottom from '@/components/MarqueeStripBottom';
 import ContactSection from '@/components/ContactSection';
 
 const Index = () => {
@@ -13,6 +14,7 @@ const Index = () => {
       <FeaturedWork />
       <AboutSection />
       <VideoShowcase />
+      <MarqueeStripBottom />
       <ContactSection />
     </main>
   );
