@@ -41,24 +41,24 @@ const brandProjects: BrandProject[] = [
   {
     id: 'nivi-bts',
     label: 'to who we vibe with ep2',
-    title: 'NIVI — Behind the Scenes',
+    title: 'NIVI — To who we vibe with ep1',
     description:
-    'Go behind the camera — capturing candid moments between takes, lighting setups, and the creative energy that brought the campaign to life.',
+    'The idea was anyone without the beanie was a person we dont vibe with. My first campaign project, and I had fun with this one. ',
     role: 'Director / Creative',
-    tags: ['bts', 'fashion'],
+    tags: ['CAMPAIGN ', 'fashion'],
     videoSrc: '/videos/nevi-2.mp4',
-    synopsis: 'Candid moments, lighting setups, raw creative energy.'
+    synopsis: 'Advertisement campaign by My Creative direction'
   },
   {
     id: 'nivi-lookbook',
     label: 'to who we vibe with ep1',
-    title: 'NIVI — Lookbook',
+    title: 'NIVI — to who we vibe with ep2',
     description:
-    'A cinematic lookbook reel pairing the beanie with street-ready fits. Texture, color blocking, and attitude across multiple Cairo locations.',
+    'The idea was anyone without the beanie was a person we dont vibe with. My first campaign project, and I had fun with this one. ',
     role: 'Director / Photographer',
-    tags: ['lookbook', 'cinematic'],
+    tags: ['FASHION', 'FILMMAKING'],
     videoSrc: '/videos/nevi-3.mp4',
-    synopsis: 'Cinematic street-style lookbook shot across Cairo.'
+    synopsis: 'Campaign, with my creative direction '
   }]
 
 },
