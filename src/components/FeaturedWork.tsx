@@ -17,30 +17,30 @@ const videoBackgrounds = [
 const featuredProjects = [
   {
     title: 'Brand shoots and ADVERTISEMENTS',
-    category: 'Short Film',
-    date: '2025',
+    category: 'FASHION FILMS AND MORE...',
+    date: '',
     description: 'NIVI - NOVEL WEER ',
     link: '/brands',
   },
   {
     title: 'documentries',
-    category: 'Music Video',
-    date: '2025',
+    category: 'STORIES, WRITING, DOCUMENTATION',
+    date: '',
     description: 'Documenting people, Places, Moments',
     link: '/video/documentaries',
   },
   {
     title: 'Filmmaking',
-    category: 'Films',
-    date: '2024',
+    category: 'SHORT FILMLIKE VIDEOS',
+    date: '',
     description: 'Cinematic stories — Euphoria and Geziret El-Dahab. Urban euphoria meets intimate landscapes.',
     link: '/filmmaking',
   },
   {
     title: 'Short \nFilms',
-    category: 'Commercial',
-    date: '2024',
-    description: 'After-dark energy brought to life. Neon, shadows, and the pulse of the night.',
+    category: 'DALAL OUT NOW!!',
+    date: '',
+    description: 'Writing, experimentation, artisitc, non commercial',
     link: '/video/short-films',
   },
 ];
@@ -158,14 +158,14 @@ const FeaturedWork = () => {
                 />
               </div>
 
-              <div className="absolute inset-0 flex items-center z-[2] px-8 md:px-20 lg:px-32">
+              <div className="absolute inset-0 flex items-center z-[2] px-8 md:px-20 lg:px-32 text-base">
                 <div className={`max-w-xl ${isEven ? '' : 'ml-auto text-right'}`}>
                   <ScrollReveal variant={isEven ? 'left' : 'right'} delay={100}>
                     <span className="text-[10px] tracking-[0.3em] uppercase text-accent font-bold" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                      {project.category} — {project.date}
+                      {project.category}{project.date ? ` — ${project.date}` : ''}
                     </span>
                   </ScrollReveal>
-                  <ScrollReveal variant={isEven ? 'left' : 'right'} delay={250}>
+                  <ScrollReveal variant={isEven ? 'left' : 'right'} delay={250} className="text-sm text-left">
                     <h3 className="md:text-7xl lg:text-8xl text-studio-white mt-4 leading-[0.92] py-[4px] my-[24px] mx-[81px] px-0 text-5xl text-justify whitespace-pre-line" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 700, letterSpacing: '0.02em' }}>
                       {project.title}
                     </h3>
