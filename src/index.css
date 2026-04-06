@@ -87,9 +87,9 @@
     --shadow-lg: 0px -1px 82.5px 0px hsla(0, 0%, 0%, 0.09);
   }
   .dark {
-    --font-sans: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    --font-serif: "Lora", ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
+    --font-serif: "Bebas Neue", ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
     --radius: 0.625rem;
   }
 }
