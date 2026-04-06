@@ -213,7 +213,7 @@ const FeaturedWork = () => {
                       src={cat.thumbnail}
                       alt={cat.label}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
+                      loading="eager"
                     />
                   </div>
                   <div className="pt-3 pb-1 text-center">
