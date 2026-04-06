@@ -116,7 +116,7 @@ const FeaturedWork = () => {
           <ScrollReveal variant="left">
             <div className="mb-4">
               <div className="editorial-divider !mx-0 mb-8" />
-              <p className="font-body text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-5">Portfolio</p>
+              <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-5" style={{ fontFamily: "'Montserrat', sans-serif" }}>Portfolio</p>
             </div>
           </ScrollReveal>
           <ScrollReveal variant="left" delay={150}>
