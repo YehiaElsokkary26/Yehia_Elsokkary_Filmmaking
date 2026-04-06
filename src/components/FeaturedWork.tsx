@@ -161,7 +161,7 @@ const FeaturedWork = () => {
               <div className="absolute inset-0 flex items-center z-[2] px-8 md:px-20 lg:px-32">
                 <div className={`max-w-xl ${isEven ? '' : 'ml-auto text-right'}`}>
                   <ScrollReveal variant={isEven ? 'left' : 'right'} delay={100}>
-                    <span className="font-body text-[10px] tracking-[0.3em] uppercase text-accent font-bold">
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-accent font-bold" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                       {project.category} — {project.date}
                     </span>
                   </ScrollReveal>
