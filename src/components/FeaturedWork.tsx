@@ -166,7 +166,7 @@ const FeaturedWork = () => {
                     </span>
                   </ScrollReveal>
                   <ScrollReveal variant={isEven ? 'left' : 'right'} delay={250}>
-                    <h3 className="editorial-display md:text-7xl lg:text-8xl text-studio-white mt-4 leading-[0.92] py-[4px] my-[24px] mx-[81px] px-0 text-5xl text-justify whitespace-pre-line">
+                    <h3 className="md:text-7xl lg:text-8xl text-studio-white mt-4 leading-[0.92] py-[4px] my-[24px] mx-[81px] px-0 text-5xl text-justify whitespace-pre-line" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 700, letterSpacing: '0.02em' }}>
                       {project.title}
                     </h3>
                   </ScrollReveal>
