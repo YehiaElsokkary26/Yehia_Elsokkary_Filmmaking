@@ -142,7 +142,7 @@ const FeaturedWork = () => {
                   className="w-full h-full object-cover"
                   style={{ transform: 'scale(1.2)' }}
                   autoPlay muted loop playsInline
-                  preload="metadata"
+                  preload="auto"
                   aria-label={`Video background for ${project.title}`}
                 />
                 <div className={`absolute inset-0 ${
