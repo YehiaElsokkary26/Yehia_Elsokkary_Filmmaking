@@ -171,7 +171,7 @@ const FeaturedWork = () => {
                     </h3>
                   </ScrollReveal>
                   <ScrollReveal variant={isEven ? 'left' : 'right'} delay={400}>
-                    <p className="font-body text-studio-white/60 mt-6 text-sm md:text-base max-w-md leading-relaxed">
+                    <p className="text-studio-white/60 mt-6 text-sm md:text-base max-w-md leading-relaxed" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                       {project.description}
                     </p>
                   </ScrollReveal>
