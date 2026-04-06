@@ -116,11 +116,11 @@ const FeaturedWork = () => {
           <ScrollReveal variant="left">
             <div className="mb-4">
               <div className="editorial-divider !mx-0 mb-8" />
-              <p className="font-body text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-5">Portfolio</p>
+              <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-5" style={{ fontFamily: "'Montserrat', sans-serif" }}>Portfolio</p>
             </div>
           </ScrollReveal>
           <ScrollReveal variant="left" delay={150}>
-            <h2 className="font-heading text-6xl md:text-8xl lg:text-9xl tracking-wide" style={{ transform: 'rotate(-2deg)', fontFamily: "'Abril Fatface', serif", fontWeight: 400, color: 'hsl(var(--burgundy))' }}>My Work</h2>
+            <h2 className="text-6xl md:text-8xl lg:text-9xl tracking-wide" style={{ transform: 'rotate(-2deg)', fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 600, fontStyle: 'italic', color: 'hsl(var(--burgundy))', letterSpacing: '0.02em' }}>My Work</h2>
           </ScrollReveal>
           <ScrollReveal variant="right" delay={300}>
             <p className="handwritten text-lg text-muted-foreground mt-4">Every frame tells a story ✦</p>
@@ -142,7 +142,7 @@ const FeaturedWork = () => {
                   className="w-full h-full object-cover"
                   style={{ transform: 'scale(1.2)' }}
                   autoPlay muted loop playsInline
-                  preload="metadata"
+                  preload="auto"
                   aria-label={`Video background for ${project.title}`}
                 />
                 <div className={`absolute inset-0 ${
@@ -161,17 +161,17 @@ const FeaturedWork = () => {
               <div className="absolute inset-0 flex items-center z-[2] px-8 md:px-20 lg:px-32">
                 <div className={`max-w-xl ${isEven ? '' : 'ml-auto text-right'}`}>
                   <ScrollReveal variant={isEven ? 'left' : 'right'} delay={100}>
-                    <span className="font-body text-[10px] tracking-[0.3em] uppercase text-accent font-bold">
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-accent font-bold" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                       {project.category} — {project.date}
                     </span>
                   </ScrollReveal>
                   <ScrollReveal variant={isEven ? 'left' : 'right'} delay={250}>
-                    <h3 className="editorial-display md:text-7xl lg:text-8xl text-studio-white mt-4 leading-[0.92] py-[4px] my-[24px] mx-[81px] px-0 text-5xl text-justify whitespace-pre-line">
+                    <h3 className="md:text-7xl lg:text-8xl text-studio-white mt-4 leading-[0.92] py-[4px] my-[24px] mx-[81px] px-0 text-5xl text-justify whitespace-pre-line" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 700, letterSpacing: '0.02em' }}>
                       {project.title}
                     </h3>
                   </ScrollReveal>
                   <ScrollReveal variant={isEven ? 'left' : 'right'} delay={400}>
-                    <p className="font-body text-studio-white/60 mt-6 text-sm md:text-base max-w-md leading-relaxed">
+                    <p className="text-studio-white/60 mt-6 text-sm md:text-base max-w-md leading-relaxed" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                       {project.description}
                     </p>
                   </ScrollReveal>
@@ -191,10 +191,10 @@ const FeaturedWork = () => {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal variant="left">
             <div className="editorial-divider !mx-0 mb-4" />
-            <p className="font-body text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">Photography</p>
+            <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>Photography</p>
           </ScrollReveal>
           <ScrollReveal variant="left" delay={150}>
-            <h2 className="font-photo-heading text-5xl md:text-7xl lg:text-8xl text-foreground">PHOTOGRAPHY</h2>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl text-foreground" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase' }}>PHOTOGRAPHY</h2>
           </ScrollReveal>
           <ScrollReveal variant="right" delay={300}>
             <p className="handwritten text-lg text-muted-foreground mt-3 mb-3">Browse categories below ✦</p>
@@ -213,7 +213,7 @@ const FeaturedWork = () => {
                       src={cat.thumbnail}
                       alt={cat.label}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
+                      loading="eager"
                     />
                   </div>
                   <div className="pt-3 pb-1 text-center">
@@ -250,7 +250,7 @@ const FeaturedWork = () => {
                           src={img.src}
                           alt={img.alt}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          loading="lazy"
+                          loading="eager"
                           decoding="async"
                           data-project={img.projectId}
                           data-slug={img.projectId}
