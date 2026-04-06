@@ -79,7 +79,7 @@ const VideoShowcase = () => {
           src={bottomBgVideo}
           className="absolute inset-0 w-full h-full object-cover opacity-30"
           autoPlay muted loop playsInline
-          preload="metadata"
+          preload="auto"
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-background/60" />
