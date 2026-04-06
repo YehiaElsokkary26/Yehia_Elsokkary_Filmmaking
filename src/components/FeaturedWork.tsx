@@ -191,7 +191,7 @@ const FeaturedWork = () => {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal variant="left">
             <div className="editorial-divider !mx-0 mb-4" />
-            <p className="font-body text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">Photography</p>
+            <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>Photography</p>
           </ScrollReveal>
           <ScrollReveal variant="left" delay={150}>
             <h2 className="font-photo-heading text-5xl md:text-7xl lg:text-8xl text-foreground">PHOTOGRAPHY</h2>
