@@ -29,7 +29,7 @@ const VideoShowcase = () => {
           <ScrollReveal variant="left">
             <div className="text-center">
               <p className="font-body text-xs font-semibold tracking-[0.3em] uppercase text-accent mb-5">Showreel</p>
-              <h2 className="editorial-heading text-5xl md:text-7xl lg:text-8xl text-studio-cream">From the Lens</h2>
+              <h2 className="text-5xl md:text-7xl lg:text-8xl text-studio-cream" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 700, letterSpacing: '0.02em' }}>From the Lens</h2>
               <p className="font-body text-studio-cream/50 mt-5 font-medium max-w-md mx-auto text-sm">
                 Selected clips, experimental edits, and candid moments.
               </p>

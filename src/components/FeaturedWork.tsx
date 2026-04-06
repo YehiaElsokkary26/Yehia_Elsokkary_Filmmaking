@@ -194,7 +194,7 @@ const FeaturedWork = () => {
             <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>Photography</p>
           </ScrollReveal>
           <ScrollReveal variant="left" delay={150}>
-            <h2 className="font-photo-heading text-5xl md:text-7xl lg:text-8xl text-foreground">PHOTOGRAPHY</h2>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl text-foreground" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase' }}>PHOTOGRAPHY</h2>
           </ScrollReveal>
           <ScrollReveal variant="right" delay={300}>
             <p className="handwritten text-lg text-muted-foreground mt-3 mb-3">Browse categories below ✦</p>

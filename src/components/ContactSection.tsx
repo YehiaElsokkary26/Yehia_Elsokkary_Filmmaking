@@ -9,7 +9,7 @@ const ContactSection = () => {
         src="/videos/upload-2.mp4"
         className="absolute inset-0 w-full h-full object-cover opacity-50"
         autoPlay muted loop playsInline
-        preload="metadata"
+        preload="auto"
         aria-hidden="true"
       />
       <div className="absolute inset-0 bg-background/40" />
