@@ -67,41 +67,28 @@ const FeaturedWork = () => {
       setDisplayPolaroids(
         [...scatteredPolaroids].sort(() => Math.random() - 0.5).slice(0, 12)
       );
-    }, 4000);
+    }, 60000);
 
     return () => clearInterval(interval);
   }, []);
 
-  // Shuffle categories on scroll — throttled to 600ms
+  // Shuffle categories every 1 minute
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
 
-    const handleScroll = () => {
-      const now = Date.now();
-      if (now - lastShuffleRef.current < 600) return;
+    const interval = setInterval(() => {
+      setShuffledCategories(prev => {
+        const arr = [...prev];
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      });
+    }, 60000);
 
-      const photoSection = document.getElementById('photography');
-      if (!photoSection) return;
-
-      const rect = photoSection.getBoundingClientRect();
-      const inView = rect.top < window.innerHeight && rect.bottom > 0;
-
-      if (inView) {
-        lastShuffleRef.current = now;
-        setShuffledCategories(prev => {
-          const arr = [...prev];
-          for (let i = arr.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [arr[i], arr[j]] = [arr[j], arr[i]];
-          }
-          return arr;
-        });
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => clearInterval(interval);
   }, []);
 
   const handlePolaroidClick = useCallback((projectId: string) => {
