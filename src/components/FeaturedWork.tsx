@@ -146,14 +146,14 @@ const FeaturedWork = () => {
               </div>
 
               <div className="absolute inset-0 flex items-center z-[2] px-8 md:px-20 lg:px-32 text-base">
-                <div className={`max-w-xl ${isEven ? '' : 'ml-auto text-right'}`}>
+                <div className={`max-w-xl ${isEven ? '' : 'ml-auto'}`}>
                   <ScrollReveal variant={isEven ? 'left' : 'right'} delay={100}>
                     <span className="text-[10px] tracking-[0.3em] uppercase text-accent font-bold" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                       <span>{project.category}</span>{project.date && <span>{` — ${project.date}`}</span>}
                     </span>
                   </ScrollReveal>
                   <ScrollReveal variant={isEven ? 'left' : 'right'} delay={250} className="text-sm text-left">
-                    <h3 className="md:text-7xl lg:text-8xl text-studio-white mt-4 leading-[0.92] py-[4px] my-[24px] mx-[81px] px-0 text-5xl text-justify whitespace-pre-line" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 700, letterSpacing: '0.02em' }}>
+                    <h3 className="md:text-7xl text-studio-white mt-4 leading-[0.92] py-[4px] my-[24px] mx-[81px] px-0 text-5xl whitespace-pre-line text-center font-mono lg:text-5xl" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 700, letterSpacing: '0.02em' }}>
                       {project.title}
                     </h3>
                   </ScrollReveal>
