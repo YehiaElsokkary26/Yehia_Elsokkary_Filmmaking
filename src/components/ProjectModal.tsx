@@ -64,7 +64,7 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }: ProjectModalProps) =
             {project.media.map((m, i) => (
               <div key={i} className="overflow-hidden rounded-sm">
                 {m.type === 'image' ? (
-                  <img src={m.src} alt={m.caption || project.title} className="w-full h-auto object-cover aspect-[4/5]" loading="lazy" />
+                  <img src={m.src} alt={m.caption || project.title} className="w-full h-auto object-cover aspect-[4/5]" loading="eager" />
                 ) : (
                   <video src={m.src} controls className="w-full" playsInline preload="metadata" />
                 )}

@@ -174,32 +174,6 @@ export const projects: ProjectEntry[] = [
     ],
     category: 'studio',
   },
-  // Studio
-  {
-    id: 'st-1',
-    title: 'Press Conference Series',
-    year: '2025',
-    role: 'Photographer',
-    description: 'Behind-the-scenes press event coverage capturing the energy of live media.',
-    tags: ['documentary', 'press', 'events'],
-    media: [
-      { type: 'image', src: kazdura10, caption: 'Press conference setup' },
-      { type: 'image', src: kazdura9, caption: 'Event coverage' },
-    ],
-    category: 'studio',
-  },
-  {
-    id: 'st-2',
-    title: 'Festival Coverage',
-    year: '2024',
-    role: 'Photographer',
-    description: 'Golden hour festival moments — crowds, performers, and atmosphere.',
-    tags: ['events', 'documentary'],
-    media: [
-      { type: 'image', src: kazdura4, caption: 'Festival crowd' },
-    ],
-    category: 'studio',
-  },
   // Street
   {
     id: 's-1',
