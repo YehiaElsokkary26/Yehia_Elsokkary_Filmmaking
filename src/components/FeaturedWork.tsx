@@ -16,14 +16,14 @@ const videoBackgrounds = [
 
 const featuredProjects = [
   {
-    title: 'Brand shoots and ADVERTISEMENTS',
+    title: 'Brand shoots and Advertisements',
     category: 'FASHION FILMS AND MORE...',
     date: '',
     description: 'NIVI - NOVEL WEER ',
     link: '/brands',
   },
   {
-    title: 'documentries',
+    title: 'Documentries',
     category: 'STORIES, WRITING, DOCUMENTATION',
     date: '',
     description: 'Documenting people, Places, Moments',
