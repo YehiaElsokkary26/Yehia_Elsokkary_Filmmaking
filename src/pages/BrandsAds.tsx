@@ -88,6 +88,19 @@ const brandProjects: BrandProject[] = [
   synopsis: 'High-contrast vertical brand film — red meets black.',
   aspectRatio: '9:16',
   theme: 'red'
+},
+{
+  id: '8planets-cold',
+  title: '8 Planets — "Cold"',
+  subtitle: 'Music Video Shoot',
+  description:
+  'Music video for Cold, by 8 planets. Story starts off by Yahya being alone and feeling lost, the second someone finds him to jam together, it\'s like he\'s in a completely different place.',
+  role: 'Videographer / Editor',
+  tags: ['music video', 'narrative', 'cinematic'],
+  videoSrc: '/videos/8planets-cold.mp4',
+  year: '2025',
+  synopsis: 'A story of solitude and connection through music.',
+  aspectRatio: '16:9'
 }];
 
 
