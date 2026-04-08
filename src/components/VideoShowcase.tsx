@@ -21,7 +21,7 @@ const VideoShowcase = () => {
           className="absolute inset-0 w-full h-full object-cover"
           style={{ transform: 'scale(1.15)' }}
           autoPlay muted loop playsInline
-          preload="auto"
+          preload="metadata"
           aria-label="From the Lens background video — USER UPLOAD"
         />
         <div className="absolute inset-0 bg-studio-dark/70" />
@@ -48,7 +48,7 @@ const VideoShowcase = () => {
                 src={vid.src}
                 className="w-full h-full object-cover scale-110"
                 autoPlay muted loop playsInline
-                preload="auto"
+                preload="metadata"
                 aria-label={`Video: ${vid.caption}`}
               />
               <div className="absolute inset-0 bg-studio-dark/30 mix-blend-multiply" />
@@ -79,7 +79,7 @@ const VideoShowcase = () => {
           src={bottomBgVideo}
           className="absolute inset-0 w-full h-full object-cover opacity-30"
           autoPlay muted loop playsInline
-          preload="auto"
+          preload="metadata"
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-background/60" />

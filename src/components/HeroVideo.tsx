@@ -48,6 +48,17 @@ const HeroVideo = () => {
     setTimeout(() => setLoaded(true), 100);
   }, []);
 
+  // Preload next video in advance so crossfade is instant
+  useEffect(() => {
+    const next = (currentVideo + 1) % heroVideos.length;
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'video';
+    link.href = heroVideos[next];
+    document.head.appendChild(link);
+    return () => { document.head.removeChild(link); };
+  }, [currentVideo, heroVideos]);
+
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
