@@ -26,7 +26,7 @@ const VideoTile = ({ project, onClick }: VideoTileProps) => {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           onMouseEnter={() => videoRef.current?.play()}
           onMouseLeave={() => {
             if (videoRef.current) {

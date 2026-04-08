@@ -243,7 +243,7 @@ const HeroVideo = () => {
 
       {/* Video Indicators */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[4] flex gap-2">
-        {heroVideos.slice(0, 6).map((_, i) => (
+        {heroVideos.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrentVideo(i)}
@@ -253,9 +253,7 @@ const HeroVideo = () => {
             aria-label={`Play clip ${i + 1}`}
           />
         ))}
-        {heroVideos.length > 6 && (
-          <span className="text-studio-white/40 text-xs ml-1">+{heroVideos.length - 6}</span>
-        )}
+      </div>
       </div>
     </section>
   );
