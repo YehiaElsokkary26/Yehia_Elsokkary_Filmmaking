@@ -132,6 +132,7 @@ const FeaturedWork = () => {
                   preload="auto"
                   aria-label={`Video background for ${project.title}`}
                 />
+
                 <div className={`absolute inset-0 ${
                   i % 4 === 0 ? 'bg-studio-teal/15' :
                   i % 4 === 1 ? 'bg-accent/10' :

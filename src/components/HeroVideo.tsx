@@ -3,16 +3,11 @@ import { Shuffle, Pause, Play, Volume2, VolumeX, Settings } from 'lucide-react';
 
 // All project videos for hero rotation — USER UPLOADS
 const allHeroVideos = [
-  '/videos/reel-1.mp4',
-  '/videos/reel-2.mp4',
-  '/videos/reel-3.mp4',
-  '/videos/reel-4.mp4',
-  '/videos/people-of-moiz.mp4',
-  '/videos/euphoria.mp4',
-  '/videos/geziret.mp4',
-  '/videos/dalal-preview.mp4',
-  '/videos/upload-1.mp4',
-  '/videos/upload-2.mp4',
+  '/videos/reel-1.mp4',       // 1st
+  '/videos/reel-3.mp4',       // 3rd
+  '/videos/people-of-moiz.mp4', // 5th
+  '/videos/geziret.mp4',      // 7th
+  '/videos/upload-2.mp4',     // last
 ];
 
 // Fisher-Yates shuffle
