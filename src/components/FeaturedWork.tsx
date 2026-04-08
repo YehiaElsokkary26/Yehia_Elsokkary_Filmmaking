@@ -3,6 +3,7 @@ import ScrollReveal from './ScrollReveal';
 import ProjectModal from './ProjectModal';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { photographyCategories, scatteredPolaroids, projects, ProjectEntry } from '@/data/portfolioData';
+import { getVideoPoster } from '@/lib/video';
 
 // All project videos — USER UPLOADS
 const videoBackgrounds = [
@@ -122,14 +123,14 @@ const FeaturedWork = () => {
 
         return (
           <Link to={project.link} key={project.title} className="block relative group" data-project-link>
-            <div className={`relative ${isFullHeight ? 'h-[90vh]' : 'h-[60vh] md:h-[75vh]'} overflow-hidden`}>
-              <div className="absolute inset-0 will-change-transform">
+              <div className={`relative ${isFullHeight ? 'h-[90vh]' : 'h-[60vh] md:h-[75vh]'} overflow-hidden hero-video-shell`}>
+                <div className="absolute inset-0 z-0 will-change-transform">
                 <video
                   src={videoSrc}
+                    poster={getVideoPoster(videoSrc)}
                   className="w-full h-full object-cover"
                   style={{ transform: 'scale(1.2)' }}
-                  autoPlay muted loop playsInline
-                  preload="auto"
+                    autoPlay muted loop playsInline preload="metadata"
                   aria-label={`Video background for ${project.title}`}
                 />
 
@@ -146,7 +147,7 @@ const FeaturedWork = () => {
                 />
               </div>
 
-              <div className="absolute inset-0 flex items-center z-[2] px-8 md:px-20 lg:px-32 text-base">
+              <div className="absolute inset-0 flex items-center z-10 px-8 md:px-20 lg:px-32 text-base">
                 <div className={`max-w-xl ${isEven ? '' : 'ml-auto'}`}>
                   <ScrollReveal variant={isEven ? 'left' : 'right'} delay={100}>
                     <span className="text-[10px] tracking-[0.3em] uppercase text-accent font-bold" style={{ fontFamily: "'Montserrat', sans-serif" }}>
