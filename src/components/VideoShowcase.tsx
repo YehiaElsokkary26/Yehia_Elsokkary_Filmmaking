@@ -48,7 +48,7 @@ const VideoShowcase = () => {
                 src={vid.src}
                 className="w-full h-full object-cover scale-110"
                 autoPlay muted loop playsInline
-                preload="auto"
+                preload="metadata"
                 aria-label={`Video: ${vid.caption}`}
               />
               <div className="absolute inset-0 bg-studio-dark/30 mix-blend-multiply" />
