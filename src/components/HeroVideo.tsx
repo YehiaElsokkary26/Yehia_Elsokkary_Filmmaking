@@ -254,7 +254,6 @@ const HeroVideo = () => {
           />
         ))}
       </div>
-      </div>
     </section>
   );
 };
