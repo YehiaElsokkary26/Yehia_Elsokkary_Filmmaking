@@ -4,8 +4,8 @@ import { getVideoPoster } from '@/lib/video';
 
 const heroVideoReel = [
   { src: '/videos/people-of-moiz.mp4', poster: getVideoPoster('/videos/people-of-moiz.mp4') },
-  { src: '/videos/reel-1.mp4', poster: getVideoPoster('/videos/reel-1.mp4') },
   { src: '/videos/geziret.mp4', poster: getVideoPoster('/videos/geziret.mp4') },
+  { src: '/videos/upload-2.mp4', poster: getVideoPoster('/videos/upload-2.mp4') },
 ];
 
 const HeroVideo = () => {
@@ -41,18 +41,15 @@ const HeroVideo = () => {
   }, [isPaused, crossfadeToNext]);
 
   useEffect(() => {
-    if (!videoRef.current) return;
-
-    if (isPaused) {
-      videoRef.current.pause();
-    } else {
-      videoRef.current.play().catch(() => {});
-    }
+    if (!videoRef.current || !isPaused) return;
+    videoRef.current.pause();
   }, [currentVideo, isPaused]);
 
   const togglePause = useCallback(() => {
+    if (!isPaused) videoRef.current?.pause();
+    else videoRef.current?.play().catch(() => {});
     setIsPaused((prev) => !prev);
-  }, []);
+  }, [isPaused]);
 
   const toggleMute = useCallback(() => {
     setIsMuted((prev) => !prev);

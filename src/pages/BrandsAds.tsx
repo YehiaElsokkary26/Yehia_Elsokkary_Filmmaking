@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Play, Pause, Volume2 } from 'lucide-react';
+import { getVideoPoster } from '@/lib/video';
 
 interface BrandProject {
   id: string;
@@ -200,6 +201,7 @@ const NiviSection = ({ project }: {project: BrandProject;}) => {
                 <video
                   ref={(el) => {bgRefs.current[i] = el;}}
                   src={clip.videoSrc}
+                  poster={getVideoPoster(clip.videoSrc)}
                   className="absolute inset-0 w-full h-full object-cover"
                   autoPlay muted loop playsInline preload="metadata" />
                 
@@ -211,7 +213,7 @@ const NiviSection = ({ project }: {project: BrandProject;}) => {
                   <div className="relative w-[40%] max-w-[500px] aspect-video rounded-lg overflow-hidden shadow-2xl">
                       {!featurePlaying ?
                     <>
-                          <video src={clip.videoSrc} className="w-full h-full object-cover" muted loop autoPlay playsInline preload="metadata" />
+                          <video src={clip.videoSrc} poster={getVideoPoster(clip.videoSrc)} className="w-full h-full object-cover" muted loop autoPlay playsInline preload="metadata" />
                           <div className="absolute inset-0 bg-black/20" />
                           <button
                         onClick={(e) => {e.stopPropagation();playFeature();}}
@@ -231,8 +233,9 @@ const NiviSection = ({ project }: {project: BrandProject;}) => {
                     <video
                       ref={featureRef}
                       src={clip.videoSrc}
+                      poster={getVideoPoster(clip.videoSrc)}
                       className="w-full h-full object-contain bg-black"
-                      controls playsInline
+                      controls playsInline preload="auto"
                       onPause={pauseFeature}
                       onEnded={pauseFeature}
                       onClick={(e) => e.stopPropagation()} />
@@ -272,7 +275,7 @@ const NiviSection = ({ project }: {project: BrandProject;}) => {
                 }
                 {isActive && featurePlaying &&
                 <div className="absolute inset-0 z-10 bg-black flex items-center justify-center lg:hidden">
-                    <video ref={featureRef} src={clip.videoSrc} className="w-full h-full object-contain" controls playsInline autoPlay onPause={pauseFeature} onEnded={pauseFeature} />
+                    <video ref={featureRef} src={clip.videoSrc} poster={getVideoPoster(clip.videoSrc)} className="w-full h-full object-contain" controls playsInline autoPlay preload="auto" onPause={pauseFeature} onEnded={pauseFeature} />
                   </div>
                 }
               </div>
@@ -351,6 +354,7 @@ const WtvrSection = ({ project }: {project: BrandProject;}) => {
         <video
           ref={bgRef}
           src={project.videoSrc}
+          poster={getVideoPoster(project.videoSrc)}
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay muted loop playsInline preload="metadata" />
         <div className="absolute inset-0 bg-black/50" />
@@ -360,7 +364,7 @@ const WtvrSection = ({ project }: {project: BrandProject;}) => {
           <div className="relative w-[50%] max-w-[600px] aspect-video rounded-lg overflow-hidden shadow-2xl">
             {!featurePlaying ? (
               <>
-                <video src={project.videoSrc} className="w-full h-full object-cover" muted loop autoPlay playsInline preload="metadata" />
+                <video src={project.videoSrc} poster={getVideoPoster(project.videoSrc)} className="w-full h-full object-cover" muted loop autoPlay playsInline preload="metadata" />
                 <div className="absolute inset-0 bg-black/20" />
                 <button
                   onClick={playFeature}
@@ -379,8 +383,9 @@ const WtvrSection = ({ project }: {project: BrandProject;}) => {
               <video
                 ref={featureRef}
                 src={project.videoSrc}
+                poster={getVideoPoster(project.videoSrc)}
                 className="w-full h-full object-contain bg-black"
-                controls playsInline
+                controls playsInline preload="auto"
                 onPause={pauseFeature}
                 onEnded={pauseFeature} />
             )}
@@ -407,7 +412,7 @@ const WtvrSection = ({ project }: {project: BrandProject;}) => {
           <div className="relative w-full max-w-[400px] aspect-video rounded-lg overflow-hidden shadow-2xl">
             {!featurePlaying ? (
               <>
-                <video src={project.videoSrc} className="w-full h-full object-cover" muted loop autoPlay playsInline preload="metadata" />
+                <video src={project.videoSrc} poster={getVideoPoster(project.videoSrc)} className="w-full h-full object-cover" muted loop autoPlay playsInline preload="metadata" />
                 <div className="absolute inset-0 bg-black/20" />
                 <button onClick={playFeature} className="absolute inset-0 flex items-center justify-center" aria-label={`Play ${project.title}`}>
                   <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
@@ -416,7 +421,7 @@ const WtvrSection = ({ project }: {project: BrandProject;}) => {
                 </button>
               </>
             ) : (
-              <video ref={featureRef} src={project.videoSrc} className="w-full h-full object-contain bg-black" controls playsInline autoPlay onPause={pauseFeature} onEnded={pauseFeature} />
+              <video ref={featureRef} src={project.videoSrc} poster={getVideoPoster(project.videoSrc)} className="w-full h-full object-contain bg-black" controls playsInline autoPlay preload="auto" onPause={pauseFeature} onEnded={pauseFeature} />
             )}
           </div>
           <div className="mt-6 text-center">
@@ -494,6 +499,7 @@ const AmetoSection = ({ project }: {project: BrandProject;}) => {
         <video
           ref={bgRef}
           src={project.videoSrc}
+          poster={getVideoPoster(project.videoSrc)}
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay muted loop playsInline preload="metadata" />
         
@@ -506,7 +512,7 @@ const AmetoSection = ({ project }: {project: BrandProject;}) => {
           <div className="relative w-[280px] xl:w-[320px] rounded-xl overflow-hidden shadow-[0_0_60px_rgba(220,38,38,0.3)] border border-red-900/30" style={{ aspectRatio: '9/16' }}>
             {!featurePlaying ?
             <>
-                <video src={project.videoSrc} className="w-full h-full object-cover" muted loop autoPlay playsInline preload="metadata" />
+                <video src={project.videoSrc} poster={getVideoPoster(project.videoSrc)} className="w-full h-full object-cover" muted loop autoPlay playsInline preload="metadata" />
                 <div className="absolute inset-0 bg-black/20" />
                 <button
                 onClick={playFeature}
@@ -526,8 +532,9 @@ const AmetoSection = ({ project }: {project: BrandProject;}) => {
             <video
               ref={featureRef}
               src={project.videoSrc}
+              poster={getVideoPoster(project.videoSrc)}
               className="w-full h-full object-contain bg-black"
-              controls playsInline
+              controls playsInline preload="auto"
               onPause={pauseFeature}
               onEnded={pauseFeature} />
 
@@ -575,7 +582,7 @@ const AmetoSection = ({ project }: {project: BrandProject;}) => {
           <div className="relative w-[70vw] max-w-[300px] rounded-xl overflow-hidden shadow-[0_0_40px_rgba(220,38,38,0.3)] border border-red-900/30" style={{ aspectRatio: '9/16' }}>
             {!featurePlaying ?
             <>
-                <video src={project.videoSrc} className="w-full h-full object-cover" muted loop autoPlay playsInline preload="metadata" />
+                <video src={project.videoSrc} poster={getVideoPoster(project.videoSrc)} className="w-full h-full object-cover" muted loop autoPlay playsInline preload="metadata" />
                 <div className="absolute inset-0 bg-black/20" />
                 <button
                 onClick={playFeature}
@@ -591,8 +598,9 @@ const AmetoSection = ({ project }: {project: BrandProject;}) => {
             <video
               ref={featureRef}
               src={project.videoSrc}
+              poster={getVideoPoster(project.videoSrc)}
               className="w-full h-full object-contain bg-black"
-              controls playsInline autoPlay
+              controls playsInline autoPlay preload="auto"
               onPause={pauseFeature}
               onEnded={pauseFeature} />
 
