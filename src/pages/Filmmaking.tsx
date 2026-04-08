@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Play, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+import { getVideoPoster } from '@/lib/video';
 
 interface FilmProject {
   id: string;
@@ -159,8 +160,9 @@ const Filmmaking = () => {
               <video
                 ref={(el) => { videoRefs.current[index] = el; }}
                 src={project.videoSrc}
+                poster={getVideoPoster(project.videoSrc)}
                 className={`absolute inset-0 w-full h-full object-cover transition-transform ${prefersReducedMotion ? '' : 'duration-[var(--film-hover-duration)]'} ${!isFocused ? 'group-hover:scale-[1.04]' : ''}`}
-                muted loop playsInline preload="auto"
+                autoPlay muted loop playsInline preload="auto"
                 aria-label={`${project.title} video preview`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
@@ -210,6 +212,7 @@ const Filmmaking = () => {
                         <video
                           ref={focusedVideoRef}
                           src={project.videoSrc}
+                          poster={getVideoPoster(project.videoSrc)}
                           className="w-full h-full object-cover"
                           controls={isPlaying} playsInline preload="auto"
                           aria-label={`${project.title} full video`}

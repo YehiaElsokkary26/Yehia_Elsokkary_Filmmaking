@@ -1,6 +1,7 @@
 import { useEffect, useCallback } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ProjectEntry } from '@/data/portfolioData';
+import { getVideoPoster } from '@/lib/video';
 
 interface ProjectModalProps {
   project: ProjectEntry;
@@ -66,7 +67,7 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }: ProjectModalProps) =
                 {m.type === 'image' ? (
                   <img src={m.src} alt={m.caption || project.title} className="w-full h-auto object-cover aspect-[4/5]" loading="eager" />
                 ) : (
-                  <video src={m.src} controls className="w-full" playsInline preload="metadata" />
+                  <video src={m.src} poster={getVideoPoster(m.src)} controls className="w-full" playsInline preload="auto" />
                 )}
                 {m.caption && <p className="font-handwriting text-sm text-muted-foreground mt-2">{m.caption}</p>}
               </div>

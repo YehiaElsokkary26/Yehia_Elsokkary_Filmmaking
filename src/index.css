@@ -70,6 +70,7 @@
     --film-hover-duration: 220ms;
     --film-hover-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
     --film-expand-duration: 380ms;
+    --hero-video-fallback: 0 0% 10%;
 
     /* Brands & Ads — Nevi project tokens */
     --project-nevi-font: 'Permanent Marker', cursive;
@@ -111,6 +112,9 @@
 
 @layer components {
   .film-grain { position: relative; }
+  .hero-video-shell {
+    background-color: hsl(var(--hero-video-fallback));
+  }
   .film-grain::after {
     content: '';
     position: absolute;

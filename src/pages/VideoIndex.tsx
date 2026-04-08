@@ -5,6 +5,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import VideoTile from '@/components/VideoTile';
 import ProjectModal from '@/components/ProjectModal';
 import { getProjectsByCategory, ProjectEntry } from '@/data/portfolioData';
+import { getVideoPoster } from '@/lib/video';
 
 const meta: Record<string, { title: string; subtitle: string; headingClass: string }> = {
   'short-films': {
@@ -102,8 +103,9 @@ const VideoIndex = () => {
           <video
             ref={bgVideoRef}
             src={videoSrc}
+            poster={getVideoPoster(videoSrc)}
             className={`absolute inset-0 w-full h-full object-cover transition-transform duration-300 ${!focusedDoc ? 'group-hover:scale-[1.04]' : ''}`}
-            muted loop playsInline autoPlay preload="auto"
+            autoPlay muted loop playsInline preload="auto"
             aria-label={`${project.title} video preview`}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
@@ -144,6 +146,7 @@ const VideoIndex = () => {
                     <video
                       ref={focusedVideoRef}
                       src={videoSrc}
+                      poster={getVideoPoster(videoSrc)}
                       className="w-full h-full object-cover"
                       controls={isPlaying}
                       playsInline preload="auto"
