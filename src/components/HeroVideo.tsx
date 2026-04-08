@@ -3,16 +3,11 @@ import { Shuffle, Pause, Play, Volume2, VolumeX, Settings } from 'lucide-react';
 
 // All project videos for hero rotation — USER UPLOADS
 const allHeroVideos = [
-  '/videos/reel-1.mp4',
-  '/videos/reel-2.mp4',
-  '/videos/reel-3.mp4',
-  '/videos/reel-4.mp4',
-  '/videos/people-of-moiz.mp4',
-  '/videos/euphoria.mp4',
-  '/videos/geziret.mp4',
-  '/videos/dalal-preview.mp4',
-  '/videos/upload-1.mp4',
-  '/videos/upload-2.mp4',
+  '/videos/reel-1.mp4',       // 1st
+  '/videos/reel-3.mp4',       // 3rd
+  '/videos/people-of-moiz.mp4', // 5th
+  '/videos/geziret.mp4',      // 7th
+  '/videos/upload-2.mp4',     // last
 ];
 
 // Fisher-Yates shuffle
@@ -248,7 +243,7 @@ const HeroVideo = () => {
 
       {/* Video Indicators */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[4] flex gap-2">
-        {heroVideos.slice(0, 6).map((_, i) => (
+        {heroVideos.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrentVideo(i)}
@@ -258,9 +253,6 @@ const HeroVideo = () => {
             aria-label={`Play clip ${i + 1}`}
           />
         ))}
-        {heroVideos.length > 6 && (
-          <span className="text-studio-white/40 text-xs ml-1">+{heroVideos.length - 6}</span>
-        )}
       </div>
     </section>
   );

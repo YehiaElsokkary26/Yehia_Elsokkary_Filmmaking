@@ -146,7 +146,7 @@ const VideoIndex = () => {
                       src={videoSrc}
                       className="w-full h-full object-cover"
                       controls={isPlaying}
-                      playsInline preload="metadata"
+                      playsInline preload="auto"
                       aria-label={`${project.title} full video`}
                     />
                     {!isPlaying && (
