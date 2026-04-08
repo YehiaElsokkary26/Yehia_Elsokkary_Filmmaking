@@ -211,7 +211,7 @@ const Filmmaking = () => {
                           ref={focusedVideoRef}
                           src={project.videoSrc}
                           className="w-full h-full object-cover"
-                          controls={isPlaying} playsInline preload="metadata"
+                          controls={isPlaying} playsInline preload="auto"
                           aria-label={`${project.title} full video`}
                         />
                         {!isPlaying && (
