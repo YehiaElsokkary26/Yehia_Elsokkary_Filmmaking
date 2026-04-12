@@ -40,10 +40,17 @@ const HeroVideo = () => {
     return () => clearInterval(interval);
   }, [isPaused, crossfadeToNext]);
 
+  // Ensure video plays on source change and handle mute state
   useEffect(() => {
-    if (!videoRef.current || !isPaused) return;
-    videoRef.current.pause();
-  }, [currentVideo, isPaused]);
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = isMuted;
+    if (isPaused) {
+      v.pause();
+    } else {
+      v.play().catch(() => {});
+    }
+  }, [currentVideo, isPaused, isMuted]);
 
   const togglePause = useCallback(() => {
     if (!isPaused) videoRef.current?.pause();
