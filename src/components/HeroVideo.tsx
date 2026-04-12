@@ -61,7 +61,7 @@ const HeroVideo = () => {
 
   return (
     <section 
-      className={`hero-video-shell relative min-h-[100svh] w-full overflow-hidden ${grainOn ? 'film-grain' : ''}`}
+      className={`hero-video-shell relative min-h-[100svh] w-full overflow-hidden bg-studio-dark ${grainOn ? 'film-grain' : ''}`}
       aria-label="Hero video showcase"
     >
       <div
@@ -75,10 +75,10 @@ const HeroVideo = () => {
           poster={heroVideoReel[currentVideo].poster}
           className="absolute left-0 top-0 h-full w-full object-cover animate-fade-in"
           autoPlay
-          muted={isMuted}
+          muted
           loop
           playsInline
-          preload={currentVideo === 0 ? 'auto' : 'metadata'}
+          preload="auto"
           aria-label="Background video preview"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-studio-dark/30 via-transparent to-studio-dark/70" />
