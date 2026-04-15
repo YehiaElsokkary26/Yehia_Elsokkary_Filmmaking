@@ -48,6 +48,10 @@ import novelwear7 from '@/assets/novelwear-7.jpg';
 import novelwear8 from '@/assets/novelwear-8.jpg';
 import novelwear9 from '@/assets/novelwear-9.jpg';
 
+import dalal1 from '@/assets/dalal-1.jpg';
+import dalal2 from '@/assets/dalal-2.jpg';
+import dalal3 from '@/assets/dalal-3.jpg';
+
 export interface ProjectEntry {
   id: string;
   title: string;
