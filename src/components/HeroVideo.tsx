@@ -3,9 +3,7 @@ import { Shuffle, Pause, Play, Volume2, VolumeX, Settings } from 'lucide-react';
 import { getVideoPoster } from '@/lib/video';
 
 const heroVideoReel = [
-  { src: '/videos/people-of-moiz.mp4', poster: getVideoPoster('/videos/people-of-moiz.mp4') },
-  { src: '/videos/geziret.mp4', poster: getVideoPoster('/videos/geziret.mp4') },
-  { src: '/videos/upload-2.mp4', poster: getVideoPoster('/videos/upload-2.mp4') },
+  { src: '/videos/aswan.mp4', poster: getVideoPoster('/videos/aswan.mp4') },
 ];
 
 const HeroVideo = () => {

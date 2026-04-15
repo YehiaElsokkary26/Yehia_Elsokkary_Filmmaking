@@ -20,6 +20,19 @@ interface FilmProject {
 // USER UPLOAD videos — do not regenerate
 const filmProjects: FilmProject[] = [
   {
+    id: 'aswan',
+    title: 'Aswan — As If I Was Still Home',
+    shortDescription: 'A place I\'ve never been before, yet immediately felt home. That\'s a feeling everyone should feel.',
+    fullDescription: 'Aswan — As If I Was Still Home is a deeply personal visual letter to a place I had never visited before, yet felt an instant, inexplicable belonging to. From the moment I arrived, the warmth of the people, the golden light on the Nile, and the unhurried rhythm of life made me feel as though I had always been there. This film captures that rare, universal feeling of arriving somewhere new and recognizing it as home — a sensation everyone deserves to experience at least once.',
+    year: '2024',
+    role: 'Director / Cinematographer / Editor',
+    tags: ['documentary', 'travel', 'egypt', 'personal'],
+    videoSrc: '/videos/aswan.mp4',
+    fontClass: 'font-geziret-heading',
+    accentVar: '--film-geziret-accent',
+    stills: [],
+  },
+  {
     id: 'geziret-el-dahab',
     title: 'Geziret El-Dahab',
     shortDescription: 'A visual journey through the golden island — capturing landscapes, local life, and stories of resilience.',
