@@ -213,7 +213,9 @@ export const projects: ProjectEntry[] = [
     description: 'Dalal — short film (5:00). Preview compilation of key moments from the film.',
     tags: ['short-film', 'preview', 'snippets'],
     media: [
-      { type: 'video', src: '/videos/dalal-preview.mp4', caption: 'Dalal — preview snippet' },
+      { type: 'image', src: dalal1, caption: 'Dalal — still 1' },
+      { type: 'image', src: dalal2, caption: 'Dalal — still 2' },
+      { type: 'image', src: dalal3, caption: 'Dalal — still 3' },
     ],
     category: 'short-films',
   },
