@@ -16,7 +16,7 @@ const HeroVideo = () => {
   const [showSettings, setShowSettings] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [loaded, setLoaded] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 100);
@@ -40,23 +40,25 @@ const HeroVideo = () => {
     return () => clearInterval(interval);
   }, [isPaused, crossfadeToNext]);
 
-  // Ensure video plays on source change and handle mute state
+  // Manage play/pause/mute for all videos — only the active one plays
   useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.muted = isMuted;
-    if (isPaused) {
-      v.pause();
-    } else {
-      v.play().catch(() => {});
-    }
+    videoRefs.current.forEach((v, i) => {
+      if (!v) return;
+      v.muted = i === currentVideo ? isMuted : true;
+      if (i === currentVideo && !isPaused) {
+        v.play().catch(() => {});
+      } else {
+        v.pause();
+      }
+    });
   }, [currentVideo, isPaused, isMuted]);
 
   const togglePause = useCallback(() => {
-    if (!isPaused) videoRef.current?.pause();
-    else videoRef.current?.play().catch(() => {});
+    const v = videoRefs.current[currentVideo];
+    if (!isPaused) v?.pause();
+    else v?.play().catch(() => {});
     setIsPaused((prev) => !prev);
-  }, [isPaused]);
+  }, [isPaused, currentVideo]);
 
   const toggleMute = useCallback(() => {
     setIsMuted((prev) => !prev);
@@ -68,27 +70,32 @@ const HeroVideo = () => {
 
   return (
     <section 
-      className={`hero-video-shell relative min-h-[100svh] w-full overflow-hidden bg-studio-dark ${grainOn ? 'film-grain' : ''}`}
+      className={`hero-video-shell relative min-h-[100svh] w-full overflow-hidden ${grainOn ? 'film-grain' : ''}`}
+      style={{ backgroundColor: '#1a1a1a' }}
       aria-label="Hero video showcase"
     >
       <div
         className="absolute inset-0 z-0 will-change-transform"
         style={{ transform: `translate3d(0, ${parallaxBg}px, 0) scale(1.2)` }}
       >
-        <video
-          key={heroVideoReel[currentVideo].src}
-          ref={videoRef}
-          src={heroVideoReel[currentVideo].src}
-          poster={heroVideoReel[currentVideo].poster}
-          className="absolute left-0 top-0 h-full w-full object-cover animate-fade-in"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          aria-label="Background video preview"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-studio-dark/30 via-transparent to-studio-dark/70" />
+        {/* Render all videos stacked; only active one is visible */}
+        {heroVideoReel.map((clip, i) => (
+          <video
+            key={clip.src}
+            ref={(el) => { videoRefs.current[i] = el; }}
+            src={clip.src}
+            poster={clip.poster}
+            className="absolute left-0 top-0 h-full w-full object-cover transition-opacity duration-1000"
+            style={{ opacity: currentVideo === i ? 1 : 0 }}
+            autoPlay={i === 0}
+            muted
+            loop
+            playsInline
+            preload={i === 0 ? 'auto' : 'metadata'}
+            aria-label="Background video preview"
+          />
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/30 via-transparent to-[#1a1a1a]/70" />
         {grainOn && <div className="absolute inset-0 vignette pointer-events-none" />}
       </div>
 
@@ -151,7 +158,7 @@ const HeroVideo = () => {
             <Settings size={14} />
           </button>
           {showSettings && (
-            <div className="absolute bottom-12 left-0 bg-studio-dark/90 backdrop-blur-md rounded-lg p-3 min-w-[180px] border border-studio-white/10">
+            <div className="absolute bottom-12 left-0 bg-[#1a1a1a]/90 backdrop-blur-md rounded-lg p-3 min-w-[180px] border border-studio-white/10">
               <label className="flex items-center justify-between gap-3 text-studio-white/80 text-xs">
                 <span>Film grain</span>
                 <button 

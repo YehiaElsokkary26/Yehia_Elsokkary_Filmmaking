@@ -48,6 +48,10 @@ import novelwear7 from '@/assets/novelwear-7.jpg';
 import novelwear8 from '@/assets/novelwear-8.jpg';
 import novelwear9 from '@/assets/novelwear-9.jpg';
 
+import dalal1 from '@/assets/dalal-1.jpg';
+import dalal2 from '@/assets/dalal-2.jpg';
+import dalal3 from '@/assets/dalal-3.jpg';
+
 export interface ProjectEntry {
   id: string;
   title: string;
@@ -209,7 +213,9 @@ export const projects: ProjectEntry[] = [
     description: 'Dalal — short film (5:00). Preview compilation of key moments from the film.',
     tags: ['short-film', 'preview', 'snippets'],
     media: [
-      { type: 'video', src: '/videos/dalal-preview.mp4', caption: 'Dalal — preview snippet' },
+      { type: 'image', src: dalal1, caption: 'Dalal — still 1' },
+      { type: 'image', src: dalal2, caption: 'Dalal — still 2' },
+      { type: 'image', src: dalal3, caption: 'Dalal — still 3' },
     ],
     category: 'short-films',
   },
