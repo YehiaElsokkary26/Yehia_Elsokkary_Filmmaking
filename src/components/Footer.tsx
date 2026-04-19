@@ -1,13 +1,17 @@
 import { Instagram, Phone } from 'lucide-react';
+import HoverVideo from './HoverVideo';
+import { getVideoPoster } from '@/lib/video';
 
 const Footer = () => {
   return (
     <footer className="relative overflow-hidden">
       <div className="absolute inset-0">
-        <video
+        <HoverVideo
           src="/videos/reel-4.mp4"
+          poster={getVideoPoster('/videos/reel-4.mp4')}
           className="w-full h-full object-cover opacity-20"
-          autoPlay muted loop playsInline
+          preload="none"
+          aria-label="Footer ambient video — hover to play"
         />
         <div className="absolute inset-0 bg-foreground/90" />
       </div>
