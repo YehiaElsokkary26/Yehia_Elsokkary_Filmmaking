@@ -2,6 +2,7 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Play, Pause, Volume2 } from 'lucide-react';
 import { getVideoPoster } from '@/lib/video';
+import HoverVideo from '@/components/HoverVideo';
 
 interface BrandProject {
   id: string;
@@ -214,7 +215,7 @@ const NiviSection = ({ project }: {project: BrandProject;}) => {
                   <div className="relative w-[40%] max-w-[500px] aspect-video rounded-lg overflow-hidden shadow-2xl">
                       {!featurePlaying ?
                     <>
-                          <video src={clip.videoSrc} poster={getVideoPoster(clip.videoSrc)} className="w-full h-full object-cover" muted loop autoPlay playsInline preload="metadata" />
+                          <HoverVideo src={clip.videoSrc} poster={getVideoPoster(clip.videoSrc)} className="w-full h-full object-cover" preload="none" aria-label={`${clip.title} preview — hover to play`} />
                           <div className="absolute inset-0 bg-black/20" />
                           <button
                         onClick={(e) => {e.stopPropagation();playFeature();}}
@@ -337,9 +338,7 @@ const WtvrSection = ({ project }: {project: BrandProject;}) => {
     setFeaturePlaying(false);
   }, []);
 
-  useEffect(() => {
-    if (bgRef.current) bgRef.current.play().catch(() => {});
-  }, []);
+  // Background previews are hover-to-play (no autoplay).
 
   return (
     <section data-project-slug={project.id} className="relative overflow-hidden">
