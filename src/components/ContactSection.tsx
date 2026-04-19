@@ -1,15 +1,17 @@
 import { Instagram, Phone } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
+import HoverVideo from './HoverVideo';
+import { getVideoPoster } from '@/lib/video';
 
 const ContactSection = () => {
   return (
     <section className="relative overflow-hidden" id="contact">
-      {/* Full-page video background at 50% opacity */}
-      <video
+      {/* Full-page video background — hover to play */}
+      <HoverVideo
         src="/videos/upload-2.mp4"
+        poster={getVideoPoster('/videos/upload-2.mp4')}
         className="absolute inset-0 w-full h-full object-cover opacity-50"
-        autoPlay muted loop playsInline
-        preload="auto"
+        preload="none"
         aria-hidden="true"
       />
       <div className="absolute inset-0 bg-background/40" />

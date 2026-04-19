@@ -10,7 +10,7 @@ interface VideoTileProps {
 
 const VideoTile = ({ project, onClick }: VideoTileProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isVideoReady, setIsVideoReady] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const videoMedia = project.media.find((m) => m.type === 'video');
   if (!videoMedia) return null;
 
@@ -28,21 +28,25 @@ const VideoTile = ({ project, onClick }: VideoTileProps) => {
           src={videoMedia.src}
           poster={poster}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          autoPlay
           muted
           loop
           playsInline
-          preload="auto"
-          onCanPlay={() => setIsVideoReady(true)}
-          onMouseEnter={() => videoRef.current?.play().catch(() => {})}
+          preload="metadata"
+          onWaiting={() => setIsLoading(true)}
+          onPlaying={() => setIsLoading(false)}
+          onMouseEnter={() => {
+            setIsLoading(true);
+            videoRef.current?.play().catch(() => {});
+          }}
           onMouseLeave={() => {
+            setIsLoading(false);
             if (videoRef.current) {
               videoRef.current.pause();
               videoRef.current.currentTime = 0;
             }
           }}
         />
-        {!isVideoReady && (
+        {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-background/40 backdrop-blur-sm">
             <div className="h-10 w-10 animate-spin rounded-full border-2 border-foreground/20 border-t-accent" aria-hidden="true" />
           </div>

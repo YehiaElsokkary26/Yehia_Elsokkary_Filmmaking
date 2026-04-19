@@ -1,4 +1,6 @@
 import { ProjectEntry } from '@/data/portfolioData';
+import HoverVideo from './HoverVideo';
+import { getVideoPoster } from '@/lib/video';
 
 interface PolaroidCardProps {
   project: ProjectEntry;
@@ -31,13 +33,12 @@ const PolaroidCard = ({ project, onClick, className = '' }: PolaroidCardProps) =
               loading="lazy"
             />
           ) : (
-          <video
+          <HoverVideo
               src={thumb.src}
+              poster={getVideoPoster(thumb.src)}
               className="w-full h-full object-cover"
-              muted
-              loop
-              playsInline
-              autoPlay
+              preload="none"
+              aria-label={`${project.title} preview — hover to play`}
             />
           )}
         </div>
