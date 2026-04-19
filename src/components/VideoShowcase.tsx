@@ -1,4 +1,6 @@
 import ScrollReveal from './ScrollReveal';
+import HoverVideo from './HoverVideo';
+import { getVideoPoster } from '@/lib/video';
 
 // Background videos — USER UPLOAD — do not regenerate
 const bgVideo = '/videos/upload-1.mp4';
@@ -16,13 +18,13 @@ const VideoShowcase = () => {
     <section className="relative overflow-hidden" id="reels">
       {/* Main "From the Lens" header with video background */}
       <div className="relative h-[50vh] md:h-[60vh] overflow-hidden">
-         <video
+         <HoverVideo
           src={bgVideo}
+          poster={getVideoPoster(bgVideo)}
           className="absolute inset-0 w-full h-full object-cover"
           style={{ transform: 'scale(1.15)' }}
-          autoPlay muted loop playsInline
-          preload="metadata"
-          aria-label="From the Lens background video — USER UPLOAD"
+          preload="none"
+          aria-label="From the Lens background video — hover to play"
         />
         <div className="absolute inset-0 bg-studio-dark/70" />
         <div className="absolute inset-0 flex items-center justify-center z-[2]">
@@ -44,12 +46,12 @@ const VideoShowcase = () => {
         <div className="absolute inset-0 grid grid-cols-2 md:grid-cols-4 gap-0">
           {showcaseVideos.map((vid, i) => (
             <div key={i} className="relative overflow-hidden">
-              <video
+              <HoverVideo
                 src={vid.src}
+                poster={getVideoPoster(vid.src)}
                 className="w-full h-full object-cover scale-110"
-                autoPlay muted loop playsInline
-                preload="metadata"
-                aria-label={`Video: ${vid.caption}`}
+                preload="none"
+                aria-label={`Video: ${vid.caption} — hover to play`}
               />
               <div className="absolute inset-0 bg-studio-dark/30 mix-blend-multiply" />
             </div>
@@ -75,11 +77,11 @@ const VideoShowcase = () => {
 
       {/* Bottom subtle background video — 30% opacity (texture only) */}
       <div className="relative py-20 overflow-hidden">
-        <video
+        <HoverVideo
           src={bottomBgVideo}
+          poster={getVideoPoster(bottomBgVideo)}
           className="absolute inset-0 w-full h-full object-cover opacity-30"
-          autoPlay muted loop playsInline
-          preload="metadata"
+          preload="none"
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-background/60" />
