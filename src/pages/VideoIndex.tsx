@@ -96,17 +96,19 @@ const VideoIndex = () => {
             minHeight: focusedDoc ? '70vh' : '50vh',
           }}
           onClick={() => !focusedDoc && setFocusedDoc(true)}
+          onMouseEnter={() => { if (!focusedDoc) bgVideoRef.current?.play().catch(() => {}); }}
+          onMouseLeave={() => { if (!focusedDoc && bgVideoRef.current) { bgVideoRef.current.pause(); bgVideoRef.current.currentTime = 0; } }}
           tabIndex={0}
           onKeyDown={(e) => e.key === 'Enter' && !focusedDoc && setFocusedDoc(true)}
         >
-          {/* Background Video */}
+          {/* Background Video — hover to play */}
           <video
             ref={bgVideoRef}
             src={videoSrc}
             poster={getVideoPoster(videoSrc)}
             className={`absolute inset-0 w-full h-full object-cover transition-transform duration-300 ${!focusedDoc ? 'group-hover:scale-[1.04]' : ''}`}
-            autoPlay muted loop playsInline preload="auto"
-            aria-label={`${project.title} video preview`}
+            muted loop playsInline preload="metadata"
+            aria-label={`${project.title} video preview — hover to play`}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
