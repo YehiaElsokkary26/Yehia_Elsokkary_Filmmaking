@@ -61,7 +61,7 @@ const ProjectHero = ({
         <video
           ref={bgRef}
           src={videoSrc}
-          poster={(() => { try { /* attempt poster lookup */ return undefined; } catch { return undefined; } })()}
+          
           className="project-bg absolute inset-0 w-full h-full object-cover"
           muted
           loop
