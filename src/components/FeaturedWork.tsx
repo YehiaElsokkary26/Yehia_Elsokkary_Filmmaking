@@ -4,6 +4,7 @@ import ProjectModal from './ProjectModal';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { photographyCategories, scatteredPolaroids, projects, ProjectEntry } from '@/data/portfolioData';
 import { getVideoPoster } from '@/lib/video';
+import HoverVideo from './HoverVideo';
 
 // All project videos — USER UPLOADS
 const videoBackgrounds = [
