@@ -175,7 +175,7 @@ const Filmmaking = () => {
                 src={project.videoSrc}
                 poster={getVideoPoster(project.videoSrc)}
                 className={`absolute inset-0 w-full h-full object-cover transition-transform ${prefersReducedMotion ? '' : 'duration-[var(--film-hover-duration)]'} ${!isFocused ? 'group-hover:scale-[1.04]' : ''}`}
-                autoPlay muted loop playsInline preload="auto"
+                muted loop playsInline preload="metadata"
                 aria-label={`${project.title} video preview`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
