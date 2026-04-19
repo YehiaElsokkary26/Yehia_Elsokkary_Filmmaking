@@ -4,6 +4,7 @@ import ProjectModal from './ProjectModal';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { photographyCategories, scatteredPolaroids, projects, ProjectEntry } from '@/data/portfolioData';
 import { getVideoPoster } from '@/lib/video';
+import HoverVideo from './HoverVideo';
 
 // All project videos — USER UPLOADS
 const videoBackgrounds = [
@@ -125,13 +126,13 @@ const FeaturedWork = () => {
           <Link to={project.link} key={project.title} className="block relative group" data-project-link>
               <div className={`relative ${isFullHeight ? 'h-[90vh]' : 'h-[60vh] md:h-[75vh]'} overflow-hidden hero-video-shell`}>
                 <div className="absolute inset-0 z-0 will-change-transform">
-                <video
+                <HoverVideo
                   src={videoSrc}
-                    poster={getVideoPoster(videoSrc)}
+                  poster={getVideoPoster(videoSrc)}
                   className="w-full h-full object-cover"
                   style={{ transform: 'scale(1.2)' }}
-                    autoPlay muted loop playsInline preload="metadata"
-                  aria-label={`Video background for ${project.title}`}
+                  preload="none"
+                  aria-label={`Video background for ${project.title} — hover to play`}
                 />
 
                 <div className={`absolute inset-0 ${
