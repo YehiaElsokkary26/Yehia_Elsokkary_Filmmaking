@@ -351,12 +351,13 @@ const WtvrSection = ({ project }: {project: BrandProject;}) => {
       </div>
 
       <div className="relative w-full min-h-[70vh]">
-        <video
-          ref={bgRef}
+        <HoverVideo
           src={project.videoSrc}
           poster={getVideoPoster(project.videoSrc)}
           className="absolute inset-0 w-full h-full object-cover"
-          autoPlay muted loop playsInline preload="metadata" />
+          preload="none"
+          aria-label={`${project.title} background — hover to play`}
+        />
         <div className="absolute inset-0 bg-black/50" />
 
         {/* Desktop */}
@@ -364,7 +365,7 @@ const WtvrSection = ({ project }: {project: BrandProject;}) => {
           <div className="relative w-[50%] max-w-[600px] aspect-video rounded-lg overflow-hidden shadow-2xl">
             {!featurePlaying ? (
               <>
-                <video src={project.videoSrc} poster={getVideoPoster(project.videoSrc)} className="w-full h-full object-cover" muted loop autoPlay playsInline preload="metadata" />
+                <HoverVideo src={project.videoSrc} poster={getVideoPoster(project.videoSrc)} className="w-full h-full object-cover" preload="none" aria-label={`${project.title} preview — hover to play`} />
                 <div className="absolute inset-0 bg-black/20" />
                 <button
                   onClick={playFeature}
@@ -412,7 +413,7 @@ const WtvrSection = ({ project }: {project: BrandProject;}) => {
           <div className="relative w-full max-w-[400px] aspect-video rounded-lg overflow-hidden shadow-2xl">
             {!featurePlaying ? (
               <>
-                <video src={project.videoSrc} poster={getVideoPoster(project.videoSrc)} className="w-full h-full object-cover" muted loop autoPlay playsInline preload="metadata" />
+                <HoverVideo src={project.videoSrc} poster={getVideoPoster(project.videoSrc)} className="w-full h-full object-cover" preload="none" aria-label={`${project.title} preview — hover to play`} />
                 <div className="absolute inset-0 bg-black/20" />
                 <button onClick={playFeature} className="absolute inset-0 flex items-center justify-center" aria-label={`Play ${project.title}`}>
                   <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
@@ -475,9 +476,7 @@ const AmetoSection = ({ project }: {project: BrandProject;}) => {
     setFeaturePlaying(false);
   }, []);
 
-  useEffect(() => {
-    if (bgRef.current) bgRef.current.play().catch(() => {});
-  }, []);
+  // Background previews are hover-to-play (no autoplay).
 
   return (
     <section data-project-slug="ameto" className="relative overflow-hidden">
@@ -496,12 +495,13 @@ const AmetoSection = ({ project }: {project: BrandProject;}) => {
       {/* Main content — vertical video layout */}
       <div className="relative w-full min-h-[80vh]">
         {/* Background video (covers full section, looping) */}
-        <video
-          ref={bgRef}
+        <HoverVideo
           src={project.videoSrc}
           poster={getVideoPoster(project.videoSrc)}
           className="absolute inset-0 w-full h-full object-cover"
-          autoPlay muted loop playsInline preload="metadata" />
+          preload="none"
+          aria-label={`${project.title} background — hover to play`}
+        />
         
         {/* Dark + red tinted overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-red-950/40" />
@@ -512,7 +512,7 @@ const AmetoSection = ({ project }: {project: BrandProject;}) => {
           <div className="relative w-[280px] xl:w-[320px] rounded-xl overflow-hidden shadow-[0_0_60px_rgba(220,38,38,0.3)] border border-red-900/30" style={{ aspectRatio: '9/16' }}>
             {!featurePlaying ?
             <>
-                <video src={project.videoSrc} poster={getVideoPoster(project.videoSrc)} className="w-full h-full object-cover" muted loop autoPlay playsInline preload="metadata" />
+                <HoverVideo src={project.videoSrc} poster={getVideoPoster(project.videoSrc)} className="w-full h-full object-cover" preload="none" aria-label={`${project.title} preview — hover to play`} />
                 <div className="absolute inset-0 bg-black/20" />
                 <button
                 onClick={playFeature}
@@ -582,7 +582,7 @@ const AmetoSection = ({ project }: {project: BrandProject;}) => {
           <div className="relative w-[70vw] max-w-[300px] rounded-xl overflow-hidden shadow-[0_0_40px_rgba(220,38,38,0.3)] border border-red-900/30" style={{ aspectRatio: '9/16' }}>
             {!featurePlaying ?
             <>
-                <video src={project.videoSrc} poster={getVideoPoster(project.videoSrc)} className="w-full h-full object-cover" muted loop autoPlay playsInline preload="metadata" />
+                <HoverVideo src={project.videoSrc} poster={getVideoPoster(project.videoSrc)} className="w-full h-full object-cover" preload="none" aria-label={`${project.title} preview — hover to play`} />
                 <div className="absolute inset-0 bg-black/20" />
                 <button
                 onClick={playFeature}
