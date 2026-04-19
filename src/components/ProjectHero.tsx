@@ -57,18 +57,20 @@ const ProjectHero = ({
     >
       {/* Full-width with overlay meta */}
       <div className="relative w-full aspect-video min-h-[50vh]">
-        {/* Background video — always loops */}
+        {/* Background video — hover to play */}
         <video
           ref={bgRef}
           src={videoSrc}
+          poster={(() => { try { /* attempt poster lookup */ return undefined; } catch { return undefined; } })()}
           className="project-bg absolute inset-0 w-full h-full object-cover"
-          autoPlay
           muted
           loop
           playsInline
           preload="metadata"
+          onMouseEnter={() => bgRef.current?.play().catch(() => {})}
+          onMouseLeave={() => { if (bgRef.current) { bgRef.current.pause(); bgRef.current.currentTime = 0; } }}
           data-bg="true"
-          aria-label={`${title} background video`}
+          aria-label={`${title} background video — hover to play`}
         />
 
         {/* Dark overlay for legibility */}
