@@ -51,6 +51,7 @@ import novelwear9 from '@/assets/novelwear-9.jpg';
 import dalal1 from '@/assets/dalal-1.jpg';
 import dalal2 from '@/assets/dalal-2.jpg';
 import dalal3 from '@/assets/dalal-3.jpg';
+import dalalPoster from '@/assets/dalal-poster.png';
 
 export interface ProjectEntry {
   id: string;
@@ -204,22 +205,23 @@ export const projects: ProjectEntry[] = [
     ],
     category: 'street',
   },
-  // Short Films
+  // Short Films — Dalal (official poster cover)
   {
     id: 'sf-dalal',
     title: 'Dalal',
-    year: '',
-    role: 'Filmmaker / Videographer',
-    description: 'Dalal — short film (5:00). Preview compilation of key moments from the film.',
-    tags: ['short-film', 'preview', 'snippets'],
+    year: '2026',
+    role: 'Director / Writer / Editor',
+    description: 'A short film about a young girl mourning the loss of her grandmother — a quiet, intimate journey through love, grief, and the memories that refuse to fade. Officially selected for Lift-Off Global Network Sessions 2026.',
+    tags: ['short-film', 'drama', 'grief', 'family', 'official-selection'],
     media: [
+      { type: 'image', src: dalalPoster, caption: 'Dalal — Official Poster' },
       { type: 'image', src: dalal1, caption: 'Dalal — still 1' },
       { type: 'image', src: dalal2, caption: 'Dalal — still 2' },
       { type: 'image', src: dalal3, caption: 'Dalal — still 3' },
     ],
     category: 'short-films',
   },
-  // Documentaries — only People of Moiz
+  // Documentaries — People of Moiz series
   {
     id: 'd-moiz',
     title: 'People of Moiz',
@@ -229,6 +231,19 @@ export const projects: ProjectEntry[] = [
     tags: ['documentary', 'cairo', 'street', 'people', 'culture'],
     media: [
       { type: 'video', src: '/videos/people-of-moiz.mp4', caption: 'People of Moiz — USER UPLOAD' },
+    ],
+    category: 'documentaries',
+  },
+  // Documentaries — People of Moiz: 3am Sayed
+  {
+    id: 'd-3am-sayed',
+    title: '3am Sayed',
+    year: '',
+    role: 'Filmmaker / Videographer',
+    description: 'Part of the "People of Moiz" series — an intimate portrait of 3am Sayed, a familiar face from the streets of Khan al-Khalili. A glimpse into his daily rhythm, his craft, and the quiet stories etched into his hands and his smile.',
+    tags: ['documentary', 'cairo', 'people-of-moiz', 'portrait', 'series'],
+    media: [
+      { type: 'video', src: '/videos/3am-sayed.mp4', caption: '3am Sayed — People of Moiz' },
     ],
     category: 'documentaries',
   },
