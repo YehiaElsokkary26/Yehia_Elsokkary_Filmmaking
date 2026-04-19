@@ -629,18 +629,86 @@ const AmetoSection = ({ project }: {project: BrandProject;}) => {
 
 };
 
+/* ─── Cover Hero (top of section) ─── */
+const BrandsCover = () => {
+  const navigate = useNavigate();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const scrollToProjects = useCallback(() => {
+    const el = document.getElementById('brand-projects');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }, []);
+
+  const handleContactClick = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate('/');
+    setTimeout(() => {
+      const el = document.getElementById('contact');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  }, [navigate]);
+
+  return (
+    <section
+      data-project-slug="brands-cover"
+      className="relative w-full overflow-hidden"
+      style={{ minHeight: '90vh' }}
+      onMouseEnter={() => videoRef.current?.play().catch(() => {})}
+      onMouseLeave={() => { if (videoRef.current) { videoRef.current.pause(); } }}
+    >
+      <video
+        ref={videoRef}
+        src="/videos/brands-cover.mp4"
+        poster={getVideoPoster('/videos/brands-cover.mp4')}
+        className="absolute inset-0 w-full h-full object-cover"
+        muted loop playsInline preload="metadata"
+        autoPlay
+        aria-label="Brand shoots and advertisements showreel"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/90" />
+
+      <div className="relative z-10 flex flex-col items-start justify-end min-h-[90vh] px-6 md:px-12 pb-16 md:pb-24 max-w-7xl mx-auto">
+        <p className="font-body text-xs font-semibold tracking-[0.3em] uppercase text-accent mb-4">Portfolio</p>
+        <h1 className="font-films-heading text-5xl md:text-7xl lg:text-8xl text-white mb-4 drop-shadow-lg">
+          Brand Shoots &amp; Advertisements
+        </h1>
+        <p className="font-body text-white/80 text-base md:text-lg max-w-2xl mb-8 drop-shadow-md">
+          Cinematic brand stories — campaigns, fashion films, and commercial work crafted to move audiences and elevate identity.
+        </p>
+        <div className="flex flex-wrap gap-4">
+          <button
+            onClick={scrollToProjects}
+            className="px-6 py-3 rounded-full bg-white font-body text-xs font-bold tracking-widest uppercase text-black transition-transform hover:scale-105"
+          >
+            View Projects
+          </button>
+          <button
+            onClick={handleContactClick}
+            className="px-6 py-3 rounded-full border border-white/40 bg-white/5 backdrop-blur-sm font-body text-xs font-bold tracking-widest uppercase text-white transition-colors hover:bg-white/15"
+          >
+            Contact Me
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 /* ─── Main Page ─── */
 const BrandsAds = () => {
   return (
     <main className="min-h-screen pt-16 bg-black">
       <h1 className="sr-only">Brands &amp; Advertisements</h1>
-      {brandProjects.map((project) =>
-      project.clips ?
-      <NiviSection key={project.id} project={project} /> :
-      project.theme === 'red' ?
-      <AmetoSection key={project.id} project={project} /> :
-      <WtvrSection key={project.id} project={project} />
-      )}
+      <BrandsCover />
+      <div id="brand-projects">
+        {brandProjects.map((project) =>
+        project.clips ?
+        <NiviSection key={project.id} project={project} /> :
+        project.theme === 'red' ?
+        <AmetoSection key={project.id} project={project} /> :
+        <WtvrSection key={project.id} project={project} />
+        )}
+      </div>
     </main>);
 
 };
