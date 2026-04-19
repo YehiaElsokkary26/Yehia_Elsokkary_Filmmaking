@@ -145,11 +145,7 @@ const NiviSection = ({ project }: {project: BrandProject;}) => {
     setFeaturePlaying(false);
   }, []);
 
-  useEffect(() => {
-    bgRefs.current.forEach((v) => {
-      if (v) v.play().catch(() => {});
-    });
-  }, []);
+  // Background previews are hover-to-play (no autoplay).
 
   const active = clips[activeIdx];
 
@@ -192,6 +188,11 @@ const NiviSection = ({ project }: {project: BrandProject;}) => {
               isActive ? 'opacity-100' : 'opacity-30 hover:opacity-50'}`
               }
               onClick={() => selectClip(i)}
+              onMouseEnter={() => bgRefs.current[i]?.play().catch(() => {})}
+              onMouseLeave={() => {
+                const v = bgRefs.current[i];
+                if (v) { v.pause(); v.currentTime = 0; }
+              }}
               role="button"
               tabIndex={0}
               aria-label={`Select ${clip.title}`}
@@ -203,7 +204,7 @@ const NiviSection = ({ project }: {project: BrandProject;}) => {
                   src={clip.videoSrc}
                   poster={getVideoPoster(clip.videoSrc)}
                   className="absolute inset-0 w-full h-full object-cover"
-                  autoPlay muted loop playsInline preload="metadata" />
+                  muted loop playsInline preload="metadata" />
                 
                 <div className="absolute inset-0 bg-black/40" />
 
