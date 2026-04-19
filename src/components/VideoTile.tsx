@@ -28,11 +28,10 @@ const VideoTile = ({ project, onClick }: VideoTileProps) => {
           src={videoMedia.src}
           poster={poster}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          autoPlay
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
           onCanPlay={() => setIsVideoReady(true)}
           onMouseEnter={() => videoRef.current?.play().catch(() => {})}
           onMouseLeave={() => {
