@@ -38,18 +38,13 @@ const HeroVideo = () => {
     return () => clearInterval(interval);
   }, [isPaused, crossfadeToNext]);
 
-  // Manage play/pause/mute for all videos — only the active one plays
+  // Manage mute state only — no auto-play; videos play on hover
   useEffect(() => {
     videoRefs.current.forEach((v, i) => {
       if (!v) return;
       v.muted = i === currentVideo ? isMuted : true;
-      if (i === currentVideo && !isPaused) {
-        v.play().catch(() => {});
-      } else {
-        v.pause();
-      }
     });
-  }, [currentVideo, isPaused, isMuted]);
+  }, [currentVideo, isMuted]);
 
   const togglePause = useCallback(() => {
     const v = videoRefs.current[currentVideo];
