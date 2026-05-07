@@ -67,7 +67,7 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }: ProjectModalProps) =
                 {m.type === 'image' ? (
                   <img src={m.src} alt={m.caption || project.title} className="w-full h-auto object-cover aspect-[4/5]" loading="eager" />
                 ) : (
-                  <video src={m.src} poster={getVideoPoster(m.src)} controls className="w-full" playsInline preload="auto" />
+                  <video src={m.src} poster={getVideoPoster(m.src)} controls className="w-full" playsInline preload="none" />
                 )}
                 {m.caption && <p className="font-handwriting text-sm text-muted-foreground mt-2">{m.caption}</p>}
               </div>

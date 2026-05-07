@@ -85,11 +85,12 @@ const HeroVideo = () => {
             poster={clip.poster}
             className="absolute left-0 top-0 h-full w-full object-cover transition-opacity duration-1000"
             style={{ opacity: currentVideo === i ? 1 : 0 }}
-            autoPlay={i === 0}
             muted
             loop
             playsInline
-            preload={i === 0 ? 'auto' : 'metadata'}
+            preload="none"
+            onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
+            onMouseLeave={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
             aria-label="Background video preview"
           />
         ))}
