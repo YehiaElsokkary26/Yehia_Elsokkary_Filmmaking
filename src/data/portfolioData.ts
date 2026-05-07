@@ -215,9 +215,6 @@ export const projects: ProjectEntry[] = [
     tags: ['short-film', 'drama', 'grief', 'family', 'official-selection'],
     media: [
       { type: 'image', src: dalalPoster, caption: 'Dalal — Official Poster' },
-      { type: 'image', src: dalal1, caption: 'Dalal — still 1' },
-      { type: 'image', src: dalal2, caption: 'Dalal — still 2' },
-      { type: 'image', src: dalal3, caption: 'Dalal — still 3' },
     ],
     category: 'short-films',
   },
