@@ -34,7 +34,7 @@ const HoverVideo = ({ hoverTargetSelector, className, ...props }: HoverVideoProp
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="none"
       onMouseEnter={play}
       onMouseLeave={pause}
       onFocus={play}

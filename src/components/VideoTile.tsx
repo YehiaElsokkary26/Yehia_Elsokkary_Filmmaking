@@ -31,7 +31,7 @@ const VideoTile = ({ project, onClick }: VideoTileProps) => {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           onWaiting={() => setIsLoading(true)}
           onPlaying={() => setIsLoading(false)}
           onMouseEnter={() => {

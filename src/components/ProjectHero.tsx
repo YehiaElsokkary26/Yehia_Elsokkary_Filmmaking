@@ -66,7 +66,7 @@ const ProjectHero = ({
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           onMouseEnter={() => bgRef.current?.play().catch(() => {})}
           onMouseLeave={() => { if (bgRef.current) { bgRef.current.pause(); bgRef.current.currentTime = 0; } }}
           data-bg="true"

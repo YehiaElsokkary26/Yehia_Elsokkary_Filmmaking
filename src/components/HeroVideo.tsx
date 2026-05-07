@@ -38,18 +38,13 @@ const HeroVideo = () => {
     return () => clearInterval(interval);
   }, [isPaused, crossfadeToNext]);
 
-  // Manage play/pause/mute for all videos — only the active one plays
+  // Manage mute state only — no auto-play; videos play on hover
   useEffect(() => {
     videoRefs.current.forEach((v, i) => {
       if (!v) return;
       v.muted = i === currentVideo ? isMuted : true;
-      if (i === currentVideo && !isPaused) {
-        v.play().catch(() => {});
-      } else {
-        v.pause();
-      }
     });
-  }, [currentVideo, isPaused, isMuted]);
+  }, [currentVideo, isMuted]);
 
   const togglePause = useCallback(() => {
     const v = videoRefs.current[currentVideo];
@@ -85,11 +80,12 @@ const HeroVideo = () => {
             poster={clip.poster}
             className="absolute left-0 top-0 h-full w-full object-cover transition-opacity duration-1000"
             style={{ opacity: currentVideo === i ? 1 : 0 }}
-            autoPlay={i === 0}
             muted
             loop
             playsInline
-            preload={i === 0 ? 'auto' : 'metadata'}
+            preload="none"
+            onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
+            onMouseLeave={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
             aria-label="Background video preview"
           />
         ))}

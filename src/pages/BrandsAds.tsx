@@ -205,7 +205,7 @@ const NiviSection = ({ project }: {project: BrandProject;}) => {
                   src={clip.videoSrc}
                   poster={getVideoPoster(clip.videoSrc)}
                   className="absolute inset-0 w-full h-full object-cover"
-                  muted loop playsInline preload="metadata" />
+                  muted loop playsInline preload="none" />
                 
                 <div className="absolute inset-0 bg-black/40" />
 
@@ -237,7 +237,7 @@ const NiviSection = ({ project }: {project: BrandProject;}) => {
                       src={clip.videoSrc}
                       poster={getVideoPoster(clip.videoSrc)}
                       className="w-full h-full object-contain bg-black"
-                      controls playsInline preload="auto"
+                      controls playsInline preload="none"
                       onPause={pauseFeature}
                       onEnded={pauseFeature}
                       onClick={(e) => e.stopPropagation()} />
@@ -277,7 +277,7 @@ const NiviSection = ({ project }: {project: BrandProject;}) => {
                 }
                 {isActive && featurePlaying &&
                 <div className="absolute inset-0 z-10 bg-black flex items-center justify-center lg:hidden">
-                    <video ref={featureRef} src={clip.videoSrc} poster={getVideoPoster(clip.videoSrc)} className="w-full h-full object-contain" controls playsInline autoPlay preload="auto" onPause={pauseFeature} onEnded={pauseFeature} />
+                    <video ref={featureRef} src={clip.videoSrc} poster={getVideoPoster(clip.videoSrc)} className="w-full h-full object-contain" controls playsInline preload="none" onPause={pauseFeature} onEnded={pauseFeature} />
                   </div>
                 }
               </div>
@@ -386,7 +386,7 @@ const WtvrSection = ({ project }: {project: BrandProject;}) => {
                 src={project.videoSrc}
                 poster={getVideoPoster(project.videoSrc)}
                 className="w-full h-full object-contain bg-black"
-                controls playsInline preload="auto"
+                controls playsInline preload="none"
                 onPause={pauseFeature}
                 onEnded={pauseFeature} />
             )}
@@ -422,7 +422,7 @@ const WtvrSection = ({ project }: {project: BrandProject;}) => {
                 </button>
               </>
             ) : (
-              <video ref={featureRef} src={project.videoSrc} poster={getVideoPoster(project.videoSrc)} className="w-full h-full object-contain bg-black" controls playsInline autoPlay preload="auto" onPause={pauseFeature} onEnded={pauseFeature} />
+              <video ref={featureRef} src={project.videoSrc} poster={getVideoPoster(project.videoSrc)} className="w-full h-full object-contain bg-black" controls playsInline preload="none" onPause={pauseFeature} onEnded={pauseFeature} />
             )}
           </div>
           <div className="mt-6 text-center">
@@ -534,7 +534,7 @@ const AmetoSection = ({ project }: {project: BrandProject;}) => {
               src={project.videoSrc}
               poster={getVideoPoster(project.videoSrc)}
               className="w-full h-full object-contain bg-black"
-              controls playsInline preload="auto"
+              controls playsInline preload="none"
               onPause={pauseFeature}
               onEnded={pauseFeature} />
 
@@ -600,7 +600,7 @@ const AmetoSection = ({ project }: {project: BrandProject;}) => {
               src={project.videoSrc}
               poster={getVideoPoster(project.videoSrc)}
               className="w-full h-full object-contain bg-black"
-              controls playsInline autoPlay preload="auto"
+              controls playsInline preload="none"
               onPause={pauseFeature}
               onEnded={pauseFeature} />
 
@@ -661,8 +661,8 @@ const BrandsCover = () => {
         src="/videos/brands-cover.mp4"
         poster={getVideoPoster('/videos/brands-cover.mp4')}
         className="absolute inset-0 w-full h-full object-cover"
-        muted loop playsInline preload="metadata"
-        autoPlay
+        muted loop playsInline preload="none"
+       
         aria-label="Brand shoots and advertisements showreel"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/90" />
