@@ -122,7 +122,7 @@ const VideoIndex = () => {
                   src={videoSrc}
                   poster={getVideoPoster(videoSrc)}
                   className={`absolute inset-0 w-full h-full object-cover transition-transform duration-300 ${!focused ? 'group-hover:scale-[1.04]' : ''}`}
-                  muted loop playsInline preload="metadata"
+                  muted loop playsInline preload="none"
                   aria-label={`${project.title} video preview — hover to play`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
@@ -166,7 +166,7 @@ const VideoIndex = () => {
                             poster={getVideoPoster(videoSrc)}
                             className="w-full h-full object-cover"
                             controls={isPlaying}
-                            playsInline preload="auto"
+                            playsInline preload="none"
                             aria-label={`${project.title} full video`}
                           />
                           {!isPlaying && (
