@@ -65,6 +65,19 @@ const brandProjects: BrandProject[] = [
 
 },
 {
+  id: 'klean-corp',
+  title: 'KLEAN CORP',
+  subtitle: 'Athleisure wear brand — Main Photographer & Editor',
+  description:
+  'Teaser for the new "Klean Swim" campaign by KLEAN CORP — an athleisure wear brand pushing clean aesthetics and bold movement. Shot, edited, and color-graded to capture the energy of the upcoming collection.',
+  role: 'Photographer / Editor',
+  tags: ['campaign', 'athleisure', 'teaser', 'fashion'],
+  videoSrc: '/videos/klean-swim.mp4',
+  year: '2025',
+  synopsis: 'Klean Swim — teaser for the new campaign.',
+  aspectRatio: '16:9'
+},
+{
   id: 'wtvr-bts',
   title: 'THE WTVR BTS Shoot',
   subtitle: 'Behind the scenes of a creative shoot — pure energy and good vibes.',
