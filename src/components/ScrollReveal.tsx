@@ -26,10 +26,11 @@ const ScrollReveal = ({ children, className = '', variant = 'up', delay = 0 }: S
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          timeoutRef.current = setTimeout(() => setVisible(true), delay);
-        } else {
-          if (timeoutRef.current) clearTimeout(timeoutRef.current);
-          setVisible(false);
+          timeoutRef.current = setTimeout(() => {
+            setVisible(true);
+            // Disconnect after first reveal — no re-renders on scroll-up
+            observer.disconnect();
+          }, delay);
         }
       },
       { threshold: 0.08 }

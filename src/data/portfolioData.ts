@@ -1,54 +1,54 @@
 // ASSET LIST:
-// - kazdura-1.jpg to kazdura-10.jpg → Kazdura Music Shoot — USER UPLOAD
-// - rani-1.jpg to rani-10.jpg → Rani Shoot — USER UPLOAD
-// - ahmad-1.jpg to ahmad-10.jpg → Ahmad Dawood Moez Shoot — USER UPLOAD
-// - novelwear-1.jpg to novelwear-9.jpg → Novel Wear Project — USER UPLOAD
+// - kazdura-1.webp to kazdura-10.webp → Kazdura Music Shoot — USER UPLOAD
+// - rani-1.webp to rani-10.webp → Rani Shoot — USER UPLOAD
+// - ahmad-1.webp to ahmad-10.webp → Ahmad Dawood Moez Shoot — USER UPLOAD
+// - novelwear-1.webp to novelwear-9.webp → Novel Wear Project — USER UPLOAD
 // - people-of-moiz.mp4 → People of Moiz documentary — USER UPLOAD — do not regenerate
 
-import kazdura1 from '@/assets/kazdura-1.jpg';
-import kazdura2 from '@/assets/kazdura-2.jpg';
-import kazdura3 from '@/assets/kazdura-3.jpg';
-import kazdura4 from '@/assets/kazdura-4.jpg';
-import kazdura5 from '@/assets/kazdura-5.jpg';
-import kazdura6 from '@/assets/kazdura-6.jpg';
-import kazdura7 from '@/assets/kazdura-7.jpg';
-import kazdura8 from '@/assets/kazdura-8.jpg';
-import kazdura9 from '@/assets/kazdura-9.jpg';
-import kazdura10 from '@/assets/kazdura-10.jpg';
+import kazdura1 from '@/assets/kazdura-1.webp';
+import kazdura2 from '@/assets/kazdura-2.webp';
+import kazdura3 from '@/assets/kazdura-3.webp';
+import kazdura4 from '@/assets/kazdura-4.webp';
+import kazdura5 from '@/assets/kazdura-5.webp';
+import kazdura6 from '@/assets/kazdura-6.webp';
+import kazdura7 from '@/assets/kazdura-7.webp';
+import kazdura8 from '@/assets/kazdura-8.webp';
+import kazdura9 from '@/assets/kazdura-9.webp';
+import kazdura10 from '@/assets/kazdura-10.webp';
 
-import rani1 from '@/assets/rani-1.jpg';
-import rani2 from '@/assets/rani-2.jpg';
-import rani3 from '@/assets/rani-3.jpg';
-import rani4 from '@/assets/rani-4.jpg';
-import rani5 from '@/assets/rani-5.jpg';
-import rani6 from '@/assets/rani-6.jpg';
-import rani7 from '@/assets/rani-7.jpg';
-import rani8 from '@/assets/rani-8.jpg';
-import rani9 from '@/assets/rani-9.jpg';
-import rani10 from '@/assets/rani-10.jpg';
+import rani1 from '@/assets/rani-1.webp';
+import rani2 from '@/assets/rani-2.webp';
+import rani3 from '@/assets/rani-3.webp';
+import rani4 from '@/assets/rani-4.webp';
+import rani5 from '@/assets/rani-5.webp';
+import rani6 from '@/assets/rani-6.webp';
+import rani7 from '@/assets/rani-7.webp';
+import rani8 from '@/assets/rani-8.webp';
+import rani9 from '@/assets/rani-9.webp';
+import rani10 from '@/assets/rani-10.webp';
 
-import ahmad1 from '@/assets/ahmad-1.jpg';
-import ahmad2 from '@/assets/ahmad-2.jpg';
-import ahmad3 from '@/assets/ahmad-3.jpg';
-import ahmad4 from '@/assets/ahmad-4.jpg';
-import ahmad5 from '@/assets/ahmad-5.jpg';
-import ahmad6 from '@/assets/ahmad-6.jpg';
-import ahmad7 from '@/assets/ahmad-7.jpg';
-import ahmad8 from '@/assets/ahmad-8.jpg';
-import ahmad9 from '@/assets/ahmad-9.jpg';
-import ahmad10 from '@/assets/ahmad-10.jpg';
+import ahmad1 from '@/assets/ahmad-1.webp';
+import ahmad2 from '@/assets/ahmad-2.webp';
+import ahmad3 from '@/assets/ahmad-3.webp';
+import ahmad4 from '@/assets/ahmad-4.webp';
+import ahmad5 from '@/assets/ahmad-5.webp';
+import ahmad6 from '@/assets/ahmad-6.webp';
+import ahmad7 from '@/assets/ahmad-7.webp';
+import ahmad8 from '@/assets/ahmad-8.webp';
+import ahmad9 from '@/assets/ahmad-9.webp';
+import ahmad10 from '@/assets/ahmad-10.webp';
 
-import novelwear1 from '@/assets/novelwear-1.jpg';
-import novelwear2 from '@/assets/novelwear-2.jpg';
-import novelwear3 from '@/assets/novelwear-3.jpg';
-import novelwear4 from '@/assets/novelwear-4.jpg';
-import novelwear5 from '@/assets/novelwear-5.jpg';
-import novelwear6 from '@/assets/novelwear-6.jpg';
-import novelwear7 from '@/assets/novelwear-7.jpg';
-import novelwear8 from '@/assets/novelwear-8.jpg';
-import novelwear9 from '@/assets/novelwear-9.jpg';
+import novelwear1 from '@/assets/novelwear-1.webp';
+import novelwear2 from '@/assets/novelwear-2.webp';
+import novelwear3 from '@/assets/novelwear-3.webp';
+import novelwear4 from '@/assets/novelwear-4.webp';
+import novelwear5 from '@/assets/novelwear-5.webp';
+import novelwear6 from '@/assets/novelwear-6.webp';
+import novelwear7 from '@/assets/novelwear-7.webp';
+import novelwear8 from '@/assets/novelwear-8.webp';
+import novelwear9 from '@/assets/novelwear-9.webp';
 
-import dalalPoster from '@/assets/dalal-poster.png';
+import dalalPoster from '@/assets/dalal-poster.webp';
 
 export interface ProjectEntry {
   id: string;

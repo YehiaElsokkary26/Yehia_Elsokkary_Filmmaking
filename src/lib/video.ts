@@ -28,11 +28,11 @@ export const getVideoPoster = (src: string): string | undefined => {
  * Loads image resource in background
  */
 export const preloadPoster = (src: string): void => {
+  // Check cache before resolving URL (getVideoPoster would add to cache, making the guard useless)
+  if (posterCache.has(src)) return;
+
   const posterUrl = getVideoPoster(src);
   if (!posterUrl) return;
-
-  // Don't preload if already cached
-  if (posterCache.has(src)) return;
 
   const img = new Image();
   img.src = posterUrl;

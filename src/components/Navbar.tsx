@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { photographyCategories } from '@/data/portfolioData';
 
 const navLinks = [
-  { label: 'Home', path: '/' },
   { label: 'Work', path: '/#work' },
   { label: 'Photography', path: '/photography' },
   { label: 'Filmmaking', path: '/filmmaking' },
@@ -13,6 +12,17 @@ const navLinks = [
   { label: 'About', path: '/#about' },
   { label: 'Contact', path: '/#contact' },
 ];
+
+const Wordmark = ({ scrolled }: { scrolled: boolean }) => (
+  <div className="flex flex-col leading-[1.05]">
+    <span className={`font-heading text-[11px] tracking-[0.28em] uppercase transition-colors duration-300 ${scrolled ? 'text-foreground' : 'text-studio-white'}`}>
+      YEHIA
+    </span>
+    <span className="font-heading text-[11px] tracking-[0.28em] uppercase text-accent">
+      ELSOKKARY
+    </span>
+  </div>
+);
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -27,118 +37,158 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
-  const handleNavClick = (path: string) => {
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
+
+  const handleNavClick = useCallback((path: string) => {
     setOpen(false);
+    setPhotoHover(false);
     if (path.startsWith('/#')) {
       const id = path.replace('/#', '');
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
-  };
+  }, []);
+
+  const isActive = (path: string) =>
+    path !== '/' &&
+    (location.pathname === path || (path !== '/#' && location.pathname.startsWith(path.replace('/#', '/'))));
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled
-        ? 'bg-background/95 backdrop-blur-md border-b border-border/20'
-        : 'bg-transparent'
-    }`}>
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 lg:px-12">
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <div
-              key={link.path}
-              className="relative"
-              onMouseEnter={() => link.label === 'Photography' && setPhotoHover(true)}
-              onMouseLeave={() => link.label === 'Photography' && setPhotoHover(false)}
-            >
-              <Link
-                to={link.path}
-                onClick={() => handleNavClick(link.path)}
-                className={`font-body text-[11px] font-semibold tracking-[0.2em] uppercase transition-colors duration-300 ${
-                  scrolled
-                    ? (location.pathname.startsWith(link.path) && link.path !== '/' ? 'text-foreground' : location.pathname === link.path ? 'text-foreground' : 'text-muted-foreground')
-                    : (location.pathname === link.path ? 'text-studio-white' : 'text-studio-white/60')
-                }`}
-                style={{
-                  ...(scrolled && (location.pathname === link.path || (location.pathname.startsWith(link.path) && link.path !== '/'))
-                    ? { color: 'hsl(var(--burgundy))' } : {})
-                }}
-                onMouseEnter={(e) => { if (scrolled) e.currentTarget.style.color = 'hsl(var(--burgundy))'; else e.currentTarget.style.color = 'hsl(0 0% 100%)'; }}
-                onMouseLeave={(e) => {
-                  const isActive = location.pathname === link.path || (location.pathname.startsWith(link.path) && link.path !== '/');
-                  if (scrolled) e.currentTarget.style.color = isActive ? 'hsl(var(--burgundy))' : '';
-                  else e.currentTarget.style.color = isActive ? 'hsl(0 0% 100%)' : 'hsl(0 0% 100% / 0.6)';
-                }}
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? 'bg-background/95 backdrop-blur-md border-b border-border'
+            : 'bg-transparent'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 lg:px-12">
+          {/* Wordmark */}
+          <Link to="/" onClick={() => handleNavClick('/')}>
+            <Wordmark scrolled={scrolled} />
+          </Link>
+
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <div
+                key={link.path}
+                className="relative"
+                onMouseEnter={() => link.label === 'Photography' && setPhotoHover(true)}
+                onMouseLeave={() => link.label === 'Photography' && setPhotoHover(false)}
               >
-                {link.label}
-              </Link>
+                <Link
+                  to={link.path}
+                  onClick={() => handleNavClick(link.path)}
+                  className={`font-body text-[10px] font-semibold tracking-[0.22em] uppercase transition-colors duration-300 ${
+                    isActive(link.path)
+                      ? 'text-accent'
+                      : scrolled
+                      ? 'text-foreground/50 hover:text-foreground'
+                      : 'text-studio-white/55 hover:text-studio-white'
+                  }`}
+                >
+                  {link.label}
+                </Link>
 
-              {/* Photography hover preview */}
-              {link.label === 'Photography' && photoHover && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50">
-                  <div className="bg-background border border-border/30 rounded-lg shadow-lg p-4 flex gap-4 min-w-[340px]">
-                    {photographyCategories.map((cat) => (
-                      <Link
-                        key={cat.slug}
-                        to={`/photography/${cat.slug}`}
-                        className="group flex-1 text-center"
-                        onClick={() => setPhotoHover(false)}
-                      >
-                        <div className="polaroid !transform-none !p-1 !pb-6">
-                          <div className="aspect-[3/4] overflow-hidden bg-muted">
-                            <img
-                              src={cat.thumbnail}
-                              alt={cat.label}
-                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            />
+                {/* Photography hover dropdown */}
+                {link.label === 'Photography' && photoHover && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 z-50">
+                    <div className="bg-card border border-border rounded-lg shadow-lg p-4 flex gap-3 min-w-[300px]">
+                      {photographyCategories.map((cat) => (
+                        <Link
+                          key={cat.slug}
+                          to={`/photography/${cat.slug}`}
+                          className="group flex-1 text-center"
+                          onClick={() => setPhotoHover(false)}
+                        >
+                          <div className="polaroid !transform-none !p-1 !pb-5">
+                            <div className="aspect-[3/4] overflow-hidden bg-muted">
+                              <img
+                                src={cat.thumbnail}
+                                alt={cat.label}
+                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                              />
+                            </div>
+                            <p className="polaroid-caption !text-[9px] !pt-1 !text-foreground/40">{cat.label.replace(' Photography', '')}</p>
                           </div>
-                          <p className="polaroid-caption !text-[10px] !pt-1">{cat.label.replace(' Photography', '')}</p>
-                        </div>
-                      </Link>
-                    ))}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
-          ))}
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Hire Me CTA — always filled */}
+          <Link
+            to="/#contact"
+            onClick={() => handleNavClick('/#contact')}
+            className="hidden md:inline-flex items-center gap-2 font-body text-[10px] font-bold tracking-[0.22em] uppercase transition-all duration-300 rounded-full px-5 py-2 bg-accent text-accent-foreground hover:bg-accent/85"
+          >
+            Hire Me
+          </Link>
+
+          {/* Mobile toggle */}
+          <button
+            onClick={() => setOpen(!open)}
+            className={`md:hidden p-1 transition-colors z-[51] relative ${scrolled || open ? 'text-foreground' : 'text-studio-white'}`}
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
+      </nav>
 
-        <Link
-          to="/#contact"
-          onClick={() => handleNavClick('/#contact')}
-          className={`hidden md:block font-body text-[11px] font-bold tracking-[0.2em] uppercase transition-colors ${
-            scrolled ? 'text-primary hover:text-primary/70' : 'text-accent hover:text-accent/70'
-          }`}
-        >
-          Hire Me
-        </Link>
-
-        <button
-          onClick={() => setOpen(!open)}
-          className={`md:hidden transition-colors ${scrolled ? 'text-foreground' : 'text-studio-white'}`}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </div>
-
+      {/* Full-screen mobile overlay */}
       {open && (
-        <div className="md:hidden bg-background border-t border-border/20 animate-fade-in">
-          <div className="flex flex-col px-6 py-8 gap-5">
+        <div className="fixed inset-0 z-[49] bg-background/98 backdrop-blur-md flex flex-col md:hidden">
+          {/* Top bar */}
+          <div className="flex items-center justify-between px-6 py-5 border-b border-border/20">
+            <div className="flex flex-col leading-[1.05]">
+              <span className="font-heading text-[11px] tracking-[0.28em] uppercase text-foreground">YEHIA</span>
+              <span className="font-heading text-[11px] tracking-[0.28em] uppercase text-accent">ELSOKKARY</span>
+            </div>
+          </div>
+
+          {/* Nav links — vertically centered */}
+          <div className="flex-1 flex flex-col justify-center px-8 gap-0">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={() => handleNavClick(link.path)}
-                className="font-heading text-2xl tracking-wide text-muted-foreground"
+                className={`font-heading text-[clamp(28px,7vw,44px)] tracking-wide py-3 border-b border-border/20 transition-colors duration-200 ${
+                  isActive(link.path) ? 'text-accent' : 'text-foreground/55 hover:text-foreground'
+                }`}
               >
                 {link.label}
               </Link>
             ))}
           </div>
+
+          {/* Bottom CTA */}
+          <div className="px-8 pb-12 pt-6">
+            <a
+              href="/#contact"
+              onClick={() => { setOpen(false); handleNavClick('/#contact'); }}
+              className="btn-pill bg-accent text-accent-foreground w-full justify-center"
+            >
+              Hire Me
+            </a>
+          </div>
         </div>
       )}
-    </nav>
+    </>
   );
 };
 

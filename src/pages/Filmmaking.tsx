@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { Play, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { getVideoPoster } from '@/lib/video';
+import { globalVideoPlaybackManager } from '@/hooks/useVideoManager';
 
 interface FilmProject {
   id: string;
@@ -114,20 +115,21 @@ const Filmmaking = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [focusedIndex, closeProject, switchProject]);
 
-  const handleMouseEnter = (index: number) => {
+  const handleMouseEnter = useCallback((index: number) => {
     const video = videoRefs.current[index];
     if (video && focusedIndex === null) {
+      globalVideoPlaybackManager.setActive(video);
       video.play().catch(() => {});
     }
-  };
+  }, [focusedIndex]);
 
-  const handleMouseLeave = (index: number) => {
+  const handleMouseLeave = useCallback((index: number) => {
     const video = videoRefs.current[index];
     if (video && focusedIndex === null) {
-      video.pause();
+      globalVideoPlaybackManager.pause();
       video.currentTime = 0;
     }
-  };
+  }, [focusedIndex]);
 
   return (
     <main className="min-h-screen pt-16" ref={containerRef}>
@@ -163,6 +165,7 @@ const Filmmaking = () => {
               style={{
                 height: isFocused ? 'auto' : 'var(--film-panel-height)',
                 minHeight: isFocused ? '70vh' : 'var(--film-panel-height)',
+                willChange: isFocused ? 'auto' : 'height',
               }}
               onClick={() => !isFocused && openProject(index)}
               onMouseEnter={() => handleMouseEnter(index)}

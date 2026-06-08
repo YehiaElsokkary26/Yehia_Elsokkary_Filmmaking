@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Play, Pause, Volume2 } from 'lucide-react';
 import { getVideoPoster } from '@/lib/video';
@@ -645,7 +645,6 @@ const AmetoSection = ({ project }: {project: BrandProject;}) => {
 /* ─── Cover Hero (top of section) ─── */
 const BrandsCover = () => {
   const navigate = useNavigate();
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   const scrollToProjects = useCallback(() => {
     const el = document.getElementById('brand-projects');
@@ -666,17 +665,13 @@ const BrandsCover = () => {
       data-project-slug="brands-cover"
       className="relative w-full overflow-hidden"
       style={{ minHeight: '90vh' }}
-      onMouseEnter={() => videoRef.current?.play().catch(() => {})}
-      onMouseLeave={() => { if (videoRef.current) { videoRef.current.pause(); } }}
     >
-      <video
-        ref={videoRef}
+      <HoverVideo
         src="/videos/brands-cover.mp4"
         poster={getVideoPoster('/videos/brands-cover.mp4')}
         className="absolute inset-0 w-full h-full object-cover"
-        muted loop playsInline preload="none"
-       
-        aria-label="Brand shoots and advertisements showreel"
+        preload="none"
+        aria-label="Brand shoots and advertisements showreel — hover to play"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/90" />
 

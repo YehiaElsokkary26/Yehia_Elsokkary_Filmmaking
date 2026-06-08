@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useLayoutEffect, useCallback } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ProjectEntry } from '@/data/portfolioData';
 import { getVideoPoster } from '@/lib/video';
@@ -19,12 +19,14 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }: ProjectModalProps) =
 
   useEffect(() => {
     document.addEventListener('keydown', handleKey);
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.removeEventListener('keydown', handleKey);
-      document.body.style.overflow = '';
-    };
+    return () => document.removeEventListener('keydown', handleKey);
   }, [handleKey]);
+
+  // Synchronous DOM mutation before paint — prevents scroll jank on modal open
+  useLayoutEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = ''; };
+  }, []);
 
   return (
     <div

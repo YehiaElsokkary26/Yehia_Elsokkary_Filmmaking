@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Shuffle, Pause, Play, Volume2, VolumeX, Settings } from 'lucide-react';
+import { Pause, Play, Volume2, VolumeX, Film } from 'lucide-react';
 import { getVideoPoster } from '@/lib/video';
 
 const heroVideoReel = [
@@ -11,19 +11,35 @@ const HeroVideo = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [grainOn, setGrainOn] = useState(true);
-  const [showSettings, setShowSettings] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const parallaxBgRef = useRef<HTMLDivElement>(null);
+  const parallaxTitleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setTimeout(() => setLoaded(true), 100);
+    const timer = setTimeout(() => setLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const video = videoRefs.current[0];
+    if (video) video.play().catch(() => {});
   }, []);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
-    const handleScroll = () => setScrollY(window.scrollY);
+    const handleScroll = () => {
+      const y = window.scrollY;
+      if (parallaxBgRef.current) {
+        parallaxBgRef.current.style.transform = `translate3d(0, ${y * 0.25}px, 0) scale(1.2)`;
+      }
+      if (parallaxTitleRef.current) {
+        const opacity = Math.max(0, 1 - y / 450);
+        parallaxTitleRef.current.style.transform = `translate3d(0, -${y * 0.09}px, 0)`;
+        parallaxTitleRef.current.style.opacity = String(opacity);
+      }
+    };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -38,7 +54,6 @@ const HeroVideo = () => {
     return () => clearInterval(interval);
   }, [isPaused, crossfadeToNext]);
 
-  // Manage mute state only — no auto-play; videos play on hover
   useEffect(() => {
     videoRefs.current.forEach((v, i) => {
       if (!v) return;
@@ -53,25 +68,20 @@ const HeroVideo = () => {
     setIsPaused((prev) => !prev);
   }, [isPaused, currentVideo]);
 
-  const toggleMute = useCallback(() => {
-    setIsMuted((prev) => !prev);
-  }, []);
-
-  const parallaxBg = scrollY * 0.25;
-  const parallaxTitle = scrollY * 0.9;
-  const titleOpacity = Math.max(0, 1 - scrollY / 450);
+  const toggleMute = useCallback(() => setIsMuted((prev) => !prev), []);
 
   return (
-    <section 
+    <section
       className={`hero-video-shell relative min-h-[100svh] w-full overflow-hidden ${grainOn ? 'film-grain' : ''}`}
-      style={{ backgroundColor: '#1a1a1a' }}
+      style={{ backgroundColor: '#0d0d0d' }}
       aria-label="Hero video showcase"
     >
+      {/* Parallax background */}
       <div
+        ref={parallaxBgRef}
         className="absolute inset-0 z-0 will-change-transform"
-        style={{ transform: `translate3d(0, ${parallaxBg}px, 0) scale(1.2)` }}
+        style={{ transform: 'translate3d(0, 0, 0) scale(1.2)' }}
       >
-        {/* Render all videos stacked; only active one is visible */}
         {heroVideoReel.map((clip, i) => (
           <video
             key={clip.src}
@@ -83,110 +93,108 @@ const HeroVideo = () => {
             muted
             loop
             playsInline
-            preload="none"
-            onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
-            onMouseLeave={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
+            preload="auto"
             aria-label="Background video preview"
           />
         ))}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/30 via-transparent to-[#1a1a1a]/70" />
-        {grainOn && <div className="absolute inset-0 vignette pointer-events-none" />}
+        {/* Cinematic dark overlay — heavier at bottom for text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/75" />
+        {grainOn && <div className="absolute inset-0 vignette pointer-events-none" aria-hidden="true" />}
       </div>
 
+      {/* Title layer */}
       <div
-        className={`relative z-10 min-h-[100svh] flex flex-col justify-end pb-20 md:pb-28 px-6 md:px-16 lg:px-24 will-change-transform transition-all duration-1000 ${loaded ? 'opacity-100' : 'opacity-0 translate-y-8'}`}
-        style={{ transform: `translate3d(0, -${parallaxTitle * 0.1}px, 0)`, opacity: titleOpacity }}
+        ref={parallaxTitleRef}
+        className={`relative z-10 min-h-[100svh] flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-16 lg:px-24 will-change-transform transition-all duration-1000 ${
+          loaded ? 'opacity-100' : 'opacity-0 translate-y-6'
+        }`}
       >
         <div className="max-w-5xl">
-          <p className="handwritten text-xl md:text-2xl text-studio-white/70 mb-4">
-            Visual storyteller ✦
+          {/* Overline */}
+          <p className="label-overline mb-5 text-accent/80">
+            Visual storyteller
           </p>
-          <h1 className="font-hero text-8xl md:text-[12vw] lg:text-[9vw] xl:text-[160px] text-studio-white uppercase mb-6">
-            Yehia<br />elsokkary
+
+          {/* Hero name */}
+          <h1 className="font-hero text-[18vw] md:text-[13vw] lg:text-[10vw] xl:text-[148px] text-studio-white uppercase leading-none mb-6 tracking-tight">
+            Yehia<br />Elsokkary
           </h1>
-          <p className="font-body text-studio-white/55 text-sm md:text-base max-w-lg mb-10 tracking-wide font-medium">
-            Photographer · Videographer · Filmmaker. Capturing moments that move.
+
+          {/* Descriptor */}
+          <p className="font-body text-studio-white/70 text-sm md:text-base max-w-md mb-10 tracking-wide font-normal leading-relaxed drop-shadow-lg">
+            Photographer · Videographer · Filmmaker — capturing moments that move.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a href="#work" className="btn-pill bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground shadow-2xl">
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a
+              href="#work"
+              className="btn-pill bg-accent text-accent-foreground hover:bg-accent/85"
+            >
               View My Work
             </a>
-            <a href="#contact" className="btn-pill border-2 border-studio-white/30 text-studio-white hover:bg-studio-white/10">
+            <a
+              href="#contact"
+              className="btn-pill border border-studio-white/35 text-studio-white hover:border-studio-white/60 hover:bg-studio-white/8"
+            >
               Get in Touch
             </a>
           </div>
         </div>
       </div>
 
-      {/* Controls */}
-      <div className="absolute bottom-6 left-6 md:left-16 z-20 flex items-center gap-3">
-        <button 
-          onClick={() => crossfadeToNext()} 
-          className="bg-studio-white/10 backdrop-blur-sm text-studio-white p-2.5 rounded-full hover:bg-studio-white/20 transition-all border border-studio-white/10" 
-          aria-label="Next clip"
-        >
-          <Shuffle size={14} />
-        </button>
-        <button 
-          onClick={togglePause} 
-          className="bg-studio-white/10 backdrop-blur-sm text-studio-white p-2.5 rounded-full hover:bg-studio-white/20 transition-all border border-studio-white/10" 
+      {/* Playback controls — bottom left */}
+      <div className="absolute bottom-7 left-6 md:left-16 z-20 flex items-center gap-2">
+        <button
+          onClick={togglePause}
+          className="bg-white/8 backdrop-blur-sm text-studio-white p-2.5 rounded-full hover:bg-white/15 transition-all border border-white/8"
           aria-label={isPaused ? 'Play' : 'Pause'}
         >
-          {isPaused ? <Play size={14} /> : <Pause size={14} />}
+          {isPaused ? <Play size={13} /> : <Pause size={13} />}
         </button>
-        <button 
-          onClick={toggleMute} 
-          className="bg-studio-white/10 backdrop-blur-sm text-studio-white p-2.5 rounded-full hover:bg-studio-white/20 transition-all border border-studio-white/10" 
+        <button
+          onClick={toggleMute}
+          className="bg-white/8 backdrop-blur-sm text-studio-white p-2.5 rounded-full hover:bg-white/15 transition-all border border-white/8"
           aria-label={isMuted ? 'Unmute' : 'Mute'}
         >
-          {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
+          {isMuted ? <VolumeX size={13} /> : <Volume2 size={13} />}
         </button>
-        
-        <div className="relative">
-          <button 
-            onClick={() => setShowSettings(!showSettings)} 
-            className="bg-studio-white/10 backdrop-blur-sm text-studio-white p-2.5 rounded-full hover:bg-studio-white/20 transition-all border border-studio-white/10" 
-            aria-label="Settings"
-            aria-expanded={showSettings}
-          >
-            <Settings size={14} />
-          </button>
-          {showSettings && (
-            <div className="absolute bottom-12 left-0 bg-[#1a1a1a]/90 backdrop-blur-md rounded-lg p-3 min-w-[180px] border border-studio-white/10">
-              <label className="flex items-center justify-between gap-3 text-studio-white/80 text-xs">
-                <span>Film grain</span>
-                <button 
-                  onClick={() => setGrainOn(!grainOn)}
-                  className={`w-10 h-5 rounded-full transition-colors ${grainOn ? 'bg-accent' : 'bg-studio-white/20'}`}
-                  role="switch"
-                  aria-checked={grainOn}
-                >
-                  <div className={`w-4 h-4 rounded-full bg-white transition-transform ${grainOn ? 'translate-x-5' : 'translate-x-0.5'}`} />
-                </button>
-              </label>
-            </div>
-          )}
+        <button
+          onClick={() => setGrainOn(!grainOn)}
+          className="bg-white/8 backdrop-blur-sm text-studio-white p-2.5 rounded-full hover:bg-white/15 transition-all border border-white/8"
+          aria-label={grainOn ? 'Disable grain' : 'Enable grain'}
+          title={grainOn ? 'Grain On' : 'Grain Off'}
+        >
+          <Film size={13} className={grainOn ? 'text-accent/80' : 'text-white/35'} />
+        </button>
+      </div>
+
+      {/* Scroll indicator — bottom right */}
+      <div className="absolute bottom-7 right-6 md:right-16 z-20 hidden md:flex flex-col items-center gap-3">
+        <span
+          className="font-body text-[9px] tracking-[0.25em] uppercase text-studio-white/50"
+          style={{ writingMode: 'vertical-rl' }}
+        >
+          scroll
+        </span>
+        <div className="w-px h-10 bg-gradient-to-b from-studio-white/35 to-transparent" />
+      </div>
+
+      {/* Video dot indicators */}
+      {heroVideoReel.length > 1 && (
+        <div className="absolute bottom-7 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          {heroVideoReel.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentVideo(i)}
+              className={`transition-all duration-300 rounded-full ${
+                currentVideo === i ? 'w-6 h-1.5 bg-accent' : 'w-1.5 h-1.5 bg-white/25 hover:bg-white/45'
+              }`}
+              aria-label={`Play clip ${i + 1}`}
+            />
+          ))}
         </div>
-      </div>
-
-      <div className="absolute bottom-6 right-6 md:right-16 z-20 hidden md:flex flex-col items-center gap-2">
-        <div className="w-px h-12 bg-gradient-to-b from-transparent to-studio-white/20" />
-        <span className="font-body text-[10px] tracking-[0.3em] uppercase text-studio-white/30 rotate-90 origin-center">scroll</span>
-      </div>
-
-      {/* Video Indicators */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-        {heroVideoReel.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentVideo(i)}
-            className={`transition-all duration-300 rounded-full ${
-              currentVideo === i ? 'w-8 h-2 bg-accent' : 'w-2 h-2 bg-studio-white/30 hover:bg-studio-white/50'
-            }`}
-            aria-label={`Play clip ${i + 1}`}
-          />
-        ))}
-      </div>
+      )}
     </section>
   );
 };

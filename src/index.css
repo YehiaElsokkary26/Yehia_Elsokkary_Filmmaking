@@ -1,97 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Bebas+Neue&family=Caveat:wght@400;500;600;700&family=Pacifico&family=Permanent+Marker&family=Lobster&family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 20 30% 96%;
-    --foreground: 240 20% 20%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 20% 20%;
-    --popover: 20 30% 96%;
-    --popover-foreground: 240 20% 20%;
-    --primary: 210 40% 35%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 20 60% 88%;
-    --secondary-foreground: 240 20% 20%;
-    --muted: 300 10% 90%;
-    --muted-foreground: 270 15% 40%;
-    --accent: 350 70% 60%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 300 10% 82%;
-    --input: 300 10% 82%;
-    --ring: 210 40% 35%;
-    --radius: 0.625rem;
+    /* ── Dark Cinematic Palette ────────────────────── */
+    --background: 0 0% 5%;
+    --foreground: 36 8% 93%;
+    --card: 0 0% 8%;
+    --card-foreground: 36 8% 93%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 36 8% 93%;
+    --primary: 38 52% 52%;
+    --primary-foreground: 0 0% 5%;
+    --secondary: 0 0% 11%;
+    --secondary-foreground: 36 8% 80%;
+    --muted: 0 0% 11%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 38 52% 52%;
+    --accent-foreground: 0 0% 5%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 96%;
+    --border: 0 0% 13%;
+    --input: 0 0% 13%;
+    --ring: 38 52% 52%;
+    --radius: 0.375rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5% 26%;
-    --sidebar-primary: 210 40% 35%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 20 60% 88%;
-    --sidebar-accent-foreground: 240 20% 20%;
-    --sidebar-border: 300 10% 82%;
-    --sidebar-ring: 210 40% 35%;
+    /* ── Sidebar ──────────────────────────────────── */
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 36 8% 93%;
+    --sidebar-primary: 38 52% 52%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 11%;
+    --sidebar-accent-foreground: 36 8% 93%;
+    --sidebar-border: 0 0% 13%;
+    --sidebar-ring: 38 52% 52%;
 
-    --studio-teal: 210 40% 35%;
-    --studio-orange: 350 70% 60%;
-    --studio-cream: 20 60% 88%;
-    --studio-white: 0 0% 100%;
-    --studio-dark: 270 15% 30%;
-    --studio-brown: 270 15% 25%;
+    /* ── Studio Design Tokens ─────────────────────── */
+    --studio-teal: 38 52% 52%;
+    --studio-orange: 38 52% 52%;
+    --studio-cream: 0 0% 11%;
+    --studio-white: 36 8% 93%;
+    --studio-dark: 0 0% 5%;
+    --studio-brown: 0 0% 8%;
 
+    /* ── Section Accent Tokens ────────────────────── */
+    --accent-films: 38 52% 52%;
+    --accent-docs: 38 30% 42%;
+    --accent-photo: 38 52% 52%;
+    --accent-fashion: 38 20% 60%;
+    --accent-street: 0 0% 70%;
+
+    /* ── Typography ───────────────────────────────── */
     --font-heading: 'Bebas Neue', sans-serif;
     --font-editorial: 'Bebas Neue', sans-serif;
     --font-body: 'Montserrat', system-ui, sans-serif;
     --font-handwriting: 'Caveat', cursive;
-    --font-fun: 'Permanent Marker', cursive;
     --font-hero: 'Bebas Neue', sans-serif;
-    --font-events: 'Lobster', cursive;
-    --font-about: 'Pacifico', cursive;
+    --font-about: 'Cormorant Garamond', Georgia, serif;
 
-    /* Section-specific accent tokens */
-    --accent-films: 210 40% 18%;
-    --accent-docs: 210 30% 22%;
-    --accent-photo: 20 80% 65%;
-    --accent-fashion: 330 30% 65%;
-    --accent-street: 0 0% 95%;
-
-    /* Filmmaking project-specific tokens */
-    --film-euphoria-font: 'Cinzel', serif;
+    /* ── Filmmaking Project Tokens ────────────────── */
     --film-geziret-font: 'IBM Plex Sans', sans-serif;
-    --film-euphoria-accent: 270 40% 65%;
-    --film-geziret-accent: 20 60% 55%;
+    --film-euphoria-accent: 38 52% 52%;
+    --film-geziret-accent: 38 52% 52%;
     --film-panel-height: 50vh;
-    --film-panel-gap: 10px;
+    --film-panel-gap: 1px;
     --film-hover-duration: 220ms;
     --film-hover-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
     --film-expand-duration: 380ms;
-    --hero-video-fallback: 0 0% 10%;
+    --hero-video-fallback: 0 0% 5%;
 
-    /* Brands & Ads — Nevi project tokens */
-    --project-nevi-font: 'Permanent Marker', cursive;
-    --project-nevi-accent: 350 70% 55%;
+    /* ── Brands & Ads Tokens ──────────────────────── */
+    --project-nevi-accent: 38 52% 52%;
 
-    --grain-opacity: 0.04;
-    --burgundy: 350 70% 60%;
-    --vignette-opacity: 0.15;
+    /* ── Section Surface Tokens ──────────────────── */
+    --section-alt: 0 0% 7%;
+    --section-deep: 0 0% 3%;
+    --section-warm: 38 6% 9%;
+
+    /* ── Misc ─────────────────────────────────────── */
+    --grain-opacity: 0.03;
+    --burgundy: 38 52% 52%;
+    --vignette-opacity: 0.3;
     --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    --font-serif: "Bebas Neue", ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
-    --shadow-sm: 0px -1px 16.5px 0px hsla(0, 0%, 0%, 0.09);
-    --shadow: 0px -1px 33px 0px hsla(0, 0%, 0%, 0.09);
-    --shadow-md: 0px -1px 49.5px 0px hsla(0, 0%, 0%, 0.09);
-    --shadow-lg: 0px -1px 82.5px 0px hsla(0, 0%, 0%, 0.09);
+    --font-serif: "Cormorant Garamond", ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
+    --shadow-sm: 0px 2px 8px 0px rgba(0, 0, 0, 0.5);
+    --shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.6);
+    --shadow-md: 0px 8px 40px 0px rgba(0, 0, 0, 0.7);
+    --shadow-lg: 0px 16px 64px 0px rgba(0, 0, 0, 0.8);
   }
   .dark {
     --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    --font-serif: "Bebas Neue", ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
-    --radius: 0.625rem;
+    --font-serif: "Cormorant Garamond", ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
+    --radius: 0.375rem;
   }
 }
 
@@ -111,6 +114,7 @@
 }
 
 @layer components {
+  /* ── Film Grain ────────────────────────────────── */
   .film-grain { position: relative; }
   .hero-video-shell {
     background-color: hsl(var(--hero-video-fallback));
@@ -123,35 +127,38 @@
     opacity: var(--grain-opacity);
     pointer-events: none;
     z-index: 10;
-    mix-blend-mode: multiply;
+    mix-blend-mode: overlay;
   }
 
+  /* ── Vignette ──────────────────────────────────── */
   .vignette::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,var(--vignette-opacity)) 100%);
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,var(--vignette-opacity)) 100%);
     pointer-events: none;
     z-index: 1;
   }
 
+  /* ── Film Frame Border ─────────────────────────── */
   .film-frame-border {
     position: relative;
-    padding: 8px;
-    background: linear-gradient(135deg, hsl(40 20% 85%) 0%, hsl(40 15% 90%) 25%, hsl(40 20% 88%) 50%, hsl(40 15% 86%) 75%, hsl(40 20% 85%) 100%);
-    box-shadow: 0 2px 20px rgba(0,0,0,0.08), 0 8px 40px rgba(0,0,0,0.06), inset 0 0 0 1px rgba(255,255,255,0.5), inset 0 0 0 2px rgba(0,0,0,0.03);
+    padding: 6px;
+    background: linear-gradient(135deg, hsl(0 0% 18%) 0%, hsl(0 0% 22%) 25%, hsl(0 0% 20%) 50%, hsl(0 0% 16%) 75%, hsl(0 0% 18%) 100%);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.7), 0 1px 0 rgba(255,255,255,0.05) inset;
     border-radius: 2px;
   }
   .film-frame-border::before {
     content: '';
     position: absolute;
     inset: 3px;
-    border: 1px solid rgba(0,0,0,0.06);
+    border: 1px solid rgba(255,255,255,0.04);
     pointer-events: none;
     z-index: 2;
     border-radius: 1px;
   }
 
+  /* ── Typography ────────────────────────────────── */
   .editorial-heading {
     font-family: var(--font-heading);
     font-weight: 700;
@@ -159,46 +166,41 @@
     line-height: 1.05;
   }
 
+  /* ── Layout ────────────────────────────────────── */
   .section-padding {
-    @apply px-6 py-24 md:px-12 lg:px-24 lg:py-36;
+    @apply px-6 py-24 md:px-12 lg:px-24 lg:py-32;
   }
 
+  /* ── Reveal Animations ─────────────────────────── */
   .reveal-left {
     opacity: 0;
-    transform: translate3d(-30%, 0, 0) scale(0.92) rotate(-2deg);
-    transition: opacity 0.65s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform: translate3d(-24px, 0, 0);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
-  .reveal-left.visible { opacity: 1; transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+  .reveal-left.visible { opacity: 1; transform: translate3d(0, 0, 0); }
 
   .reveal-right {
     opacity: 0;
-    transform: translate3d(30%, 0, 0) scale(0.92) rotate(2deg);
-    transition: opacity 0.65s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform: translate3d(24px, 0, 0);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
-  .reveal-right.visible { opacity: 1; transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+  .reveal-right.visible { opacity: 1; transform: translate3d(0, 0, 0); }
 
   .reveal {
     opacity: 0;
-    transform: translate3d(0, 120px, 0) scale(0.93);
+    transform: translate3d(0, 36px, 0);
     transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
-  .reveal.visible { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+  .reveal.visible { opacity: 1; transform: translate3d(0, 0, 0); }
 
   .reveal-scale {
     opacity: 0;
-    transform: scale(0.82) rotate(3deg);
+    transform: scale(0.94);
     transition: opacity 0.7s ease-out, transform 0.7s ease-out;
   }
-  .reveal-scale.visible { opacity: 1; transform: scale(1) rotate(0deg); }
+  .reveal-scale.visible { opacity: 1; transform: scale(1); }
 
-  .editorial-display {
-    font-family: var(--font-fun);
-    font-weight: 400;
-    letter-spacing: 0.01em;
-    line-height: 0.95;
-  }
-
-  /* Section-specific heading fonts */
+  /* ── Section Font Classes ──────────────────────── */
   .font-films-heading {
     font-family: 'Bebas Neue', sans-serif;
     font-weight: 700;
@@ -225,14 +227,7 @@
     line-height: 1;
   }
 
-  /* Filmmaking project-specific fonts */
-  .font-euphoria-heading {
-    font-family: var(--film-euphoria-font);
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    line-height: 1;
-    text-transform: uppercase;
-  }
+  /* ── Filmmaking Project Fonts ──────────────────── */
   .font-geziret-heading {
     font-family: var(--film-geziret-font);
     font-weight: 600;
@@ -240,54 +235,44 @@
     line-height: 1.05;
   }
 
-  /* Brands & Ads — Nevi */
-  .font-nevi-heading {
-    font-family: var(--project-nevi-font);
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    line-height: 1.1;
-  }
-
   .font-hero {
     font-family: var(--font-hero);
-    letter-spacing: 0.06em;
-    line-height: 0.92;
-  }
-
-  .font-events {
-    font-family: var(--font-events);
-    letter-spacing: 0.01em;
+    letter-spacing: 0.04em;
+    line-height: 0.9;
   }
 
   .font-about {
     font-family: var(--font-about);
-    letter-spacing: 0em;
+    font-style: italic;
+    font-weight: 300;
+    letter-spacing: -0.01em;
   }
 
+  /* ── Polaroid Cards ────────────────────────────── */
   .polaroid {
-    background: hsl(var(--studio-white));
-    padding: 8px 8px 36px 8px;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.06);
+    background: hsl(0 0% 97%);
+    padding: 6px 6px 30px 6px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.6), 0 1px 4px rgba(0,0,0,0.4);
     transform: rotate(-0.5deg);
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
-    border-radius: 2px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    border-radius: 1px;
   }
   .polaroid:nth-child(even) { transform: rotate(0.8deg); }
   .polaroid:nth-child(3n) { transform: rotate(-1deg); }
   .polaroid:hover {
-    transform: rotate(0deg) scale(1.02);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-    border-top: 2px solid hsl(var(--burgundy));
+    transform: rotate(0deg) scale(1.03);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.8), 0 4px 16px rgba(0,0,0,0.5);
   }
 
   .polaroid-caption {
     font-family: var(--font-handwriting);
-    font-size: 0.9rem;
-    color: hsl(var(--muted-foreground));
+    font-size: 0.75rem;
+    color: hsl(0 0% 38%);
     text-align: center;
-    padding-top: 8px;
+    padding-top: 6px;
   }
 
+  /* ── Tape ──────────────────────────────────────── */
   .tape { position: relative; }
   .tape::before {
     content: '';
@@ -297,11 +282,12 @@
     transform: translateX(-50%) rotate(-2deg);
     width: 60px;
     height: 18px;
-    background: hsl(var(--studio-orange) / 0.35);
+    background: hsl(38 52% 52% / 0.35);
     z-index: 2;
     border-radius: 2px;
   }
 
+  /* ── Paper Texture ─────────────────────────────── */
   .paper-texture { position: relative; }
   .paper-texture::before {
     content: '';
@@ -310,51 +296,89 @@
     background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.3'/%3E%3C/svg%3E");
     opacity: 0.025;
     pointer-events: none;
-    mix-blend-mode: multiply;
+    mix-blend-mode: overlay;
   }
 
+  /* ── Buttons ───────────────────────────────────── */
   .btn-pill {
-    @apply px-8 py-3.5 text-sm font-bold tracking-widest uppercase rounded-full transition-all duration-300;
+    @apply px-7 py-3 text-[11px] font-bold tracking-[0.15em] uppercase rounded-full transition-all duration-300 inline-flex items-center justify-center gap-2;
   }
-  .btn-pill:hover { @apply scale-105; }
+  .btn-pill:hover { @apply scale-[1.03]; }
 
+  /* ── Cinematic Gradient ────────────────────────── */
   .cinematic-gradient {
-    background: linear-gradient(180deg, transparent 0%, hsl(var(--studio-dark) / 0.3) 40%, hsl(var(--studio-dark) / 0.85) 100%);
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.88) 100%);
   }
 
+  /* ── Handwritten ───────────────────────────────── */
   .handwritten {
     font-family: var(--font-handwriting);
     font-size: 1rem;
     color: hsl(var(--muted-foreground));
   }
 
+  /* ── Editorial Divider ─────────────────────────── */
   .editorial-divider {
-    width: 60px;
-    height: 1px;
-    background: hsl(var(--burgundy));
+    width: 48px;
+    height: 2px;
+    background: hsl(var(--accent));
     margin: 0 auto;
   }
 
+  /* ── Label Overline ────────────────────────────── */
+  .label-overline {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: hsl(var(--accent));
+  }
+
+  /* ── Mood Classes ──────────────────────────────── */
   .mood-dark {
     background-color: hsl(var(--studio-dark));
     color: hsl(var(--studio-white));
   }
   .mood-teal {
-    background-color: hsl(180 84% 30% / 0.06);
+    background-color: hsl(var(--card));
   }
   .mood-warm {
-    background-color: hsl(33 60% 95%);
+    background-color: hsl(0 0% 7%);
   }
   .mood-brown {
-    background-color: hsl(24 36% 12%);
-    color: hsl(43 52% 92%);
+    background-color: hsl(0 0% 5%);
+    color: hsl(var(--foreground));
+  }
+
+  /* ── Section divider ───────────────────────────── */
+  .section-rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(0 0% 22%) 20%, hsl(0 0% 22%) 80%, transparent);
+  }
+
+  /* ── Section surface variants ──────────────────── */
+  .section-elevated { background-color: hsl(var(--section-alt)); }
+  .section-deep     { background-color: hsl(var(--section-deep)); }
+  .section-warm     { background-color: hsl(var(--section-warm)); }
+
+  /* ── Overline variant with shadow for video BGs ── */
+  .label-overline-video {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: hsl(var(--accent));
+    text-shadow: 0 1px 8px rgba(0,0,0,0.95), 0 0 24px rgba(0,0,0,0.8);
   }
 }
 
+/* ── Marquee ───────────────────────────────────── */
 .marquee-container { display: flex; overflow: hidden; }
 .marquee-content {
   display: flex;
-  animation: marquee-scroll 35s linear infinite;
+  animation: marquee-scroll 40s linear infinite;
   will-change: transform;
 }
 .marquee-container:hover .marquee-content { animation-play-state: paused; }
@@ -368,36 +392,33 @@
   }
 }
 
+/* ── Keyframes ─────────────────────────────────── */
 @keyframes marquee-scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-
 @keyframes marquee-bulb {
   0% { opacity: 0.4; transform: scale(0.8); }
   100% { opacity: 1; transform: scale(1.2); }
 }
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
-
 @keyframes kenburns {
   0% { transform: scale(1) translate(0, 0); }
   100% { transform: scale(1.08) translate(-1%, -1%); }
 }
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: hsl(var(--studio-cream)); }
-::-webkit-scrollbar-thumb { background: hsl(var(--studio-teal) / 0.2); border-radius: 2px; }
+/* ── Scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: hsl(var(--background)); }
+::-webkit-scrollbar-thumb { background: hsl(38 52% 52% / 0.35); border-radius: 2px; }

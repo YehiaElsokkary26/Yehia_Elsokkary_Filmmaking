@@ -6,6 +6,7 @@ import VideoTile from '@/components/VideoTile';
 import ProjectModal from '@/components/ProjectModal';
 import { getProjectsByCategory, ProjectEntry } from '@/data/portfolioData';
 import { getVideoPoster } from '@/lib/video';
+import { globalVideoPlaybackManager } from '@/hooks/useVideoManager';
 
 const meta: Record<string, { title: string; subtitle: string; headingClass: string }> = {
   'short-films': {
@@ -106,11 +107,16 @@ const VideoIndex = () => {
                   minHeight: focused ? '70vh' : '50vh',
                 }}
                 onClick={() => !focused && setFocusedDocIdx(idx)}
-                onMouseEnter={() => { if (!focused) bgVideoRefs.current[idx]?.play().catch(() => {}); }}
+                onMouseEnter={() => {
+                  if (!focused) {
+                    const v = bgVideoRefs.current[idx];
+                    if (v) { globalVideoPlaybackManager.setActive(v); v.play().catch(() => {}); }
+                  }
+                }}
                 onMouseLeave={() => {
                   if (!focused) {
                     const v = bgVideoRefs.current[idx];
-                    if (v) { v.pause(); v.currentTime = 0; }
+                    if (v) { globalVideoPlaybackManager.pause(); v.currentTime = 0; }
                   }
                 }}
                 tabIndex={0}

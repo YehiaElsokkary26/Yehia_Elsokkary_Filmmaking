@@ -7,7 +7,7 @@ interface VideoManagerOptions {
   threshold?: number | number[];
 }
 
-const globalVideoPlaybackManager = {
+export const globalVideoPlaybackManager = {
   activeVideo: null as HTMLVideoElement | null,
   pause() {
     if (this.activeVideo && !this.activeVideo.paused) {
